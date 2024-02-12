@@ -16,7 +16,6 @@ public class bulletClass : MonoBehaviour
         // Set speed
         rb.velocity = transform.forward * speed;
 
-        // Destroy object if it doesn't connnect with anything
         Destroy(gameObject, destroyTime);
     }
 
