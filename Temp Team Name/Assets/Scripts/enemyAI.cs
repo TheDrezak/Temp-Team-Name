@@ -53,6 +53,8 @@ public class enemyAI : MonoBehaviour, IDamage
         // Set Enemy Detection Radius
         detectionCollider = GetComponent<SphereCollider>();
         detectionCollider.radius = detectionRadius;
+        // Update win con
+        gameManager.instance.updateGameGoal(1);
     }
 
     void Update()
@@ -190,6 +192,8 @@ public class enemyAI : MonoBehaviour, IDamage
         // Check if HP hit 0
         if (HP <= 0)
         {
+            //Update game goal and destroy object
+            gameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
         }
 

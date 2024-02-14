@@ -15,8 +15,10 @@ public class gameManager : MonoBehaviour
 
     // Capturers player's information
     public GameObject player;
-
     public playerController playerScript;
+
+    // Number of enemies
+    int enemyCount;
 
     // Captures timeScale for consistency
     float timeScale;
@@ -56,10 +58,28 @@ public class gameManager : MonoBehaviour
     {
         isPaused = !isPaused;
 
-        Time.timeScale = 1;
+        Time.timeScale = timeScale;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(false);
         menuActive = null;
+    }
+
+    // Update game goal
+    public void updateGameGoal (int amount)
+    {
+        // Add or subtract enemy
+        enemyCount += amount;
+
+        // Update UI of count
+
+        if (enemyCount <= 0)
+        {
+            // Player wins
+            menuActive = menuWin;
+            menuActive.SetActive(true);
+            statePaused();
+        }
+        
     }
 }
