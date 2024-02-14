@@ -16,6 +16,8 @@ public class gameManager : MonoBehaviour
     // Capturers player's information
     public GameObject player;
 
+    public playerController playerScript;
+
     // Captures timeScale for consistency
     float timeScale;
 
@@ -26,6 +28,7 @@ public class gameManager : MonoBehaviour
         instance = this;
         timeScale = Time.timeScale;
         player = GameObject.FindWithTag("Player");
+        playerScript = player.GetComponent<playerController>();
     }
 
     // Update is called once per frame
