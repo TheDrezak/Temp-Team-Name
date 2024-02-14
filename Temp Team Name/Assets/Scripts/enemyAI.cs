@@ -29,6 +29,8 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
     [SerializeField] int enemyStopDist;
+    [SerializeField] int bulletsPerShot;
+    [SerializeField] float spreadFactor;
     bool isShooting;
 
     // Detection & movement variables
@@ -141,8 +143,26 @@ public class enemyAI : MonoBehaviour, IDamage
         // Begin shooting
         isShooting = true;
 
-        // Fire at player
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        // Checks how many bullets shoult fire
+        if (bulletsPerShot > 1)
+        {
+            //Fires all pellets in spread
+            for (int i = 0; i < bulletsPerShot; i++)
+            {
+                // Create a rotation for spread
+                Quaternion bulletRot = transform.rotation;
+                // Randomize spread
+                bulletRot.x += Random.Range(-spreadFactor, spreadFactor);
+                bulletRot.y += Random.Range(-spreadFactor, spreadFactor);
+                // Fire pellet in random direction
+                Instantiate(bullet, shootPos.position, bulletRot);
+            }  
+        }
+        else
+        {
+            // Fires single bullet at player
+            Instantiate(bullet, shootPos.position, transform.rotation);
+        }
         yield return new WaitForSeconds(shootRate);
 
         // End shooting

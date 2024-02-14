@@ -393,9 +393,10 @@ MonoBehaviour:
   - {fileID: 0}
   roamSpeed: 5
   HPBar: {fileID: 58166348832659752}
-  bullet: {fileID: 569889183044730468, guid: a5da5ca517d8b21428cf6cc52cf01278, type: 3}
+  bullet: {fileID: 0}
   shootRate: 1
   enemyStopDist: 5
+  detectionRadius: 15
 --- !u!33 &2547318525408514851
 MeshFilter:
   m_ObjectHideFlags: 0

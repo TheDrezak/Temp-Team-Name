@@ -61,6 +61,18 @@ PrefabInstance:
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7449318417558904774, guid: 56184786da99d0e4ab6a865edd583838, type: 3}
+      propertyPath: spreadFactor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449318417558904774, guid: 56184786da99d0e4ab6a865edd583838, type: 3}
+      propertyPath: enemyStopDist
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449318417558904774, guid: 56184786da99d0e4ab6a865edd583838, type: 3}
+      propertyPath: bulletsPerShot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449318417558904774, guid: 56184786da99d0e4ab6a865edd583838, type: 3}
       propertyPath: detectionRadius
       value: 15
       objectReference: {fileID: 0}
