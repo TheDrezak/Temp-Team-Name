@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class enemyAI : MonoBehaviour, IDamage
 {
@@ -10,25 +12,45 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
+    Color color;
+    SphereCollider detectionCollider;
 
     // Enemy stats
     [SerializeField] int HP;
     [SerializeField] int viewCone;
     [SerializeField] int targetFacespeed;
+    [SerializeField] Transform[] wayPoints;
+    [SerializeField] float roamSpeed;
+    [SerializeField] Image HPBar;
+    int maxHP;
+    int wayPointIndex;
 
     // Enemy weapon variables
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
+    [SerializeField] int enemyStopDist;
     bool isShooting;
 
     // Detection & movement variables
     bool playerInRange;
     float angleToPlayer;
     Vector3 playerDir;
+    [SerializeField] float detectionRadius;
+
 
     void Start()
     {
-        
+        // Set HP
+        maxHP = HP;
+        // Capture model color for red flash
+        color = model.material.color;
+        // Set waypoint index
+        wayPointIndex = 0;
+        // Update UI
+        updateUI();
+        // Set Enemy Detection Radius
+        detectionCollider = GetComponent<SphereCollider>();
+        detectionCollider.radius = detectionRadius;
     }
 
     void Update()
@@ -36,8 +58,25 @@ public class enemyAI : MonoBehaviour, IDamage
         // Checks if player is in range
         if (playerInRange && canSeePlayer())
         {
-
+            agent.stoppingDistance = enemyStopDist;
         }
+        else
+        {
+            agent.stoppingDistance = 0;
+            roam();
+        } 
+    }
+
+    void roam()
+    {
+        // Checks X & Z for enemy to verify if it's hit current waypoint
+        if (agent.transform.position.x != wayPoints[wayPointIndex].position.x && agent.transform.position.z != wayPoints[wayPointIndex].position.z)
+        {
+            // Moves enemy to waypoint
+            agent.SetDestination(wayPoints[wayPointIndex].position);
+        }
+        // Cycles through waypoints
+        else { wayPointIndex = (wayPointIndex + 1) % wayPoints.Length; }
     }
 
     bool canSeePlayer()
@@ -47,7 +86,6 @@ public class enemyAI : MonoBehaviour, IDamage
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
 
         // Debug
-        // Debug.Log(angleToPlayer);
         Debug.DrawRay(headPos.position, playerDir);
 
         // Raycast check for what enemy sees
@@ -89,7 +127,7 @@ public class enemyAI : MonoBehaviour, IDamage
         }
     }
 
-    // IF player exits range set to false
+    // If player exits range set to false
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -115,7 +153,7 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        model.material.color = Color.white;
+        model.material.color = color;
     }
 
     public void takeDamage(int amount)
@@ -126,10 +164,22 @@ public class enemyAI : MonoBehaviour, IDamage
         // Flash red
         StartCoroutine(flashMat());
 
+        // Go to player's last position
+        agent.SetDestination(gameManager.instance.player.transform.position);
+
         // Check if HP hit 0
         if (HP <= 0)
         {
             Destroy(gameObject);
         }
+
+        // Update HP bar
+        updateUI();
+    }
+
+    void updateUI()
+    {
+        // Updates health bar
+        HPBar.fillAmount = (float)HP / maxHP;
     }
 }
