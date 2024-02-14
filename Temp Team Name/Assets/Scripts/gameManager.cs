@@ -10,6 +10,8 @@ public class gameManager : MonoBehaviour
 
     [SerializeField] private GameObject menuActive;
     [SerializeField] private GameObject menuPause;
+    [SerializeField] private GameObject menuWin;
+    [SerializeField] private GameObject menuLose;
 
     // Capturers player's information
     public GameObject player;

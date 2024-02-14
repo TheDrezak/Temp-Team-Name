@@ -18,8 +18,8 @@ public class playerControllerTestDario : MonoBehaviour, IDamage
 
     [SerializeField] private float grappleCooldown;
 
-    Vector3 move;
-    Vector3 playerVel;
+    public Vector3 move;
+    public Vector3 playerVel;
     int jumpCount;
 
     private bool isGrappling;
