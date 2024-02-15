@@ -124,7 +124,7 @@ public class enemyAI : MonoBehaviour, IDamage
                 return true;
             }
         }
-        sniperLine.enabled = false;
+        //sniperLine.enabled = false;
         return false;
     }
 
