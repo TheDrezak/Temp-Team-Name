@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 4826103184854456836}
   speed: 25
+  pullSpeed: 0
   destroyTime: 3
 --- !u!33 &3287561085026878744
 MeshFilter:
@@ -74,7 +75,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
