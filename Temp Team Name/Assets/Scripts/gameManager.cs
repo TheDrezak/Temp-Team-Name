@@ -22,19 +22,9 @@ public class gameManager : MonoBehaviour
     public GameObject playerSpawnPos;
 
     public GameObject player;
-<<<<<<< Updated upstream
-    public playerController playerScript;
-
-    // Number of enemies
-    int enemyCount;
-
-    // Captures timeScale for consistency
-    float timeScale;
-=======
     public PlayerController playerScript;
 
     public bool isPaused;
->>>>>>> Stashed changes
 
     int enemyCount;
 
@@ -74,31 +64,13 @@ public class gameManager : MonoBehaviour
     {
         isPaused = !isPaused;
 
-        Time.timeScale = timeScale;
+        Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(false);
         menuActive = null;
     }
 
-<<<<<<< Updated upstream
-    // Update game goal
-    public void updateGameGoal (int amount)
-    {
-        // Add or subtract enemy
-        enemyCount += amount;
-
-        // Update UI of count
-
-        if (enemyCount <= 0)
-        {
-            // Player wins
-            menuActive = menuWin;
-            menuActive.SetActive(true);
-            statePaused();
-        }
-        
-=======
     public void updateGameGoal(int amount)
     {
         enemyCount += amount;
@@ -120,6 +92,5 @@ public class gameManager : MonoBehaviour
 
         menuActive = menuLose;
         menuActive.SetActive(true);
->>>>>>> Stashed changes
     }
 }

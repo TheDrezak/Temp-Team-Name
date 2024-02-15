@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Grapple Point
+  - PlayerRespawnPoint
   layers:
   - Default
   - TransparentFX
