@@ -24,5 +24,6 @@ public class buttonFunctions : MonoBehaviour
     public void respawn()
     {
 
+        gameManager.instance.playerScript.respawn();
     }
 }

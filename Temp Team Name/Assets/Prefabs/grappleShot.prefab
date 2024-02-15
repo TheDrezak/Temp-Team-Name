@@ -51,7 +51,7 @@ MonoBehaviour:
   rb: {fileID: 4826103184854456836}
   speed: 25
   pullSpeed: 0
-  destroyTime: 3
+  destroyTime: 0.75
 --- !u!33 &3287561085026878744
 MeshFilter:
   m_ObjectHideFlags: 0

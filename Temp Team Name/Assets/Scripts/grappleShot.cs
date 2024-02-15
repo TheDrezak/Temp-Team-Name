@@ -9,7 +9,7 @@ public class grappleShot : MonoBehaviour
 
     [SerializeField] private int speed;
     [SerializeField] private float pullSpeed;
-    [SerializeField] private int destroyTime;
+    [SerializeField] private float destroyTime;
 
     // Start is called before the first frame update
     void Start()
