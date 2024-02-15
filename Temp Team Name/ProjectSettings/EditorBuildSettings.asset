@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Clayton's Scene.unity
+    guid: f4a72d33effec464ab1416bdeac4df44
   m_configObjects: {}

@@ -194,7 +194,7 @@ MonoBehaviour:
   controller: {fileID: 1068020436264951392}
   playerSpeed: 25
   jumpMax: 2
-  jumpForce: 15
+  jumpForce: 5
   gravity: -25
   shootDamage: 1
   shootDistance: 50
