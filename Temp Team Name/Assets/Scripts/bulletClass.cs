@@ -28,7 +28,7 @@ public class bulletClass : MonoBehaviour
         IDamage dmg = other.GetComponent<IDamage>();
         if (dmg != null)
         {
-            dmg.takeDamage(damageAmount);
+            dmg.TakeDamage(damageAmount);
         }
 
         // Destroy object

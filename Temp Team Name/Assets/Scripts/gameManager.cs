@@ -3,18 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Cursor = UnityEngine.Cursor;
+using UnityEngine.UI;
+using Image = UnityEngine.UI.Image;
+using TMPro;
 
 public class gameManager : MonoBehaviour
 {
+
     public static gameManager instance;
 
     [SerializeField] private GameObject menuActive;
-    [SerializeField] private GameObject menuPause;
+    [SerializeField] GameObject menuPause;
     [SerializeField] private GameObject menuWin;
     [SerializeField] private GameObject menuLose;
+    [SerializeField] private TMP_Text enemyCountText;
+    public Image playerHPBar;
+    public GameObject playerDmgFlash;
+    public GameObject playerSpawnPos;
 
-    // Capturers player's information
     public GameObject player;
+<<<<<<< Updated upstream
     public playerController playerScript;
 
     // Number of enemies
@@ -22,15 +30,23 @@ public class gameManager : MonoBehaviour
 
     // Captures timeScale for consistency
     float timeScale;
+=======
+    public PlayerController playerScript;
 
-    private bool isPaused;
+    public bool isPaused;
+>>>>>>> Stashed changes
 
+    int enemyCount;
+
+    // Start is called before the first frame update
     void Awake()
     {
         instance = this;
-        timeScale = Time.timeScale;
+
         player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<playerController>();
+        playerScript = player.GetComponent<PlayerController>();
+
+        playerSpawnPos = GameObject.FindWithTag("PlayerRespawnPoint");
     }
 
     // Update is called once per frame
@@ -65,6 +81,7 @@ public class gameManager : MonoBehaviour
         menuActive = null;
     }
 
+<<<<<<< Updated upstream
     // Update game goal
     public void updateGameGoal (int amount)
     {
@@ -81,5 +98,28 @@ public class gameManager : MonoBehaviour
             statePaused();
         }
         
+=======
+    public void updateGameGoal(int amount)
+    {
+        enemyCount += amount;
+        enemyCountText.text = enemyCount.ToString("F0");
+
+        if (enemyCount <= 0)
+        {
+            //you win!!
+            menuActive = menuWin;
+            menuActive.SetActive(true);
+            statePaused();
+
+        }
+    }
+
+    public void youLose()
+    {
+        statePaused();
+
+        menuActive = menuLose;
+        menuActive.SetActive(true);
+>>>>>>> Stashed changes
     }
 }

@@ -191,7 +191,7 @@ public class enemyAI : MonoBehaviour, IDamage
         model.material.color = color;
     }
 
-    public void takeDamage(int amount)
+    public void TakeDamage(int amount)
     {
         // Take damage
         HP -= amount;

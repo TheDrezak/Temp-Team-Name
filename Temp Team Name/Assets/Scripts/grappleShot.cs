@@ -12,8 +12,7 @@ public class grappleShot : MonoBehaviour
     [SerializeField] private int destroyTime;
 
 
-
-    CharacterController pcc = gameManager.instance.player.GetComponent<CharacterController>();
+    private PlayerController pc = gameManager.instance.playerScript;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +38,7 @@ public class grappleShot : MonoBehaviour
             Vector3 force = CalculateForceTowardsGrapple(gameManager.instance.player.GetComponent<Rigidbody>(), transform.position,
                 pullSpeed);
 
-            pcc.enabled = false;
+            pc.enabled = false;
 
             pullObject(gameManager.instance.player.GetComponent<Rigidbody>(), force);
         }
