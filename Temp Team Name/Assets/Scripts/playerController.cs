@@ -139,10 +139,10 @@ public class playerController : MonoBehaviour, IDamage
         isGrappling = false;
     }
 
-    public void PullObject(GameObject obj)
+    public void PullObject(Transform pos)
     {
         controller.enabled = false;
-        transform.position = obj.transform.position;
+        transform.position = pos.position;
         controller.enabled = true;
     }
 }

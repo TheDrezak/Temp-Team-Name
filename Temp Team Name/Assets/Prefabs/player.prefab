@@ -201,7 +201,7 @@ MonoBehaviour:
   shootRate: 0.25
   shootPos: {fileID: 8451466455853682625}
   grappleShot: {fileID: 332215667505597604, guid: e82995fcfd638194d8b35da3b24c54aa, type: 3}
-  grappleCooldown: 0
+  grappleCooldown: 1
 --- !u!143 &1068020436264951392
 CharacterController:
   m_ObjectHideFlags: 0

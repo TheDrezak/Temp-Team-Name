@@ -30,9 +30,8 @@ public class grappleShot : MonoBehaviour
 
         if (grp != null)
         {
-            GameObject temp = GameObject.FindWithTag("GrappleTel");
-
-            gameManager.instance.playerScript.PullObject(temp);
+            
+            gameManager.instance.playerScript.PullObject(other.transform);
         }
 
         Destroy(gameObject);
