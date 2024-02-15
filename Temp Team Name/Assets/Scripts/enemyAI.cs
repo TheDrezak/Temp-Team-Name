@@ -31,7 +31,9 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int enemyStopDist;
     [SerializeField] int bulletsPerShot;
     [SerializeField] float spreadFactor;
+    [SerializeField] bool isSniper;
     bool isShooting;
+    LineRenderer sniperLine;
 
     // Detection & movement variables
     bool playerInRange;
@@ -55,6 +57,8 @@ public class enemyAI : MonoBehaviour, IDamage
         detectionCollider.radius = detectionRadius;
         // Update win con
         gameManager.instance.updateGameGoal(1);
+        // Get Linerenderer for sniper laser
+        sniperLine = GetComponent<LineRenderer>();
     }
 
     void Update()
@@ -99,6 +103,14 @@ public class enemyAI : MonoBehaviour, IDamage
             // Check if we hit both the player & the player is within our vision cone
             if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
             {
+                // If sniper turn on laser
+                if (isSniper)
+                {
+                    sniperLine.SetPosition(0, headPos.position);
+                    sniperLine.SetPosition(1, hit.point);
+                    sniperLine.enabled = true;
+                }
+
                 // Chase player & shoot
                 agent.SetDestination(gameManager.instance.player.transform.position);
                 if (!isShooting)
@@ -112,6 +124,7 @@ public class enemyAI : MonoBehaviour, IDamage
                 return true;
             }
         }
+        sniperLine.enabled = false;
         return false;
     }
 
