@@ -21,6 +21,8 @@ public class gameManager : MonoBehaviour
     public GameObject playerDmgFlash;
     public GameObject playerSpawnPos;
 
+    public GameObject playerTele;
+
     public GameObject player;
     public playerController playerScript;
 
@@ -37,6 +39,7 @@ public class gameManager : MonoBehaviour
         playerScript = player.GetComponent<playerController>();
 
         playerSpawnPos = GameObject.FindWithTag("PlayerRespawnPoint");
+        playerTele = GameObject.FindWithTag("GrappleTel");
     }
 
     // Update is called once per frame

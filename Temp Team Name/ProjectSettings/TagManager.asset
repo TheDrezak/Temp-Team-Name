@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Grapple Point
   - PlayerRespawnPoint
+  - GrappleTel
   layers:
   - Default
   - TransparentFX

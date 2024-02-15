@@ -16,11 +16,17 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;
 
+    [SerializeField] private Transform shootPos;
+
+    [SerializeField] private GameObject grappleShot;
+    [SerializeField] private float grappleCooldown;
+
     Vector3 move;
     Vector3 playerVelocity;
     int jumpCount;
 
     bool isShooting;
+    private bool isGrappling;
     private int HPOrig;
 
     void Start()
@@ -37,6 +43,10 @@ public class playerController : MonoBehaviour, IDamage
         if (Input.GetButton("Shoot") && !isShooting)
         {
             StartCoroutine(Shoot());
+        }
+        if (Input.GetButton("ShootGrap") && !isGrappling)
+        {
+            StartCoroutine(shootGrapple());
         }
     }
     void Movement()
@@ -119,4 +129,20 @@ public class playerController : MonoBehaviour, IDamage
         controller.enabled = true;
     }
 
+    IEnumerator shootGrapple()
+    {
+
+        isGrappling = true;
+
+        Instantiate(grappleShot, shootPos.position, Camera.main.transform.rotation);
+        yield return new WaitForSeconds(grappleCooldown);
+        isGrappling = false;
+    }
+
+    public void PullObject(GameObject obj)
+    {
+        controller.enabled = false;
+        transform.position = obj.transform.position;
+        controller.enabled = true;
+    }
 }

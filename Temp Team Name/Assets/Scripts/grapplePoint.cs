@@ -8,20 +8,8 @@ public class grapplePoint : MonoBehaviour, IGrapple
     [SerializeField] private Rigidbody rb;
 
 
-
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-
-    }
-
-    void Update()
-    {
-        
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-
-        
+        return;
     }
 }
