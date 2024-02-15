@@ -22,7 +22,7 @@ public class gameManager : MonoBehaviour
     public GameObject playerSpawnPos;
 
     public GameObject player;
-    public PlayerController playerScript;
+    public playerController playerScript;
 
     public bool isPaused;
 
@@ -34,7 +34,7 @@ public class gameManager : MonoBehaviour
         instance = this;
 
         player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<PlayerController>();
+        playerScript = player.GetComponent<playerController>();
 
         playerSpawnPos = GameObject.FindWithTag("PlayerRespawnPoint");
     }

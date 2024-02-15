@@ -12,7 +12,7 @@ public class grappleShot : MonoBehaviour
     [SerializeField] private int destroyTime;
 
 
-    private PlayerController pc = gameManager.instance.playerScript;
+    private playerController pc = gameManager.instance.playerScript;
 
     // Start is called before the first frame update
     void Start()
