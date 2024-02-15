@@ -26,15 +26,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7293828971254084225, guid: 56184786da99d0e4ab6a865edd583838, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -78
+      value: -13.25
       objectReference: {fileID: 0}
     - target: {fileID: 7293828971254084225, guid: 56184786da99d0e4ab6a865edd583838, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.24
       objectReference: {fileID: 0}
     - target: {fileID: 7293828971254084225, guid: 56184786da99d0e4ab6a865edd583838, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 47.1
+      value: 12.99
       objectReference: {fileID: 0}
     - target: {fileID: 7293828971254084225, guid: 56184786da99d0e4ab6a865edd583838, type: 3}
       propertyPath: m_LocalRotation.w
@@ -91,6 +91,10 @@ PrefabInstance:
     - target: {fileID: 7449318417558904774, guid: 56184786da99d0e4ab6a865edd583838, type: 3}
       propertyPath: detectionRadius
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449318417558904774, guid: 56184786da99d0e4ab6a865edd583838, type: 3}
+      propertyPath: wayPoints.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9148761493394626712, guid: 56184786da99d0e4ab6a865edd583838, type: 3}
       propertyPath: m_Name
