@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class playerController : MonoBehaviour, IDamage
 {
+
+    [SerializeField] private int itemsInInventory;
 
     [SerializeField] private int HP;
     [SerializeField] CharacterController controller;
@@ -14,6 +17,7 @@ public class playerController : MonoBehaviour, IDamage
 
     [SerializeField] int shootDamage;
     [SerializeField] int shootDistance;
+    [SerializeField] private int grabDist;
     [SerializeField] float shootRate;
 
     [SerializeField] private Transform shootPos;
@@ -24,6 +28,7 @@ public class playerController : MonoBehaviour, IDamage
     Vector3 move;
     Vector3 playerVelocity;
     int jumpCount;
+    private List<GameObject> inventory = new List<GameObject>();
 
     bool isShooting;
     private bool isGrappling;
@@ -47,6 +52,29 @@ public class playerController : MonoBehaviour, IDamage
         if (Input.GetButton("ShootGrap") && !isGrappling)
         {
             StartCoroutine(shootGrapple());
+        }
+
+        if (Input.GetKeyDown(KeyCode.E)) 
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, grabDist))
+            {
+                Debug.Log(hit.collider.name);
+
+                IInteract interact = hit.collider.GetComponent<IInteract>();
+
+                if (hit.transform != transform && interact != null)
+                {
+                    GameObject temp = hit.collider.gameObject;
+
+                    pickitemUp(hit.collider.gameObject);
+                    Destroy(hit.collider.gameObject);
+                    itemsInInventory = inventory.Count;
+
+                }
+            }
+
         }
     }
     void Movement()
@@ -143,5 +171,10 @@ public class playerController : MonoBehaviour, IDamage
         controller.enabled = false;
         transform.position = pos.position;
         controller.enabled = true;
+    }
+
+    void pickitemUp(GameObject item)
+    {
+        inventory.Add(item);
     }
 }
