@@ -71,6 +71,7 @@ public class playerController : MonoBehaviour, IDamage
                     pickitemUp(hit.collider.gameObject);
                     Destroy(hit.collider.gameObject);
                     itemsInInventory = inventory.Count;
+                    gameManager.instance.itemUI.SetActive(true);
 
                 }
             }
