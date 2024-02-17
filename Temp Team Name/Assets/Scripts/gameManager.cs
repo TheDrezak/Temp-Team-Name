@@ -86,10 +86,7 @@ public class gameManager : MonoBehaviour
 
         if (enemyCount <= 0)
         {
-            //you win!!
-            menuActive = menuWin;
-            menuActive.SetActive(true);
-            statePaused();
+            youWin();
 
         }
     }
@@ -100,5 +97,12 @@ public class gameManager : MonoBehaviour
 
         menuActive = menuLose;
         menuActive.SetActive(true);
+    }
+
+    public void youWin()
+    {
+        menuActive = menuWin;
+        menuActive.SetActive(true);
+        statePaused();
     }
 }
