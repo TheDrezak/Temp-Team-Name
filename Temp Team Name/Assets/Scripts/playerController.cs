@@ -44,6 +44,16 @@ public class playerController : MonoBehaviour, IDamage
     {
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.blue);
         Movement();
+        itemsInInventory = inventory.Count;
+
+        if (itemsInInventory >= 1)
+        {
+            gameManager.instance.itemUI.SetActive(true);
+        }
+        else
+        {
+            gameManager.instance.itemUI.SetActive(false);
+        }
 
         if (Input.GetButton("Shoot") && !isShooting)
         {
@@ -53,29 +63,13 @@ public class playerController : MonoBehaviour, IDamage
         {
             StartCoroutine(shootGrapple());
         }
-
         if (Input.GetKeyDown(KeyCode.E)) 
         {
-            RaycastHit hit;
-
-            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, grabDist))
-            {
-                Debug.Log(hit.collider.name);
-
-                IInteract interact = hit.collider.GetComponent<IInteract>();
-
-                if (hit.transform != transform && interact != null)
-                {
-                    GameObject temp = hit.collider.gameObject;
-
-                    pickitemUp(hit.collider.gameObject);
-                    Destroy(hit.collider.gameObject);
-                    itemsInInventory = inventory.Count;
-                    gameManager.instance.itemUI.SetActive(true);
-
-                }
-            }
-
+            pickitemUp();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            dropItem(inventory[0]);
         }
     }
     void Movement()
@@ -174,8 +168,40 @@ public class playerController : MonoBehaviour, IDamage
         controller.enabled = true;
     }
 
-    void pickitemUp(GameObject item)
+    void pickitemUp()
     {
-        inventory.Add(item);
+        RaycastHit hit;
+
+        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, grabDist))
+        {
+            Debug.Log(hit.collider.name);
+
+            IInteract interact = hit.collider.GetComponent<IInteract>();
+
+            if (hit.transform != transform && interact != null)
+            {
+                GameObject clonedItem = Instantiate(hit.collider.gameObject);
+                clonedItem.SetActive(false);
+                inventory.Add(clonedItem);
+                gameManager.instance.keysCollected += 1;
+                gameManager.instance.updateGameGoal(0);
+                Destroy(hit.collider.gameObject);
+            }
+        }
+    }
+
+    void dropItem(GameObject item)
+    {
+        for (int i = 0; i < itemsInInventory; i++)
+        {
+            if (inventory[i] == item)
+            {
+                item.SetActive(true);
+                item.transform.position = gameManager.instance.player.transform.position;
+                 
+                inventory.RemoveAt(0);
+
+            }
+        }
     }
 }

@@ -17,6 +17,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] private GameObject menuWin;
     [SerializeField] private GameObject menuLose;
     [SerializeField] private TMP_Text enemyCountText;
+    [SerializeField] private TMP_Text keyCountText;
     [SerializeField] public GameObject itemUI;
 
     public Image playerHPBar;
@@ -30,6 +31,7 @@ public class gameManager : MonoBehaviour
 
     public bool isPaused;
 
+    public int keysCollected;
     int enemyCount;
 
     // Start is called before the first frame update
@@ -80,6 +82,7 @@ public class gameManager : MonoBehaviour
     {
         enemyCount += amount;
         enemyCountText.text = enemyCount.ToString("F0");
+        keyCountText.text = keysCollected.ToString("F0");
 
         if (enemyCount <= 0)
         {
