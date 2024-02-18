@@ -94,7 +94,6 @@ public class enemyParent : MonoBehaviour, IDamage
         Debug.DrawRay(headPos.position, playerDir);
 
         // Raycast check for what enemy sees
-        // RaycastHit hit; (testing removal)
         if (Physics.Raycast(headPos.position, playerDir, out hit))
         {
             // Check if we hit both the player & the player is within our vision cone

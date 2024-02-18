@@ -8,7 +8,6 @@ public class enemySniper : enemyParent, IDamage
     LineRenderer sniperLine;
     [SerializeField] int sniperDamage;
     [SerializeField] int sniperShootDistance;
-    Transform enemyPos;
     [SerializeField] int sniperWeaponCone;
     [SerializeField] int timeBeforeShot;
     new void Start()
@@ -35,9 +34,15 @@ public class enemySniper : enemyParent, IDamage
 
         // Finds where player is before coroutine
         playerDir = gameManager.instance.player.transform.position - headPrefab.position;
-        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
+
+        // Debug
+        Debug.DrawRay(headPrefab.position, playerDir);
 
         yield return new WaitForSeconds(shootRateTest);
+
+        Vector3 playerDirNew = gameManager.instance.player.transform.position - headPrefab.position;
+        angleToPlayer = Vector3.Angle(playerDirNew, transform.forward);
+
 
         // Shoot Raycast
         if (Physics.Raycast(headPrefab.position, playerDir, out hit))

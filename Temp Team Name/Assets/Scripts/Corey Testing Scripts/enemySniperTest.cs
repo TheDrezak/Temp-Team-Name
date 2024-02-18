@@ -10,9 +10,7 @@ public class enemySniperTest : MonoBehaviour, IDamage
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPos;
-    [SerializeReference] protected Transform shootPosPrefab;
     [SerializeField] Transform headPos;
-    [SerializeReference] protected Transform headPrefab;
     Color color;
     SphereCollider detectionCollider;
 
@@ -26,22 +24,19 @@ public class enemySniperTest : MonoBehaviour, IDamage
     int wayPointIndex;
 
     // Enemy weapon variables
-    [SerializeField] GameObject bullet;
-    [SerializeReference] protected GameObject bulletPrefab;
     [SerializeField] float shootRate;
-    [SerializeReference] protected float shootRateTest;
     [SerializeField] int enemyStopDist;
-    protected bool isShooting;
-    protected RaycastHit hit;
+    bool isShooting;
+    RaycastHit hit;
 
     // Detection & movement variables
     bool playerInRange;
-    protected float angleToPlayer;
-    protected Vector3 playerDir;
+    float angleToPlayer;
+    Vector3 playerDir;
     [SerializeField] float detectionRadius;
 
 
-    protected void Start()
+    void Start()
     {
         // Set HP
         maxHP = HP;
@@ -58,7 +53,7 @@ public class enemySniperTest : MonoBehaviour, IDamage
         gameManager.instance.updateGameGoal(1);
     }
 
-    protected void Update()
+    void Update()
     {
         // Checks if player is in range
         if (playerInRange && canSeePlayer())
@@ -84,7 +79,7 @@ public class enemySniperTest : MonoBehaviour, IDamage
         else { wayPointIndex = (wayPointIndex + 1) % wayPoints.Length; }
     }
 
-    protected virtual bool canSeePlayer()
+    bool canSeePlayer()
     {
         // Finds where player is
         playerDir = gameManager.instance.player.transform.position - headPos.position;
@@ -94,7 +89,6 @@ public class enemySniperTest : MonoBehaviour, IDamage
         Debug.DrawRay(headPos.position, playerDir);
 
         // Raycast check for what enemy sees
-        // RaycastHit hit; (testing removal)
         if (Physics.Raycast(headPos.position, playerDir, out hit))
         {
             // Check if we hit both the player & the player is within our vision cone
@@ -147,7 +141,7 @@ public class enemySniperTest : MonoBehaviour, IDamage
         isShooting = true;
 
         // Fires single bullet at player
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        //Instantiate(bullet, shootPos.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
 
         // End shooting
