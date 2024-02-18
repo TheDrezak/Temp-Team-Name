@@ -1324,7 +1324,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2296,6 +2296,7 @@ MonoBehaviour:
   menuWin: {fileID: 8717644210132429761}
   menuLose: {fileID: 436356448894575091}
   enemyCountText: {fileID: 703281893783101093}
+  keyCountText: {fileID: 0}
   itemUI: {fileID: 7440130534724068152}
   playerHPBar: {fileID: 3057316330420038839}
   playerDmgFlash: {fileID: 6565427498615484309}
@@ -2304,6 +2305,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerScript: {fileID: 0}
   isPaused: 0
+  keysCollected: 0
 --- !u!1 &5647809045012210695
 GameObject:
   m_ObjectHideFlags: 0
