@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class enemyParent : MonoBehaviour, IDamage
+public class enemySniperTest : MonoBehaviour, IDamage
 {
     // Initialize info
     [SerializeField] Renderer model;

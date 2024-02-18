@@ -15,7 +15,6 @@ public class bulletClass : MonoBehaviour
     {
         // Set speed
         rb.velocity = (gameManager.instance.player.transform.position - transform.position).normalized * speed;
-
         Destroy(gameObject, destroyTime);
     }
 
