@@ -12,12 +12,12 @@ public class ExtractionPoint : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerStay(Collider other)
     {
         if (other.isTrigger)
             return;
 
-        IextractionPoint ep = other.GetComponent<IextractionPoint>();
+        IInteract ep = other.GetComponent<IInteract>();
 
         if (ep != null)
         {
