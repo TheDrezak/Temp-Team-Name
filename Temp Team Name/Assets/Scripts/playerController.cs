@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ public class playerController : MonoBehaviour, IDamage
 
     bool isShooting;
     private bool isGrappling;
-    private int HPOrig;
+    public int HPOrig;
 
     void Start()
     {
@@ -126,7 +127,7 @@ public class playerController : MonoBehaviour, IDamage
         }
     }
 
-    void updatePlayerUI()
+    public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
     }
@@ -204,4 +205,12 @@ public class playerController : MonoBehaviour, IDamage
             }
         }
     }
+
+    public void setHP(int amount)
+    {
+        HP = amount;
+
+    }
+
+    public int getHP() { return HP; }
 }
