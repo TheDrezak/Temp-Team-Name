@@ -396,6 +396,9 @@ MonoBehaviour:
   bullet: {fileID: 0}
   shootRate: 1
   enemyStopDist: 5
+  bulletsPerShot: 0
+  spreadFactor: 0
+  isSniper: 0
   detectionRadius: 15
 --- !u!33 &2547318525408514851
 MeshFilter:
@@ -412,7 +415,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9148761493394626712}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

@@ -26,4 +26,10 @@ public class buttonFunctions : MonoBehaviour
 
         gameManager.instance.playerScript.respawn();
     }
+
+    public void buyHealth()
+    {
+        gameManager.instance.playerScript.setHP(gameManager.instance.playerScript.HPOrig);
+        gameManager.instance.playerScript.updatePlayerUI();
+    }
 }

@@ -16,6 +16,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] private GameObject menuWin;
     [SerializeField] private GameObject menuLose;
+    [SerializeField] private GameObject menuShop;
     [SerializeField] private TMP_Text enemyCountText;
     [SerializeField] private TMP_Text keyCountText;
     [SerializeField] public GameObject itemUI;
@@ -55,6 +56,13 @@ public class gameManager : MonoBehaviour
             statePaused();
             menuActive = menuPause;
             menuActive.SetActive(isPaused);
+        }
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            statePaused();
+            menuActive = menuShop;
+            menuShop.SetActive(isPaused);
         }
     }
 
