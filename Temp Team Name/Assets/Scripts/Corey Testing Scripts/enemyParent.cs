@@ -30,7 +30,7 @@ public class enemyParent : MonoBehaviour, IDamage
     [SerializeReference] protected GameObject bulletPrefab;
     [SerializeField] float shootRate;
     [SerializeReference] protected float shootRateTest;
-    [SerializeField] int enemyStopDist;
+    [SerializeField] int shootCone;
     protected bool isShooting;
     protected RaycastHit hit;
 
@@ -39,12 +39,13 @@ public class enemyParent : MonoBehaviour, IDamage
     protected float angleToPlayer;
     protected Vector3 playerDir;
     [SerializeField] float detectionRadius;
+    float enemyStopDist;
 
 
     protected void Start()
     {
         // Set HP
-        maxHP = HP;
+        HP = maxHP;
         // Capture model color for red flash
         color = model.material.color;
         // Set waypoint index
@@ -56,6 +57,8 @@ public class enemyParent : MonoBehaviour, IDamage
         detectionCollider.radius = detectionRadius;
         // Update win con
         gameManager.instance.updateGameGoal(1);
+        // Capture stop distance
+        enemyStopDist = agent.stoppingDistance;
     }
 
     protected void Update()
@@ -97,7 +100,7 @@ public class enemyParent : MonoBehaviour, IDamage
         if (Physics.Raycast(headPos.position, playerDir, out hit))
         {
             // Check if we hit both the player & the player is within our vision cone
-            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
+            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)// Look to add shootCone
             {
                 // Chase player & shoot
                 agent.SetDestination(gameManager.instance.player.transform.position);

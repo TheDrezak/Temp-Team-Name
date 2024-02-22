@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class enemySpawner : MonoBehaviour
 {
-    public enum SpaawnState { Spawning, Waiting, Counting};
+    public enum SpawnState { Spawning, Waiting, Counting};
 
     [SerializeField] Transform[] spawners;
     [SerializeField] float spawnInterval;
-    [SerializeField] waves[] waves;
+    [SerializeField] List<waves> waves;
     [SerializeField] float timeBetweenWaves;
     [SerializeField] float waveCountdown;
-    SpaawnState state = SpaawnState.Counting;
+    SpawnState state = SpawnState.Counting;
     int currentWave;
     [SerializeField] List<enemyParent> enemyList;
+    [SerializeField] bool fixedAmountofWaves;
+    int infintiteMuliplayer = 1;
 
     void Start()
     {
@@ -24,10 +27,10 @@ public class enemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (state == SpaawnState.Waiting)
+        if (state == SpawnState.Waiting)
         {
             // Check if enemies are dead or timer is still going
-            if (enemyList.Count > 0)
+            if (enemyList.Count > 0 && fixedAmountofWaves)
             {
                 return;
             }
@@ -39,7 +42,7 @@ public class enemySpawner : MonoBehaviour
         if(waveCountdown <= 0)
         {
             // Prevents spawning twice
-            if (state != SpaawnState.Spawning)
+            if (state != SpawnState.Spawning)
             {
                 // Start wave spawn
                 StartCoroutine(SpawnWave(waves[currentWave]));
@@ -55,16 +58,24 @@ public class enemySpawner : MonoBehaviour
     void CompleteWave()
     {
         // Reset waveCountdown
-        state = SpaawnState.Counting;
+        state = SpawnState.Counting;
         waveCountdown = timeBetweenWaves;
 
         // Give feedback to player they completed wave **ADD IN**
 
+       
 
         // Checks if all waves are done
-        if (currentWave +1 > waves.Length - 1)
+        if (currentWave +1 > waves.Count - 1)
         {
-           // Do something once they're all completed **ADD IN**
+            // Check if waves are infinite or set number
+            if (!fixedAmountofWaves)
+            {
+                // Increase multiplyer
+                infintiteMuliplayer *= 2;
+
+                waves[currentWave].enemyAmount += (infintiteMuliplayer * 2);    
+            }
         }
         else
         {
@@ -75,7 +86,7 @@ public class enemySpawner : MonoBehaviour
 
     IEnumerator SpawnWave(waves wave)
     {
-        state = SpaawnState.Spawning;
+        state = SpawnState.Spawning;
 
         // Spawn enemies based on amount passed in
         for(int i = 0; i < wave.enemyAmount; i++)
@@ -87,7 +98,7 @@ public class enemySpawner : MonoBehaviour
             yield return new WaitForSeconds(wave.spawnDelay);
         }
         
-        state = SpaawnState.Waiting;
+        state = SpawnState.Waiting;
 
         yield break;
     }

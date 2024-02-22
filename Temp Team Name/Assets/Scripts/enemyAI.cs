@@ -169,6 +169,7 @@ public class enemyAI : MonoBehaviour, IDamage
                 // Randomize spread
                 bulletRot.x += Random.Range(-spreadFactor, spreadFactor);
                 bulletRot.y += Random.Range(-spreadFactor, spreadFactor);
+                bullet.transform.rotation = bulletRot;
                 // Fire pellet in random direction
                 Instantiate(bullet, shootPos.position, bulletRot);
             }  
