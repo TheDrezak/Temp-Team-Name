@@ -51,6 +51,8 @@ MonoBehaviour:
   damageAmount: 1
   speed: 25
   destroyTime: 3
+  shotgun: 1
+  sharedSpeed: 0
 --- !u!135 &2617490067916572901
 SphereCollider:
   m_ObjectHideFlags: 0

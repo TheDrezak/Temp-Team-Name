@@ -205,6 +205,7 @@ MonoBehaviour:
   shootPos: {fileID: 8451466455853682625}
   grappleShot: {fileID: 332215667505597604, guid: e82995fcfd638194d8b35da3b24c54aa, type: 3}
   grappleCooldown: 1
+  HPOrig: 0
 --- !u!143 &1068020436264951392
 CharacterController:
   m_ObjectHideFlags: 0

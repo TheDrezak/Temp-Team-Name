@@ -6,111 +6,123 @@ using UnityEngine.UI;
 
 public class enemyParent : MonoBehaviour, IDamage
 {
-    // Initialize info
+    [Header("----- Componenets -----")]
+    [SerializeField] Animator anim;
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPos;
-    [SerializeReference] protected Transform shootPosPrefab;
     [SerializeField] Transform headPos;
-    [SerializeReference] protected Transform headPrefab;
-    Color color;
-    SphereCollider detectionCollider;
+    [SerializeField] Collider weaponCollider;
 
-    // Enemy stats
+    [Header("----- Enemy Stats -----")]
     [SerializeField] int HP;
     [SerializeField] int viewCone;
-    [SerializeField] int targetFacespeed;
-    [SerializeField] Transform[] wayPoints;
-    [SerializeField] float roamSpeed;
-    int maxHP;
-    int wayPointIndex;
-
-    // Enemy weapon variables
-    [SerializeField] GameObject bullet;
-    [SerializeReference] protected GameObject bulletPrefab;
-    [SerializeField] float shootRate;
-    [SerializeReference] protected float shootRateTest;
     [SerializeField] int shootCone;
-    protected bool isShooting;
-    protected RaycastHit hit;
+    [SerializeField] int targetFaceSpeed;
+    [SerializeField] int animSpeedTrans;
+    [SerializeField] int roamPauseTime;
+    [SerializeField] int roamDis;
 
-    // Detection & movement variables
+    [Header("----- Guns -----")]
+    [SerializeField] GameObject bullet;
+    [SerializeField] float shootRate;
+
+    [Header("----- UI-----")]
+    [SerializeField] Image HPBar;
+
+    bool isShooting;
     bool playerInRange;
-    protected float angleToPlayer;
-    protected Vector3 playerDir;
-    [SerializeField] float detectionRadius;
-    float enemyStopDist;
+    float angleToPlayer;
+    Vector3 playerDir;
+    int HPOrig;
+    Color color;
+    Vector3 startingPos;
+    bool destChosen;
+    float stoppingDistanceOrig;
 
 
-    protected void Start()
+    void Start()
     {
-        // Set HP
-        HP = maxHP;
-        // Capture model color for red flash
-        color = model.material.color;
-        // Set waypoint index
-        wayPointIndex = 0;
-        // Update UI
-        updateUI();
-        // Set Enemy Detection Radius
-        detectionCollider = GetComponent<SphereCollider>();
-        detectionCollider.radius = detectionRadius;
-        // Update win con
+        // Initialize 
         gameManager.instance.updateGameGoal(1);
-        // Capture stop distance
-        enemyStopDist = agent.stoppingDistance;
+        startingPos = transform.position;
+        HPOrig = HP;
+        updateUI();
+        color = model.material.color;
+        stoppingDistanceOrig = agent.stoppingDistance;
     }
 
-    protected void Update()
+    void Update()
     {
+        // Capture velocity normalized to lerp animations as needed
+        float animSpeed = agent.velocity.normalized.magnitude;
+        //anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
+
         // Checks if player is in range
-        if (playerInRange && canSeePlayer())
+        if (playerInRange && !canSeePlayer())
         {
-            agent.stoppingDistance = enemyStopDist;
+            // Roam if player is in range but can't see player
+            StartCoroutine(roam());
         }
-        else
+        else if (!playerInRange)
         {
-            agent.stoppingDistance = 0;
-            roam();
+            // Roam because player isn't in range
+            StartCoroutine(roam());
         }
     }
 
-    void roam()
+    IEnumerator roam()
     {
-        // Checks X & Z for enemy to verify if it's hit current waypoint
-        if (agent.transform.position.x != wayPoints[wayPointIndex].position.x && agent.transform.position.z != wayPoints[wayPointIndex].position.z)
+        // Make sure reamining distance is very small, or on point, & destChosen is false
+        if (agent.remainingDistance < 0.05f && !destChosen)
         {
-            // Moves enemy to waypoint
-            agent.SetDestination(wayPoints[wayPointIndex].position);
+            // Chooses destination, updates stopping distance to allow roam, pause time
+            destChosen = true;
+            agent.stoppingDistance = 0;
+            yield return new WaitForSeconds(roamPauseTime);
+
+            // Randomizes roam points
+            Vector3 randomPos = Random.insideUnitSphere * roamDis;
+            // Connects back to starting pos
+            randomPos += startingPos;
+
+            // Roams enemy to random position on the layer selected (1 for this case)
+            // Makes sure the point hits inside the NavMesh
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomPos, out hit, roamDis, 1);
+            agent.SetDestination(hit.position);
+
+            destChosen = false;
         }
-        // Cycles through waypoints
-        else { wayPointIndex = (wayPointIndex + 1) % wayPoints.Length; }
     }
 
-    protected virtual bool canSeePlayer()
+    bool canSeePlayer()
     {
         // Finds where player is
         playerDir = gameManager.instance.player.transform.position - headPos.position;
-        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
+        angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, 0, playerDir.z), transform.forward);
 
-        // Debug
-        Debug.DrawRay(headPos.position, playerDir);
-
-        // Raycast check for what enemy sees
+        // Check if Raycast hits player or something else
+        RaycastHit hit;
         if (Physics.Raycast(headPos.position, playerDir, out hit))
         {
-            // Check if we hit both the player & the player is within our vision cone
-            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)// Look to add shootCone
+            Debug.Log(hit.collider.name);
+
+            // Did we hit both the player & the player is in the cone
+            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
             {
-                // Chase player & shoot
+                // Moves to player
                 agent.SetDestination(gameManager.instance.player.transform.position);
-                if (!isShooting)
+                // Starts shooting if not already shooting & in cone of gun
+                if (!isShooting && angleToPlayer <= shootCone)
                 {
                     StartCoroutine(shoot());
                 }
 
-                // Allows unit to turn if in range
                 if (agent.remainingDistance < agent.stoppingDistance) { faceTarget(); }
+
+                // Reset stopping distance to original number
+                agent.stoppingDistance = stoppingDistanceOrig;
 
                 return true;
             }
@@ -120,12 +132,12 @@ public class enemyParent : MonoBehaviour, IDamage
 
     void faceTarget()
     {
-        // Rotate to player if they're within stopping range
+        // Rotates to player if they're within stopping range
+        // Makes rot ignore player's Y pos
         Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, transform.position.y, playerDir.z));
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * targetFacespeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * targetFaceSpeed);
     }
 
-    // If player enters range set to true
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -134,26 +146,33 @@ public class enemyParent : MonoBehaviour, IDamage
         }
     }
 
-    // If player exits range set to false
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            agent.stoppingDistance = 0;
         }
     }
 
-    protected virtual IEnumerator shoot()
+    public void TakeDamage(int amount)
     {
-        // Begin shooting
-        isShooting = true;
+        // Move to player if enemy takes damage
+        agent.SetDestination(gameManager.instance.player.transform.position);
 
-        // Fires single bullet at player
-        Instantiate(bullet, shootPos.position, transform.rotation);
-        yield return new WaitForSeconds(shootRate);
+        // Take damage
+        HP -= amount;
 
-        // End shooting
-        isShooting = false;
+        // Flash red
+        StartCoroutine(flashMat());
+        if (HP <= 0)
+        {
+            // Give points
+            gameManager.instance.updateGameGoal(-1);
+            Destroy(gameObject);
+        }
+        // Lower HP on HP bar
+        updateUI();
     }
 
     IEnumerator flashMat()
@@ -163,28 +182,23 @@ public class enemyParent : MonoBehaviour, IDamage
         model.material.color = color;
     }
 
-    public void TakeDamage(int amount)
+    IEnumerator shoot()
     {
-        // Take damage
-        HP -= amount;
+        isShooting = true;
 
-        // Flash red
-        StartCoroutine(flashMat());
+        // Triggers shoot animation
+        anim.SetTrigger("Shoot");
 
-        // Go to player's last position
-        agent.SetDestination(gameManager.instance.player.transform.position);
-
-        // Check if HP hit 0
-        if (HP <= 0)
-        {
-            //Update game goal and destroy object
-            gameManager.instance.updateGameGoal(-1);
-            Destroy(gameObject);
-        }
+        // Create bullet and fire
+        Instantiate(bullet, shootPos.position, transform.rotation);
+        yield return new WaitForSeconds(shootRate);
+        isShooting = false;
     }
 
     void updateUI()
     {
-        // Updates health bar
+        // Updates HP bar
+        HPBar.fillAmount = (float)HP / HPOrig;
     }
 }
+

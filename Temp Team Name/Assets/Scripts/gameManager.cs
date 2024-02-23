@@ -92,11 +92,11 @@ public class gameManager : MonoBehaviour
         enemyCountText.text = enemyCount.ToString("F0");
         //keyCountText.text = keysCollected.ToString("F0");
 
-        if (enemyCount <= 0)
-        {
-            youWin();
+        //if (enemyCount <= 0)
+        //{
+        //    youWin();
 
-        }
+        //}
     }
 
     public void youLose()
