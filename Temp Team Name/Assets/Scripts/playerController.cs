@@ -99,8 +99,6 @@ public class playerController : MonoBehaviour, IDamage
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
         {
-            Debug.Log(hit.collider.name);
-
             IDamage dmg = hit.collider.GetComponent<IDamage>();
 
             if (hit.transform != transform && dmg != null)
@@ -118,6 +116,7 @@ public class playerController : MonoBehaviour, IDamage
 
         updatePlayerUI();
         StartCoroutine(flashDmg());
+        gameManager.instance.resetMultiplyer();
 
         if (HP <= 0)
         {

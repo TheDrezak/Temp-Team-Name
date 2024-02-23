@@ -6,6 +6,7 @@ using Cursor = UnityEngine.Cursor;
 using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
 using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class gameManager : MonoBehaviour
 {
@@ -18,8 +19,17 @@ public class gameManager : MonoBehaviour
     [SerializeField] private GameObject menuLose;
     [SerializeField] private GameObject menuShop;
     [SerializeField] private TMP_Text enemyCountText;
+    [SerializeField] private TMP_Text multiplyer;
     [SerializeField] private TMP_Text keyCountText;
     [SerializeField] public GameObject itemUI;
+
+    // For multiplying score when player doesn't take damage
+    [SerializeField] int scoreMultiplyerMin;
+    [SerializeField] int scoreMultiplyerMax;
+    int currentScoreMultiplyer;
+    [SerializeField] float multiplyerTimer;
+    [SerializeField] int increaseMultiplyerBy;
+    float timer = 0.0f;
 
     public Image playerHPBar;
     public GameObject playerDmgFlash;
@@ -39,12 +49,17 @@ public class gameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        
 
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
 
         playerSpawnPos = GameObject.FindWithTag("PlayerRespawnPoint");
         playerTele = GameObject.FindWithTag("GrappleTel");
+
+        currentScoreMultiplyer = scoreMultiplyerMin;
+        multiplyer.text = currentScoreMultiplyer.ToString("F0");
+        StartCoroutine(timeLoop());
     }
 
     // Update is called once per frame
@@ -52,7 +67,6 @@ public class gameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel") && menuActive == null)
         {
-
             statePaused();
             menuActive = menuPause;
             menuActive.SetActive(isPaused);
@@ -66,6 +80,47 @@ public class gameManager : MonoBehaviour
         }
     }
 
+    // Loops to keep counting every one second
+    IEnumerator timeLoop()
+    {
+        while (true)
+        {
+            timeCount();
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    // Increases timer every one second
+    void timeCount()
+    {
+        timer += 1;
+        if ((timer % multiplyerTimer) == 0)
+        {
+            increaseMultiplyer();
+        }
+    }
+
+    void increaseMultiplyer()
+    {
+        // Ensure enough time has passed and score isn't at max yet
+        if (currentScoreMultiplyer < scoreMultiplyerMax)
+        {
+            // Increment score, update UI, capture new time
+            currentScoreMultiplyer += 1;
+            multiplyer.text = currentScoreMultiplyer.ToString("F0");
+        }
+    }
+
+    public void resetMultiplyer()
+    {
+        // Resets multiplyer
+        currentScoreMultiplyer = scoreMultiplyerMin;
+        // Updates text
+        multiplyer.text = currentScoreMultiplyer.ToString("F0");
+        // Resets timer
+        timer = 0;
+    }
+   
     public void statePaused()
     {
         isPaused = !isPaused;
@@ -88,15 +143,8 @@ public class gameManager : MonoBehaviour
 
     public void updateGameGoal(int amount)
     {
-        enemyCount += amount;
+        enemyCount += (amount * currentScoreMultiplyer);
         enemyCountText.text = enemyCount.ToString("F0");
-        //keyCountText.text = keysCollected.ToString("F0");
-
-        //if (enemyCount <= 0)
-        //{
-        //    youWin();
-
-        //}
     }
 
     public void youLose()
