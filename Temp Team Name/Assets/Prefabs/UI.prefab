@@ -200,14 +200,18 @@ MonoBehaviour:
   menuWin: {fileID: 7597437174860747096}
   menuLose: {fileID: 2468374880824210568}
   menuShop: {fileID: 2467617952894845444}
-  enemyCountText: {fileID: 6576849870298576763}
+  ScoreText: {fileID: 6576849870298576763}
   multiplier: {fileID: 7046387819206871015}
   keyCountText: {fileID: 0}
   itemUI: {fileID: 0}
-  scoremultiplierMin: 0
-  scoremultiplierMax: 0
-  multiplierTimer: 0
+  scoremultiplierMin: 1
+  scoremultiplierMax: 1
+  multiplierTimer: 10000
   increasemultiplierBy: 0
+  healthPrice: 150
+  speedPrice: 75
+  jumpMaxPrice: 200
+  jumpForcePrice: 50
   playerHPBar: {fileID: 8979384631131518848}
   playerDmgFlash: {fileID: 9174069475793853689}
   playerSpawnPos: {fileID: 0}
@@ -415,7 +419,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MoveSpeed - 75$
+  m_text: MoveSpeed - $75
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1174,7 +1178,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Max Jumps + 1
+  m_text: Max Jumps + 1  - $200
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1785,7 +1789,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: jump height
+  m_text: jump height - $50
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3101,7 +3105,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 300, y: -14}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3867123916322714904
 CanvasRenderer:
@@ -4906,7 +4910,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Heal - 150$
+  m_text: Heal - $150
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

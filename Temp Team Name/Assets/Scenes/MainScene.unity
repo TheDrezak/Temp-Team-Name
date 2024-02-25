@@ -11342,17 +11342,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257830265}
   m_Mesh: {fileID: 4300000, guid: e7d296ae75dfe2f4b91aca62cfe24b0d, type: 3}
---- !u!114 &1260633041 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6576849870298576763, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-  m_PrefabInstance: {fileID: 1346001757}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1264099924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12153,46 +12142,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: score
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: ScoreText
-      value: 
-      objectReference: {fileID: 1260633041}
-    - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: speedPrice
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: healthPrice
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: jumpMaxPrice
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: jumpForcePrice
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: multiplierTimer
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: scoremultiplierMax
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: scoremultiplierMin
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: increasemultiplierBy
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1163416266501621139, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -12273,41 +12222,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2467617952894845444, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2831821057853723179, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 3200547403385113442, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: m_text
-      value: jump height - $50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3558559888878153561, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: m_text
-      value: Max Jumps + 1  - $200
-      objectReference: {fileID: 0}
-    - target: {fileID: 4042331780533980386, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: m_text
-      value: MoveSpeed - $75
-      objectReference: {fileID: 0}
     - target: {fileID: 4458893198853492213, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 6576849870298576763, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: m_text
-      value: 00
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046387819206871015, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: m_text
-      value: 00
-      objectReference: {fileID: 0}
-    - target: {fileID: 8411660153395008262, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
-      propertyPath: m_text
-      value: Heal - $150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
