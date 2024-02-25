@@ -187,7 +187,7 @@ public class enemyAI : MonoBehaviour, IDamage
         isShooting = true;
 
         // Triggers shoot animation
-        anim.SetTrigger("Shoot");
+       // anim.SetTrigger("Shoot");
 
         // Create bullet and fire
         Instantiate(bullet, shootPos.position, transform.rotation);
