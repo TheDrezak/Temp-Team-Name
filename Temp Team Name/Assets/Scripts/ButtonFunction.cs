@@ -33,8 +33,18 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.playerScript.updatePlayerUI();
     }
 
-    public void buyHealth()
+    public void buySpeed()
     {
-        gameManager.instance.playerScript.
+        gameManager.instance.playerScript.setSpeed(gameManager.instance.playerScript.getSpeed() * 1.15f);
+    }
+
+    public void buyJumpMax()
+    {
+        gameManager.instance.playerScript.setJumpMax(gameManager.instance.playerScript.getJumps() + 1);
+    }
+
+    public void buyJumpForce()
+    {
+        gameManager.instance.playerScript.setjumpForce(gameManager.instance.playerScript.getJumpForce() * 1.25f);
     }
 }

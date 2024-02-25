@@ -234,7 +234,7 @@ public class playerController : MonoBehaviour, IDamage
     public float getJumpForce() { return jumpForce; }
 
 
-    public void setSpeed(int amount)
+    public void setSpeed(float amount)
     {
         playerSpeed = amount;
     }
