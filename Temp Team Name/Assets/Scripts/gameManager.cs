@@ -18,7 +18,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] private GameObject menuWin;
     [SerializeField] private GameObject menuLose;
     [SerializeField] private GameObject menuShop;
-    [SerializeField] private TMP_Text enemyCountText;
+    [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private TMP_Text multiplier;
     [SerializeField] private TMP_Text keyCountText;
     [SerializeField] public GameObject itemUI;
@@ -31,26 +31,29 @@ public class gameManager : MonoBehaviour
     [SerializeField] int increasemultiplierBy;
     float timer = 0.0f;
 
+    [Header("----- Shop Prices -----")]
+
+    [SerializeField] public int healthPrice;
+    [SerializeField] public int speedPrice;
+    [SerializeField] public int jumpMaxPrice;
+    [SerializeField] public int jumpForcePrice;
+
     public Image playerHPBar;
     public GameObject playerDmgFlash;
     public GameObject playerSpawnPos;
-
     public GameObject playerTele;
-
     public GameObject player;
     public playerController playerScript;
 
     public bool isPaused;
 
     public int keysCollected;
-    int enemyCount;
 
     // Start is called before the first frame update
     void Awake()
     {
         instance = this;
         
-
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
 
@@ -59,6 +62,7 @@ public class gameManager : MonoBehaviour
 
         currentScoremultiplier = scoremultiplierMin;
         multiplier.text = currentScoremultiplier.ToString("F0");
+        updateUI();
         StartCoroutine(timeLoop());
     }
 
@@ -143,8 +147,13 @@ public class gameManager : MonoBehaviour
 
     public void updateGameGoal(int amount)
     {
-        enemyCount += (amount * currentScoremultiplier);
-        enemyCountText.text = enemyCount.ToString("F0");
+        playerScript.setScore(amount * currentScoremultiplier);
+        updateUI();
+    }
+
+    public void updateUI()
+    {
+        ScoreText.text = playerScript.getScore().ToString("F0");
     }
 
     public void youLose()
