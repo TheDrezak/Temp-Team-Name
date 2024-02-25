@@ -12170,6 +12170,14 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+      propertyPath: jumpMaxPrice
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+      propertyPath: jumpForcePrice
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
       propertyPath: multiplierTimer
       value: 10000
       objectReference: {fileID: 0}
@@ -12267,7 +12275,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2467617952894845444, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831821057853723179, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200547403385113442, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+      propertyPath: m_text
+      value: jump height - $50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3558559888878153561, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+      propertyPath: m_text
+      value: Max Jumps + 1  - $200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042331780533980386, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+      propertyPath: m_text
+      value: MoveSpeed - $75
       objectReference: {fileID: 0}
     - target: {fileID: 4458893198853492213, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
       propertyPath: m_Name
@@ -12280,6 +12304,10 @@ PrefabInstance:
     - target: {fileID: 7046387819206871015, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
       propertyPath: m_text
       value: 00
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411660153395008262, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+      propertyPath: m_text
+      value: Heal - $150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
