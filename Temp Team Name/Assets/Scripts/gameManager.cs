@@ -19,16 +19,16 @@ public class gameManager : MonoBehaviour
     [SerializeField] private GameObject menuLose;
     [SerializeField] private GameObject menuShop;
     [SerializeField] private TMP_Text enemyCountText;
-    [SerializeField] private TMP_Text multiplyer;
+    [SerializeField] private TMP_Text multiplier;
     [SerializeField] private TMP_Text keyCountText;
     [SerializeField] public GameObject itemUI;
 
     // For multiplying score when player doesn't take damage
-    [SerializeField] int scoreMultiplyerMin;
-    [SerializeField] int scoreMultiplyerMax;
-    int currentScoreMultiplyer;
-    [SerializeField] float multiplyerTimer;
-    [SerializeField] int increaseMultiplyerBy;
+    [SerializeField] int scoremultiplierMin;
+    [SerializeField] int scoremultiplierMax;
+    int currentScoremultiplier;
+    [SerializeField] float multiplierTimer;
+    [SerializeField] int increasemultiplierBy;
     float timer = 0.0f;
 
     public Image playerHPBar;
@@ -57,8 +57,8 @@ public class gameManager : MonoBehaviour
         playerSpawnPos = GameObject.FindWithTag("PlayerRespawnPoint");
         playerTele = GameObject.FindWithTag("GrappleTel");
 
-        currentScoreMultiplyer = scoreMultiplyerMin;
-        multiplyer.text = currentScoreMultiplyer.ToString("F0");
+        currentScoremultiplier = scoremultiplierMin;
+        multiplier.text = currentScoremultiplier.ToString("F0");
         StartCoroutine(timeLoop());
     }
 
@@ -94,29 +94,29 @@ public class gameManager : MonoBehaviour
     void timeCount()
     {
         timer += 1;
-        if ((timer % multiplyerTimer) == 0)
+        if ((timer % multiplierTimer) == 0)
         {
-            increaseMultiplyer();
+            increasemultiplier();
         }
     }
 
-    void increaseMultiplyer()
+    void increasemultiplier()
     {
         // Ensure enough time has passed and score isn't at max yet
-        if (currentScoreMultiplyer < scoreMultiplyerMax)
+        if (currentScoremultiplier < scoremultiplierMax)
         {
             // Increment score, update UI, capture new time
-            currentScoreMultiplyer += 1;
-            multiplyer.text = currentScoreMultiplyer.ToString("F0");
+            currentScoremultiplier += 1;
+            multiplier.text = currentScoremultiplier.ToString("F0");
         }
     }
 
-    public void resetMultiplyer()
+    public void resetmultiplier()
     {
-        // Resets multiplyer
-        currentScoreMultiplyer = scoreMultiplyerMin;
+        // Resets multiplier
+        currentScoremultiplier = scoremultiplierMin;
         // Updates text
-        multiplyer.text = currentScoreMultiplyer.ToString("F0");
+        multiplier.text = currentScoremultiplier.ToString("F0");
         // Resets timer
         timer = 0;
     }
@@ -143,7 +143,7 @@ public class gameManager : MonoBehaviour
 
     public void updateGameGoal(int amount)
     {
-        enemyCount += (amount * currentScoreMultiplyer);
+        enemyCount += (amount * currentScoremultiplier);
         enemyCountText.text = enemyCount.ToString("F0");
     }
 

@@ -124,7 +124,7 @@ public class playerController : MonoBehaviour, IDamage
 
         updatePlayerUI();
         StartCoroutine(flashDmg());
-        gameManager.instance.resetMultiplyer();
+        gameManager.instance.resetmultiplier();
 
         if (HP <= 0)
         {
