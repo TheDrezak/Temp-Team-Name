@@ -31,6 +31,9 @@ public class buttonFunctions : MonoBehaviour
     {
         gameManager.instance.playerScript.setHP(gameManager.instance.playerScript.HPOrig);
         gameManager.instance.playerScript.updatePlayerUI();
+
+        gameManager.instance.playerScript.setScore(gameManager.instance.playerScript.getScore() - 150);
+        gameManager.instance.updateUI();
     }
 
     public void buySpeed()
