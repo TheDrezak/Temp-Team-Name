@@ -12,7 +12,7 @@ public class playerController : MonoBehaviour, IDamage
     [Header("----- Player Stats -----")]
     [SerializeField] private int HP;
     [SerializeField] float playerSpeed;
-    [SerializeField] float jumpMax;
+    [SerializeField] int jumpMax;
     [SerializeField] float jumpForce;
     [SerializeField] float gravity;
     [SerializeField] float sprintMod;
@@ -224,10 +224,34 @@ public class playerController : MonoBehaviour, IDamage
     //        }
     //    }
     //}
+
+    public int getHP() { return HP; }
+
+    public float getSpeed() { return playerSpeed; }
+
+    public int getJumps() { return jumpMax; }
+
+    public float getJumpForce() { return jumpForce; }
+
+
+    public void setSpeed(int amount)
+    {
+        playerSpeed = amount;
+    }
+
     public void setHP(int amount)
     {
         HP = amount;
     }
 
-    public int getHP() { return HP; }
+    public void setJumpMax(int amount)
+    {
+        jumpMax = amount;
+    }
+
+    public void setjumpForce(float amount)
+    {
+        jumpForce = amount;
+    }
+
 }
