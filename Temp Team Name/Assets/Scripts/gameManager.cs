@@ -31,12 +31,17 @@ public class gameManager : MonoBehaviour
     [SerializeField] int increasemultiplierBy;
     float timer = 0.0f;
 
+    [Header("----- Shop Prices -----")]
+
+    [SerializeField] public int healthPrice;
+    [SerializeField] public int speedPrice;
+    [SerializeField] public int jumpMaxPrice;
+    [SerializeField] public int jumpForcePrice;
+
     public Image playerHPBar;
     public GameObject playerDmgFlash;
     public GameObject playerSpawnPos;
-
     public GameObject playerTele;
-
     public GameObject player;
     public playerController playerScript;
 
