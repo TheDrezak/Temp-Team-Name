@@ -57,8 +57,8 @@ public class enemyAI : MonoBehaviour, IDamage
         // Capture velocity normalized to lerp animations as needed
         float animSpeed = agent.velocity.normalized.magnitude;
 
-        // *****Uncomment once needed
-       // anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
+        // Lerp animations
+        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
 
         // Checks if player is in range
         if (playerInRange && !canSeePlayer())
@@ -157,6 +157,9 @@ public class enemyAI : MonoBehaviour, IDamage
 
     public void TakeDamage(int amount)
     {
+        // Play damage animation
+        anim.SetTrigger("Damage");
+
         // Move to player if enemy takes damage
         agent.SetDestination(gameManager.instance.player.transform.position);
 
@@ -187,7 +190,7 @@ public class enemyAI : MonoBehaviour, IDamage
         isShooting = true;
 
         // Triggers shoot animation
-       // anim.SetTrigger("Shoot");
+       anim.SetTrigger("Shoot");
 
         // Create bullet and fire
         Instantiate(bullet, shootPos.position, transform.rotation);
