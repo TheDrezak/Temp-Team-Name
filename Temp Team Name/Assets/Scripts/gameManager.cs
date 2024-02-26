@@ -37,6 +37,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] public int speedPrice;
     [SerializeField] public int jumpMaxPrice;
     [SerializeField] public int jumpForcePrice;
+    [SerializeField] public int dmgPrice;
 
     public Image playerHPBar;
     public GameObject playerDmgFlash;
