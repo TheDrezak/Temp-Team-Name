@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c14f7fda6fa5a674d9511ffcbd4be827, type: 3}
-  m_Name: Gun - Pistol
+  m_Name: Gun - M1918LMG
   m_EditorClassIdentifier: 
-  shootDamage: 2
-  shootDist: 25
-  shootRate: 0.22
+  shootDamage: 4
+  shootDist: 45
+  shootRate: 0.5
   ammoCur: 0
-  ammoMax: 8
-  model: {fileID: 1427582580113894245, guid: 3b9ae05a712995e47891fdc4e8599c88, type: 3}
+  ammoMax: 18
+  model: {fileID: 6370723580708644957, guid: c7ca15f633c2b754f83666ac0c18b3e6, type: 3}
   hitEffect: {fileID: 0}
   shootSound: {fileID: 0}
   shootSoundVol: 0

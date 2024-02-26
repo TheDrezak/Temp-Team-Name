@@ -2,14 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveOnWaypoints : MonoBehaviour
+public class Payload : MonoBehaviour
 {
+    [SerializeField] int HP;
+    [SerializeField] float speed;
+    [SerializeField] float waypointStartDuration;
+    [SerializeField] float waypointStopDuration;
+    [SerializeField] int rotationSpeed;
+
+    
+    
+
     public List<GameObject> waypoints;
-    public float speed = 2;
-    public float waypointStopDuration = 4f;
     int index = 0;
     bool isMoving = true;
-    public int rotationSpeed = 5;
+    
 
     void Start()
     {
