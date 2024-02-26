@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &569889183044730468
+--- !u!1 &489768849161651853
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,57 +8,57 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2409108369319421998}
-  - component: {fileID: 47180483964966088}
-  - component: {fileID: 2617490067916572901}
-  - component: {fileID: 8768291342601865004}
-  - component: {fileID: 3967362108365275189}
+  - component: {fileID: 2938913370344807085}
+  - component: {fileID: 5744324565800773335}
+  - component: {fileID: 7188546073203322742}
+  - component: {fileID: 6382158461742449365}
+  - component: {fileID: 8762533289423076931}
   m_Layer: 0
-  m_Name: Shotgun - Bullet
+  m_Name: AR-Bullet (Slower Firerate)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2409108369319421998
+--- !u!4 &2938913370344807085
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 569889183044730468}
+  m_GameObject: {fileID: 489768849161651853}
   serializedVersion: 2
   m_LocalRotation: {x: -0.09833981, y: 0.03895935, z: -0.100379206, w: 0.9893107}
-  m_LocalPosition: {x: -0.081, y: 1.094, z: -21.126}
+  m_LocalPosition: {x: -2.795582, y: 0.00000023841858, z: -45.463367}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &47180483964966088
+--- !u!114 &5744324565800773335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 569889183044730468}
+  m_GameObject: {fileID: 489768849161651853}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7261d03a8255616408dae2ff68911360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 8768291342601865004}
+  rb: {fileID: 6382158461742449365}
   damageAmount: 1
-  speed: 40
-  destroyTime: 10
-  shotgun: 1
---- !u!135 &2617490067916572901
+  speed: 35
+  destroyTime: 3
+  shotgun: 0
+--- !u!135 &7188546073203322742
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 569889183044730468}
+  m_GameObject: {fileID: 489768849161651853}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -71,15 +71,15 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.02
+  m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &8768291342601865004
+--- !u!54 &6382158461742449365
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 569889183044730468}
+  m_GameObject: {fileID: 489768849161651853}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -100,14 +100,14 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!96 &3967362108365275189
+--- !u!96 &8762533289423076931
 TrailRenderer:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 569889183044730468}
+  m_GameObject: {fileID: 489768849161651853}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -173,8 +173,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
-      key1: {r: 0, g: 0, b: 0, a: 1}
+      key0: {r: 0.9716981, g: 0.9711352, b: 0.93961376, a: 1}
+      key1: {r: 0.8533666, g: 0.8773585, b: 0.07863116, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}

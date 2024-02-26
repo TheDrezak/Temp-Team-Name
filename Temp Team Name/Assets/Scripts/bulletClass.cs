@@ -8,7 +8,7 @@ public class bulletClass : MonoBehaviour
     [SerializeField] int damageAmount;
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
-    [SerializeField] bool shotgun;
+    public bool shotgun;
 
     void Start()
     {

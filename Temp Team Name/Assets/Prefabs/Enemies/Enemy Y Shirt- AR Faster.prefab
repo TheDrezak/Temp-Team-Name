@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 3327846081121285643}
   - component: {fileID: 895693724417122536}
   m_Layer: 0
-  m_Name: Enemy Y Shirt- AR
+  m_Name: Enemy Y Shirt- AR Faster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
