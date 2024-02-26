@@ -15,8 +15,6 @@ public class enemySpawner : MonoBehaviour
     SpawnState state = SpawnState.Counting;
     int currentWave;
     [SerializeField] List<enemyParent> enemyList;
-    [SerializeField] bool fixedAmountofWaves;
-    int infintiteMuliplayer = 1;
 
     void Start()
     {
@@ -30,7 +28,7 @@ public class enemySpawner : MonoBehaviour
         if (state == SpawnState.Waiting)
         {
             // Check if enemies are dead or timer is still going
-            if (enemyList.Count > 0 && fixedAmountofWaves)
+            if (enemyList.Count > 0)
             {
                 return;
             }
@@ -68,14 +66,7 @@ public class enemySpawner : MonoBehaviour
         // Checks if all waves are done
         if (currentWave +1 > waves.Count - 1)
         {
-            // Check if waves are infinite or set number
-            if (!fixedAmountofWaves)
-            {
-                // Increase multiplyer
-                infintiteMuliplayer *= 2;
-
-                waves[currentWave].enemyAmount += (infintiteMuliplayer * 2);    
-            }
+            // They won! Trigger event **ADD IN** Should move cart
         }
         else
         {
