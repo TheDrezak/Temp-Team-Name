@@ -65,12 +65,24 @@ public class buttonFunctions : MonoBehaviour
     }
 
     public void buyJumpForce()
-    {
+    { 
         if (gameManager.instance.playerScript.getScore() >= gameManager.instance.jumpForcePrice)
         {
             gameManager.instance.playerScript.setjumpForce(gameManager.instance.playerScript.getJumpForce() * 1.25f);
-            gameManager.instance.playerScript.setScore(gameManager.instance.playerScript.getScore() -
-                                                       gameManager.instance.jumpForcePrice);
+            gameManager.instance.playerScript.setScore(gameManager.instance.playerScript.getScore() - gameManager.instance.jumpForcePrice);
+
+            gameManager.instance.updateUI();
+        }
+
+    }
+
+    public void buyDmg()
+    {
+        if (gameManager.instance.playerScript.getScore() >= gameManager.instance.jumpForcePrice)
+        {
+            gameManager.instance.playerScript.setDmgMult(gameManager.instance.playerScript.getDmgMult() + .25f);
+            gameManager.instance.playerScript.setScore(gameManager.instance.playerScript.getScore() - gameManager.instance.dmgPrice);
+
             gameManager.instance.updateUI();
         }
     }

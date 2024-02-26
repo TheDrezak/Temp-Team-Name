@@ -17,6 +17,7 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] float gravity;
     [SerializeField] float sprintMod;
     [SerializeField] private int score;
+    [SerializeField] private float dmgMult;
     bool isSprinting;
     int selectedGun;
 
@@ -235,6 +236,8 @@ public class playerController : MonoBehaviour, IDamage
     public float getJumpForce() { return jumpForce; }
 
     public int getScore() { return score; }
+    
+    public float getDmgMult() { return dmgMult; }
 
 
     public void setSpeed(float amount)
@@ -260,6 +263,11 @@ public class playerController : MonoBehaviour, IDamage
     public void setScore(int amount)
     {
         score = amount;
+    }
+
+    public void setDmgMult(float amount)
+    {
+        dmgMult = amount;
     }
 
 }

@@ -27,6 +27,8 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("----- Guns -----")]
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
+    [SerializeField] int pelletAmount;
+    [SerializeField] float spread;
 
     [Header("----- UI-----")]
     [SerializeField] Image HPBar;
@@ -57,8 +59,8 @@ public class enemyAI : MonoBehaviour, IDamage
         // Capture velocity normalized to lerp animations as needed
         float animSpeed = agent.velocity.normalized.magnitude;
 
-        // *****Uncomment once needed
-       // anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
+        // Lerp animations
+        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
 
         // Checks if player is in range
         if (playerInRange && !canSeePlayer())
@@ -95,6 +97,8 @@ public class enemyAI : MonoBehaviour, IDamage
             agent.SetDestination(hit.position);
 
             destChosen = false;
+
+           
         }
     }
 
@@ -157,6 +161,9 @@ public class enemyAI : MonoBehaviour, IDamage
 
     public void TakeDamage(int amount)
     {
+        // Play damage animation
+        anim.SetTrigger("Damage");
+
         // Move to player if enemy takes damage
         agent.SetDestination(gameManager.instance.player.transform.position);
 
@@ -187,10 +194,31 @@ public class enemyAI : MonoBehaviour, IDamage
         isShooting = true;
 
         // Triggers shoot animation
-       // anim.SetTrigger("Shoot");
+       anim.SetTrigger("Shoot");
 
-        // Create bullet and fire
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        // Check if shotgun
+        if (bullet.GetComponent<bulletClass>().shotgun)
+        {
+            for (int i = 0; i < pelletAmount; i++)
+            {
+                // Create a rotation for spread
+                Quaternion bulletRot = transform.rotation;
+
+                // Randomize spread
+                bulletRot.x += Random.Range(-spread, spread);
+                bulletRot.y += Random.Range(-spread, spread);
+
+                // Fire pellet in random direction
+                Instantiate(bullet, shootPos.position, bulletRot);
+            }
+            
+        }
+        else
+        {
+            // Create single bullet and fire
+            Instantiate(bullet, shootPos.position, transform.rotation);
+        }
+        
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
     }
