@@ -9,6 +9,7 @@ public class MoveOnWaypoints : MonoBehaviour
     public float waypointStopDuration = 4f;
     int index = 0;
     bool isMoving = true;
+    public int rotationSpeed = 5;
 
     void Start()
     {
@@ -20,6 +21,14 @@ public class MoveOnWaypoints : MonoBehaviour
         if (isMoving)
         {
             Vector3 destination = waypoints[index].transform.position;
+            Vector3 direction = (destination - transform.position).normalized;
+
+            if (direction != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            }
+
             Vector3 newPos = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
             transform.position = newPos;
 
