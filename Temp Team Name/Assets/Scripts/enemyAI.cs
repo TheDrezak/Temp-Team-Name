@@ -57,7 +57,6 @@ public class enemyAI : MonoBehaviour, IDamage
         // Capture velocity normalized to lerp animations as needed
         float animSpeed = agent.velocity.normalized.magnitude;
 
-        // *****Uncomment once needed
        // anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
 
         // Checks if player is in range
@@ -187,7 +186,7 @@ public class enemyAI : MonoBehaviour, IDamage
         isShooting = true;
 
         // Triggers shoot animation
-       // anim.SetTrigger("Shoot");
+       anim.SetTrigger("Shoot");
 
         // Create bullet and fire
         Instantiate(bullet, shootPos.position, transform.rotation);
