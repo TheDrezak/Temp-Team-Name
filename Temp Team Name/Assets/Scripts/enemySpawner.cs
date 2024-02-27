@@ -14,6 +14,7 @@ public class enemySpawner : MonoBehaviour
     [SerializeField] float waveCountdown;
     SpawnState state = SpawnState.Counting;
     int currentWave;
+    int deadCount;
     [SerializeField] List<enemyParent> enemyList;
 
     void Start()
@@ -28,8 +29,9 @@ public class enemySpawner : MonoBehaviour
         if (state == SpawnState.Waiting)
         {
             // Check if enemies are dead or timer is still going
-            if (enemyList.Count > 0)
+            if (deadCount < enemyList.Count)
             {
+
                 return;
             }
             else
@@ -55,6 +57,9 @@ public class enemySpawner : MonoBehaviour
 
     void CompleteWave()
     {
+        // Reset dead count
+        deadCount = 0;
+
         // Reset waveCountdown
         state = SpawnState.Counting;
         waveCountdown = timeBetweenWaves;
@@ -107,5 +112,10 @@ public class enemySpawner : MonoBehaviour
 
         // Add enemy to list
         enemyList.Add(newEnemyStats);
+    }
+
+    public void isDead()
+    {
+        deadCount++;
     }
 }
