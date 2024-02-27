@@ -176,8 +176,7 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             // Give points
             gameManager.instance.updateGameGoal(pointsGiven);
-            //spawner.isDead();
-            // Destroy(spawner);
+            gameManager.instance.updateGameGoal(pointsGiven);
             Destroy(gameObject);
         }
         // Lower HP on HP bar

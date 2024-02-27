@@ -5032,7 +5032,6 @@ MonoBehaviour:
   agent: {fileID: 8645070486088516345}
   shootPos: {fileID: 8350008779577696590}
   headPos: {fileID: 7355280904946576698}
-  spawner: {fileID: 0}
   HP: 5
   viewCone: 45
   shootCone: 3
@@ -5226,7 +5225,6 @@ MonoBehaviour:
   agent: {fileID: 1261751625985128035}
   shootPos: {fileID: 3257986296884585241}
   headPos: {fileID: 7682446361588036951}
-  spawner: {fileID: 0}
   HP: 10
   viewCone: 45
   shootCone: 4
@@ -5779,7 +5777,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.532
+  m_FillAmount: 0.546
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
@@ -7692,7 +7690,6 @@ MonoBehaviour:
   agent: {fileID: 4735436710667496171}
   shootPos: {fileID: 6828146593178471313}
   headPos: {fileID: 6775709559725848488}
-  spawner: {fileID: 0}
   HP: 5
   viewCone: 45
   shootCone: 3
@@ -9052,7 +9049,6 @@ MonoBehaviour:
   agent: {fileID: 2989468683089637748}
   shootPos: {fileID: 8756706355510262128}
   headPos: {fileID: 3258970088092567900}
-  spawner: {fileID: 0}
   HP: 10
   viewCone: 45
   shootCone: 4

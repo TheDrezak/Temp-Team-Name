@@ -46,6 +46,11 @@ public class gameManager : MonoBehaviour
     public GameObject player;
     public playerController playerScript;
 
+    // Checkpoint Variables
+    public float checkpointTimer = 0.0f;
+    public float checkpointCountdown;
+    public bool checkpointReached;
+
     public bool isPaused;
     public bool lastCheck;
 
@@ -65,6 +70,7 @@ public class gameManager : MonoBehaviour
         currentScoremultiplier = scoremultiplierMin;
         multiplier.text = currentScoremultiplier.ToString("F0");
         updateUI();
+        checkpointReached = false;
         StartCoroutine(timeLoop());
     }
 
@@ -99,11 +105,18 @@ public class gameManager : MonoBehaviour
     // Increases timer every one second
     void timeCount()
     {
+        // Timer for multiplier
         timer += 1;
         if ((timer % multiplierTimer) == 0)
         {
             increasemultiplier();
         }
+        
+        // Timer for payload
+        if (checkpointReached)
+        {
+            checkpointTimer += 1;
+        } 
     }
 
     void increasemultiplier()

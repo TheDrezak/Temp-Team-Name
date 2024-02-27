@@ -113,7 +113,9 @@ public class playerController : MonoBehaviour, IDamage
 
             if (hit.transform != transform && dmg != null)
             {
-                dmg.TakeDamage(shootDamage);
+                // Multi's dmg by multiplier
+                float playerDmg = (float)shootDamage * dmgMult;
+                dmg.TakeDamage((int) playerDmg);
             }
         }
         yield return new WaitForSeconds(shootRate);
