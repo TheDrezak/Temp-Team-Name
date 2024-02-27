@@ -174,7 +174,11 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             // Give points
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             gameManager.instance.increaseMoney(pointsGiven);
+=======
+            gameManager.instance.playerScript.setScore(gameManager.instance.playerScript.getScore() + pointsGiven);
+>>>>>>> Stashed changes
 =======
             gameManager.instance.playerScript.setScore(gameManager.instance.playerScript.getScore() + pointsGiven);
 >>>>>>> Stashed changes
