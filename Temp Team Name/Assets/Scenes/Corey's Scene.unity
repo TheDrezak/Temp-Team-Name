@@ -5095,7 +5095,7 @@ MonoBehaviour:
   gravity: -25
   sprintMod: 2
   score: 0
-  dmgMult: 0
+  dmgMult: 1
   gunList: []
   gunModel: {fileID: 0}
   shootDamage: 1

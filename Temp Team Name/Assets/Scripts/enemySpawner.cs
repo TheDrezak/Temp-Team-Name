@@ -14,7 +14,7 @@ public class enemySpawner : MonoBehaviour
     [SerializeField] float waveCountdown;
     SpawnState state = SpawnState.Counting;
     int currentWave;
-    [SerializeField] List<enemyParent> enemyList;
+    [SerializeField] List<enemyAI> enemyList;
 
     void Start()
     {
@@ -104,7 +104,7 @@ public class enemySpawner : MonoBehaviour
         GameObject newEnemy = Instantiate(enemy, spawners[randomInt].position, spawners[randomInt].rotation);
 
         // Get stats from parent
-        enemyParent newEnemyStats = newEnemy.GetComponent<enemyParent>();
+        enemyAI newEnemyStats = newEnemy.GetComponent<enemyAI>();
 
         // Add enemy to list
         enemyList.Add(newEnemyStats);

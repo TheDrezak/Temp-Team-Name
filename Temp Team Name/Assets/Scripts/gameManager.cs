@@ -22,6 +22,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] private TMP_Text multiplier;
     [SerializeField] private TMP_Text keyCountText;
     [SerializeField] public GameObject itemUI;
+    [SerializeField] int money;
 
     // For multiplying score when player doesn't take damage
     [SerializeField] int scoremultiplierMin;
@@ -160,15 +161,26 @@ public class gameManager : MonoBehaviour
         menuActive = null;
     }
 
-    public void updateGameGoal(int amount)
+    // Adds enemy amounts
+    public void increaseMoney(int amount)
     {
-        playerScript.setScore(amount * currentScoremultiplier);
+        money += (amount * currentScoremultiplier);
         updateUI();
+    }
+
+    // For cash spending
+    public void decreasMoney(int amount)
+    {
+        if ((money - amount) > 0)
+        {
+            money -= amount;
+            updateUI();
+        } 
     }
 
     public void updateUI()
     {
-        ScoreText.text = playerScript.getScore().ToString("F0");
+        ScoreText.text = money.ToString("F0");
     }
 
     public void youLose()

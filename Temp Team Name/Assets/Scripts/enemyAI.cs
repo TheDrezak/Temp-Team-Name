@@ -97,8 +97,6 @@ public class enemyAI : MonoBehaviour, IDamage
             agent.SetDestination(hit.position);
 
             destChosen = false;
-
-           
         }
     }
 
@@ -175,8 +173,7 @@ public class enemyAI : MonoBehaviour, IDamage
         if (HP <= 0)
         {
             // Give points
-            gameManager.instance.updateGameGoal(pointsGiven);
-            gameManager.instance.updateGameGoal(pointsGiven);
+            gameManager.instance.increaseMoney(pointsGiven);
             Destroy(gameObject);
         }
         // Lower HP on HP bar
