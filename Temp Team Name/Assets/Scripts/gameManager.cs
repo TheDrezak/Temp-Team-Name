@@ -47,6 +47,7 @@ public class gameManager : MonoBehaviour
     public playerController playerScript;
 
     public bool isPaused;
+    public bool lastCheck;
 
     public int keysCollected;
 

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Payload : MonoBehaviour
 {
     [SerializeField] int HP;
+    [SerializeField] private Transform spawn;
     [SerializeField] float speed;
     [SerializeField] float waypointStartDuration;
     [SerializeField] float waypointStopDuration;
@@ -20,6 +22,7 @@ public class Payload : MonoBehaviour
 
     void Start()
     {
+        spawnCart();
         MoveToNextWaypoint();
     }
 
@@ -63,6 +66,12 @@ public class Payload : MonoBehaviour
             index = 0;
         }
     }
+
+    public void spawnCart()
+    {
+        gameObject.transform.position = spawn.position;
+    }
+    
 }
 
     
