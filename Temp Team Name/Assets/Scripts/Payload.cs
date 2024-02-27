@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
+using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.UI;
+using Image = UnityEngine.UI.Image;
 
-public class Payload : MonoBehaviour
+public class Payload : MonoBehaviour, IDamage
 {
     [SerializeField] int HP;
     [SerializeField] private Transform spawn;
@@ -11,12 +15,15 @@ public class Payload : MonoBehaviour
     [SerializeField] float waypointStartDuration;
     [SerializeField] float waypointStopDuration;
     [SerializeField] int rotationSpeed;
+    [SerializeField] private Image hpBar;
+    [SerializeField] private Color color;
+    [SerializeField] Renderer model;
 
-    
-    
+
 
     public List<GameObject> waypoints;
     int index = 0;
+    private int HPOrig;
     bool isMoving = true;
     
 
@@ -24,6 +31,7 @@ public class Payload : MonoBehaviour
     {
         spawnCart();
         MoveToNextWaypoint();
+        HPOrig = HP;
     }
 
     void Update()
@@ -71,10 +79,35 @@ public class Payload : MonoBehaviour
     {
         gameObject.transform.position = spawn.position;
     }
-    
+
+    public void TakeDamage(int amount)
+    {
+        HP -= amount;
+
+        // Flash red
+        StartCoroutine(flashMat());
+        if (HP <= 0)
+        {
+            
+            Destroy(gameObject);
+        }
+        // Lower HP on HP bar
+        updateUI();
+    }
+
+    void updateUI()
+    {
+        hpBar.fillAmount = (float)HP / HPOrig;
+    }
+
+    IEnumerator flashMat()
+    {
+        model.material.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        model.material.color = color;
+    }
 }
 
-    
 
 
-   
+
