@@ -354,6 +354,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerScript: {fileID: 0}
   isPaused: 0
+  lastCheck: 0
   keysCollected: 0
 --- !u!1 &880574200755241632
 GameObject:
