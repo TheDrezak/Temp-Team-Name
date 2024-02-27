@@ -173,15 +173,7 @@ public class enemyAI : MonoBehaviour, IDamage
         if (HP <= 0)
         {
             // Give points
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
             gameManager.instance.increaseMoney(pointsGiven);
-=======
-            gameManager.instance.playerScript.setScore(gameManager.instance.playerScript.getScore() + pointsGiven);
->>>>>>> Stashed changes
-=======
-            gameManager.instance.playerScript.setScore(gameManager.instance.playerScript.getScore() + pointsGiven);
->>>>>>> Stashed changes
             Destroy(gameObject);
         }
         // Lower HP on HP bar
