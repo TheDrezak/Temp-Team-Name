@@ -29,6 +29,7 @@ public class Payload : MonoBehaviour, IDamage
 
     void Start()
     {
+        color = model.material.color;
         spawnCart();
         MoveToNextWaypoint();
         HPOrig = HP;

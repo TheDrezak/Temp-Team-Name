@@ -34,8 +34,7 @@ public class buttonFunctions : MonoBehaviour
         {
             gameManager.instance.playerScript.setHP(gameManager.instance.playerScript.HPOrig);
             gameManager.instance.playerScript.updatePlayerUI();
-            gameManager.instance.playerScript.setScore(gameManager.instance.playerScript.getScore() -
-                                                       gameManager.instance.healthPrice);
+            gameManager.instance.playerScript.setScore(gameManager.instance.playerScript.getScore() - gameManager.instance.healthPrice);
 
             gameManager.instance.updateUI();
         }
@@ -78,7 +77,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void buyDmg()
     {
-        if (gameManager.instance.playerScript.getScore() >= gameManager.instance.jumpForcePrice)
+        if (gameManager.instance.playerScript.getScore() >= gameManager.instance.dmgPrice)
         {
             gameManager.instance.playerScript.setDmgMult(gameManager.instance.playerScript.getDmgMult() + .25f);
             gameManager.instance.playerScript.setScore(gameManager.instance.playerScript.getScore() - gameManager.instance.dmgPrice);
