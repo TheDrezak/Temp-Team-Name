@@ -191,20 +191,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47accafb3af9c384094fe4d2471598b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsInInventory: 0
-  HP: 10
   controller: {fileID: 1068020436264951392}
+  HP: 10
   playerSpeed: 12
   jumpMax: 2
   jumpForce: 5
   gravity: -25
-  shootDamage: 1
-  shootDistance: 25
-  grabDist: 0
-  shootRate: 0.25
+  sprintMod: 0
+  score: 0
+  dmgMult: 0
+  gunList: []
+  gunModel: {fileID: 7012563302421436124, guid: 2b42a49b7e7d672478cc21d83a969529, type: 3}
+  shootDamage: 0
+  shootDistance: 0
+  shootRate: 0
   shootPos: {fileID: 8451466455853682625}
-  grappleShot: {fileID: 332215667505597604, guid: e82995fcfd638194d8b35da3b24c54aa, type: 3}
-  grappleCooldown: 1
   HPOrig: 0
 --- !u!143 &1068020436264951392
 CharacterController:
