@@ -338,21 +338,25 @@ MonoBehaviour:
   multiplier: {fileID: 7046387819206871015}
   keyCountText: {fileID: 0}
   itemUI: {fileID: 0}
+  money: 0
   scoremultiplierMin: 1
-  scoremultiplierMax: 1
-  multiplierTimer: 10000
-  increasemultiplierBy: 0
+  scoremultiplierMax: 5
+  multiplierTimer: 3
+  increasemultiplierBy: 1
   healthPrice: 150
   speedPrice: 75
   jumpMaxPrice: 200
   jumpForcePrice: 50
-  dmgPrice: 0
+  dmgPrice: 150
   playerHPBar: {fileID: 8979384631131518848}
   playerDmgFlash: {fileID: 9174069475793853689}
   playerSpawnPos: {fileID: 0}
   playerTele: {fileID: 0}
   player: {fileID: 0}
   playerScript: {fileID: 0}
+  checkpointTimer: 0
+  checkpointCountdown: 0
+  checkpointReached: 0
   isPaused: 0
   lastCheck: 0
   keysCollected: 0
