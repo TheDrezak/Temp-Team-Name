@@ -41,6 +41,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] public int dmgPrice;
 
     public Image playerHPBar;
+    public Image CartHPbar;
     public GameObject playerDmgFlash;
     public GameObject playerSpawnPos;
     public GameObject playerTele;

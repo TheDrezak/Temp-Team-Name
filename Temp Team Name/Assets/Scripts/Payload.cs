@@ -4,18 +4,15 @@ using Microsoft.Unity.VisualStudio.Editor;
 using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
-using UnityEngine.UI;
-using Image = UnityEngine.UI.Image;
 
 public class Payload : MonoBehaviour, IDamage
 {
     [SerializeField] int HP;
     [SerializeField] private Transform spawn;
     [SerializeField] float speed;
-    [SerializeField] float waypointStartDuration;
-    [SerializeField] float waypointStopDuration;
+    [SerializeField] public float waypointStartDuration;
+    [SerializeField] public float waypointStopDuration;
     [SerializeField] int rotationSpeed;
-    [SerializeField] private Image hpBar;
     [SerializeField] private Color color;
     [SerializeField] Renderer model;
 
@@ -23,6 +20,7 @@ public class Payload : MonoBehaviour, IDamage
 
     public List<GameObject> waypoints;
     int index = 0;
+    public int checkPointsHit;
     private int HPOrig;
     bool isMoving = true;
     
@@ -78,6 +76,11 @@ public class Payload : MonoBehaviour, IDamage
     IEnumerator StopAtWaypoint()
     {
         isMoving = false;
+        checkPointsHit += 1;
+        if (checkPointsHit == waypoints.Count)
+        {
+            gameManager.instance.youWin();
+        }
         yield return new WaitForSeconds(waypointStopDuration);
         isMoving = true;
         MoveToNextWaypoint();
@@ -114,7 +117,7 @@ public class Payload : MonoBehaviour, IDamage
 
     void updateUI()
     {
-        hpBar.fillAmount = (float)HP / HPOrig;
+        gameManager.instance.CartHPbar.fillAmount = (float)HP / HPOrig;
     }
 
     IEnumerator flashMat()
