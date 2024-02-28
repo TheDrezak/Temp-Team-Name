@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class playerController : MonoBehaviour, IDamage
+public class playerController : MonoBehaviour, IDamage, IPhysics
 {
     [Header("----- Componenets -----")]
     [SerializeField] CharacterController controller;
@@ -19,6 +19,7 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] float sprintMod;
     [SerializeField] private int score;
     [SerializeField] private float dmgMult;
+    [SerializeField] int pushBackResolve;
     int selectedGun;
 
     [Header("----- Guns -----")]
@@ -33,9 +34,12 @@ public class playerController : MonoBehaviour, IDamage
 
     [SerializeField] private Transform shootPos;
 
+    //Grenades
+
     Vector3 move;
     Vector3 playerVelocity;
     int jumpCount;
+    Vector3 pushBack;
 
     bool isShooting;
     private bool isReloading;
@@ -75,6 +79,9 @@ public class playerController : MonoBehaviour, IDamage
     }
     void Movement()
     {
+        // Handles our physics
+        pushBack = Vector3.Lerp(pushBack, Vector3.zero, Time.deltaTime * pushBackResolve);
+
         if (controller.isGrounded)
         {
             jumpCount = 0;
@@ -91,7 +98,7 @@ public class playerController : MonoBehaviour, IDamage
         }
         playerVelocity.y += gravity * Time.deltaTime;
 
-        controller.Move(playerVelocity * Time.deltaTime);
+        controller.Move((playerVelocity + pushBack) * Time.deltaTime);
     }
 
     void sprint()
@@ -106,6 +113,11 @@ public class playerController : MonoBehaviour, IDamage
         {
             playerSpeed /= sprintMod;
         }
+    }
+
+    public void physicsDir(Vector3 dir)
+    {
+        pushBack += dir;
     }
 
     IEnumerator Shoot()
@@ -187,6 +199,7 @@ public class playerController : MonoBehaviour, IDamage
     {
         HP = HPOrig;
         updatePlayerUI();
+        pushBack = Vector3.zero;
 
         controller.enabled = false;
         transform.position = gameManager.instance.playerSpawnPos.transform.position;
