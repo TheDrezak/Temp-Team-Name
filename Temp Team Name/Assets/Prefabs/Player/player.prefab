@@ -246,7 +246,7 @@ MonoBehaviour:
   HP: 10
   playerSpeed: 12
   jumpMax: 2
-  jumpForce: 5
+  jumpForce: 10
   gravity: -25
   sprintMod: 1
   score: 0
@@ -258,6 +258,7 @@ MonoBehaviour:
   shootRate: 0.25
   shootPos: {fileID: 6705509304188945494}
   HPOrig: 0
+  canOpenShop: 0
 --- !u!143 &1068020436264951392
 CharacterController:
   m_ObjectHideFlags: 0
