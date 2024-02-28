@@ -74,4 +74,9 @@ public class buttonFunctions : MonoBehaviour
             gameManager.instance.decreasMoney(gameManager.instance.dmgPrice);
         }
     }
+
+    public void buyGrenade()
+    {
+
+    }
 }
