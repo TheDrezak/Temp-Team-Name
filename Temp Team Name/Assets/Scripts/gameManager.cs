@@ -90,7 +90,7 @@ public class gameManager : MonoBehaviour
             menuActive.SetActive(isPaused);
         }
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J) && playerScript.canOpenShop == true)
         {
             statePaused();
             menuActive = menuShop;

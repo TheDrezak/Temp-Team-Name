@@ -59,6 +59,22 @@ public class Payload : MonoBehaviour, IDamage
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            gameManager.instance.playerScript.canOpenShop = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            gameManager.instance.playerScript.canOpenShop = false;
+        }
+    }
+
     IEnumerator StopAtWaypoint()
     {
         isMoving = false;
@@ -89,7 +105,7 @@ public class Payload : MonoBehaviour, IDamage
         StartCoroutine(flashMat());
         if (HP <= 0)
         {
-            
+            gameManager.instance.youLose();
             Destroy(gameObject);
         }
         // Lower HP on HP bar
