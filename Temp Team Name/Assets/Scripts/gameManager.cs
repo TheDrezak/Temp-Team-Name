@@ -42,6 +42,7 @@ public class gameManager : MonoBehaviour
 
     public Image playerHPBar;
     public Image CartHPbar;
+    public Image progressBar;
     public GameObject playerDmgFlash;
     public GameObject playerSpawnPos;
     public GameObject playerTele;
@@ -84,6 +85,8 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        updateProgressBar();
         if (Input.GetButtonDown("Cancel") && menuActive == null)
         {
             statePaused();
@@ -145,6 +148,11 @@ public class gameManager : MonoBehaviour
         multiplier.text = currentScoremultiplier.ToString("F0");
         // Resets timer
         timer = 0;
+    }
+
+    public void updateProgressBar()
+    {
+        progressBar.fillAmount = (float)payloadScript.checkPointsHit / payloadScript.waypoints.Count;
     }
    
     public void statePaused()
