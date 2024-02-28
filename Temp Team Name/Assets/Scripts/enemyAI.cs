@@ -40,6 +40,10 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     [Range(0, 1)][SerializeField] float soundStepVol;
     [SerializeField] AudioClip soundsShoot;
     [Range(0, 1)][SerializeField] float soundShootVol;
+    [SerializeField] AudioClip hurtSound;
+    [Range(0, 1)][SerializeField] float hurtVol;
+    [SerializeField] AudioClip deathSound;
+    [Range(0, 1)][SerializeField] float deathVol;
 
     // Picks target
     [SerializeField] bool targetsPayload;
@@ -250,6 +254,8 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
         // Play damage animation
         anim.SetTrigger("Damage");
 
+        //Plays damage audio
+        aud.PlayOneShot(hurtSound, hurtVol);
         // Move to player if enemy takes damage
         agent.SetDestination(gameManager.instance.player.transform.position);
 
@@ -262,6 +268,8 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
         {
             // Give points
             gameManager.instance.increaseMoney(pointsGiven);
+            //Plays death sound
+            aud.PlayOneShot(deathSound, deathVol);
             Destroy(gameObject);
         }
         // Lower HP on HP bar

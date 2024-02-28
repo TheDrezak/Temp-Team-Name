@@ -280,6 +280,8 @@ MonoBehaviour:
   reloadVol: 0.5
   switchSound: {fileID: 8300000, guid: 9158afb6966d445db9caf1dccf7acbcc, type: 3}
   switchVol: 0.5
+  deathSound: {fileID: 8300000, guid: fd1605cb27b44f740b29b31618b99305, type: 3}
+  deathVol: 0
   HPOrig: 0
   canOpenShop: 0
 --- !u!82 &6594987301009399161

@@ -96,6 +96,12 @@ MonoBehaviour:
   soundsSteps:
   - {fileID: 8300000, guid: 4501af5fbcd61ae42ae7bd2c68f169b2, type: 3}
   soundStepVol: 0.25
+  soundsShoot: {fileID: 8300000, guid: b2d159f7e00d44d9bbc2d50a0c4fef59, type: 3}
+  soundShootVol: 0.5
+  hurtSound: {fileID: 8300000, guid: b16ae7e7bb3926f49912f89c74c92a40, type: 3}
+  hurtVol: 0.5
+  deathSound: {fileID: 8300000, guid: f322ebdb0ea9fc840bf3f9039024120b, type: 3}
+  deathVol: 0.5
   targetsPayload: 0
 --- !u!195 &1380487687528976511
 NavMeshAgent:
