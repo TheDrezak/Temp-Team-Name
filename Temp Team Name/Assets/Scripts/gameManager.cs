@@ -66,7 +66,6 @@ public class gameManager : MonoBehaviour
         playerScript = player.GetComponent<playerController>();
 
         playerSpawnPos = GameObject.FindWithTag("PlayerRespawnPoint");
-        playerTele = GameObject.FindWithTag("GrappleTel");
 
         currentScoremultiplier = scoremultiplierMin;
         multiplier.text = currentScoremultiplier.ToString("F0");
