@@ -138,9 +138,22 @@ public class playerController : MonoBehaviour, IDamage
 
         gunList[selectedGun].ammoCur = gunList[selectedGun].ammoMax;
         ammoCurr = gunList[selectedGun].ammoCur;
-        yield return new WaitForSeconds(reloadTime);
+        gameManager.instance.reloadUI.SetActive(true);
+
+        int temp = (int)reloadTime;
+
+        for (int i = 0; i < reloadTime; i++)
+        {
+            yield return new WaitForSecondsRealtime(1);
+            temp--;
+
+            gameManager.instance.reloadcirc.fillAmount = temp / reloadTime;
+            
+        }
+        
         gameManager.instance.updateBulletCount();
         isReloading = false;
+        gameManager.instance.reloadUI.SetActive(false);
     }
 
     public void TakeDamage(int amount)

@@ -45,6 +45,8 @@ public class gameManager : MonoBehaviour
     public Image playerHPBar;
     public Image CartHPbar;
     public Image progressBar;
+    public Image reloadcirc;
+    public GameObject reloadUI;
     public GameObject playerDmgFlash;
     public GameObject playerSpawnPos;
     public GameObject playerTele;
