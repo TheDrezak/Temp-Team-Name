@@ -21,6 +21,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private TMP_Text multiplier;
     [SerializeField] private TMP_Text keyCountText;
+    [SerializeField] private TMP_Text ammoCountCurr;
+    [SerializeField] private TMP_Text ammoCountTotal;
     [SerializeField] public GameObject itemUI;
     [SerializeField] public int money;
 
@@ -100,6 +102,12 @@ public class gameManager : MonoBehaviour
             menuActive = menuShop;
             menuShop.SetActive(isPaused);
         }
+    }
+
+    public void updateBulletCount()
+    {
+        ammoCountCurr.text = playerScript.ammoCurr.ToString();
+        ammoCountTotal.text = playerScript.ammoMax.ToString();
     }
 
     // Loops to keep counting every one second
