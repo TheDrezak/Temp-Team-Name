@@ -21,6 +21,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private TMP_Text multiplier;
     [SerializeField] private TMP_Text keyCountText;
+    [SerializeField] private TMP_Text ammoCountCurr;
+    [SerializeField] private TMP_Text ammoCountTotal;
     [SerializeField] public GameObject itemUI;
     [SerializeField] public int money;
 
@@ -42,6 +44,9 @@ public class gameManager : MonoBehaviour
 
     public Image playerHPBar;
     public Image CartHPbar;
+    public Image progressBar;
+    public Image reloadcirc;
+    public GameObject reloadUI;
     public GameObject playerDmgFlash;
     public GameObject playerSpawnPos;
     public GameObject playerTele;
@@ -84,6 +89,8 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        updateProgressBar();
         if (Input.GetButtonDown("Cancel") && menuActive == null)
         {
             statePaused();
@@ -97,6 +104,12 @@ public class gameManager : MonoBehaviour
             menuActive = menuShop;
             menuShop.SetActive(isPaused);
         }
+    }
+
+    public void updateBulletCount()
+    {
+        ammoCountCurr.text = playerScript.ammoCurr.ToString();
+        ammoCountTotal.text = playerScript.ammoMax.ToString();
     }
 
     // Loops to keep counting every one second
@@ -145,6 +158,11 @@ public class gameManager : MonoBehaviour
         multiplier.text = currentScoremultiplier.ToString("F0");
         // Resets timer
         timer = 0;
+    }
+
+    public void updateProgressBar()
+    {
+        progressBar.fillAmount = (float)payloadScript.checkPointsHit / payloadScript.waypoints.Count;
     }
    
     public void statePaused()

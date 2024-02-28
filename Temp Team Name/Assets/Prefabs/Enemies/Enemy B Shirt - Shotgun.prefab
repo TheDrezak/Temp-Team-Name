@@ -1260,6 +1260,7 @@ MonoBehaviour:
   pelletAmount: 8
   spread: 0.1
   HPBar: {fileID: 3665077067345531834}
+  targetsPayload: 1
 --- !u!195 &2847562775085315980
 NavMeshAgent:
   m_ObjectHideFlags: 0

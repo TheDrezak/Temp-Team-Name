@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 
 
-public class enemyAI : MonoBehaviour, IDamage
+public class enemyAI : MonoBehaviour, IDamage, IPhysics
 {
     [Header("----- Componenets -----")]
     [SerializeField] Animator anim;
@@ -23,6 +23,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int roamPauseTime;
     [SerializeField] int roamDis;
     [SerializeField] int pointsGiven;
+    [SerializeField] int physicsResolve;
 
     [Header("----- Guns -----")]
     [SerializeField] GameObject bullet;
@@ -33,11 +34,11 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("----- UI-----")]
     [SerializeField] Image HPBar;
 
-    public int rNum;
+    // Picks target
+    [SerializeField] bool targetsPayload;
+    string targetChoice;
 
     bool isShooting;
-
-    // Targeting
     bool targetInRange;
 
     // Player dest info
@@ -48,13 +49,12 @@ public class enemyAI : MonoBehaviour, IDamage
     float angleToPayload;
     Vector3 payloadDir;
 
-
     int HPOrig;
     Color color;
     Vector3 startingPos;
     bool destChosen;
     float stoppingDistanceOrig;
-    string targetChoice;
+    
 
 
     void Start()
@@ -79,42 +79,40 @@ public class enemyAI : MonoBehaviour, IDamage
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
 
         // Checks if player is in range
-        if (targetChoice == "Player")
-        {
-            if (targetInRange && !canSeePlayer())
-            {
-                // Roam if player is in range but can't see player
-                StartCoroutine(roam());
-            }
-        }
-        else
-        {
-            if (targetInRange && !canSeePayload())
-            {
-                // Roam if player is in range but can't see player
-                StartCoroutine(roam());
-            }
-        }
         if (!targetInRange)
         {
             // Roam because player isn't in range
             StartCoroutine(roam());
+        }
+        else
+        {
+            if (!targetsPayload)
+            {
+                canSeePlayer();
+            }
+            else
+            {
+                canSeePayload();
+            }
         }
     }
 
     // Chooses to shoot player or payload
     void chooseTargert()
     {
-        rNum = Random.Range(1, 2);
-        if (rNum == 1)
+        if (!targetsPayload)
         {
             targetChoice = "Player";
         }
         else
         {
             targetChoice = "Payload";
-            bullet.GetComponent<bulletClass>().shotgun = true;
         }
+    }
+
+    public void physicsDir(Vector3 dir)
+    {
+        agent.velocity += dir;
     }
 
     IEnumerator roam()
@@ -142,7 +140,7 @@ public class enemyAI : MonoBehaviour, IDamage
         }
     }
 
-    bool canSeePlayer()
+    void canSeePlayer()
     {
         // Finds where player is
         playerDir = gameManager.instance.player.transform.position - headPos.position;
@@ -167,14 +165,11 @@ public class enemyAI : MonoBehaviour, IDamage
 
                 // Reset stopping distance to original number
                 agent.stoppingDistance = stoppingDistanceOrig;
-
-                return true;
             }
         }
-        return false;
     }
 
-    bool canSeePayload()
+    void canSeePayload()
     {
         // Finds where payload is
         payloadDir = gameManager.instance.payload.transform.position - headPos.position;
@@ -182,12 +177,12 @@ public class enemyAI : MonoBehaviour, IDamage
 
         // Check if Raycast hits the payload or something else
         RaycastHit hit;
-        if (Physics.Raycast(headPos.position, playerDir, out hit))
+        if (Physics.Raycast(headPos.position, payloadDir, out hit))
         {
             // Did we hit both the player & the player is in the cone
             if (hit.collider.CompareTag(targetChoice))
             {
-                // Moves to player
+                // Moves to payload
                 agent.SetDestination(gameManager.instance.payload.transform.position);
                 // Starts shooting if not already shooting & in cone of gun
                 if (!isShooting && angleToPayload <= shootCone)
@@ -199,12 +194,8 @@ public class enemyAI : MonoBehaviour, IDamage
 
                 // Reset stopping distance to original number
                 agent.stoppingDistance = stoppingDistanceOrig;
-
-                return true;
             }
         }
-        return false;
-
     }
 
     void faceTarget()
@@ -212,7 +203,7 @@ public class enemyAI : MonoBehaviour, IDamage
         // Rotates to player if they're within stopping range
         // Makes rot ignore player's Y pos
 
-        if (targetChoice == "Player")
+        if (!targetsPayload)
         {
             // For Player
             Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, transform.position.y, playerDir.z));
@@ -221,7 +212,7 @@ public class enemyAI : MonoBehaviour, IDamage
         else
         {
             // For Payload
-            Quaternion rot = Quaternion.LookRotation(new Vector3(payloadDir.x, transform.position.y, playerDir.z));
+            Quaternion rot = Quaternion.LookRotation(new Vector3(payloadDir.x, transform.position.y, payloadDir.z));
             transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * targetFaceSpeed);
         }
         

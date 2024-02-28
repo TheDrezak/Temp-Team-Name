@@ -13,7 +13,7 @@ public class Payload : MonoBehaviour, IDamage
     [SerializeField] public float waypointStartDuration;
     [SerializeField] public float waypointStopDuration;
     [SerializeField] int rotationSpeed;
-    [SerializeField] private Color color;
+    private Color color;
     [SerializeField] Renderer model;
 
 
@@ -59,6 +59,8 @@ public class Payload : MonoBehaviour, IDamage
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.isTrigger) return;
+
         if (other.CompareTag("Player"))
         {
             gameManager.instance.playerScript.canOpenShop = true;
@@ -67,6 +69,8 @@ public class Payload : MonoBehaviour, IDamage
 
     void OnTriggerExit(Collider other)
     {
+        if (other.isTrigger) return;
+
         if (other.CompareTag("Player"))
         {
             gameManager.instance.playerScript.canOpenShop = false;
