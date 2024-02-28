@@ -27,6 +27,9 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int shootDamage;
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;
+    [SerializeField] public int ammoCurr;
+    [SerializeField] public int ammoMax;
+    [SerializeField] public float reloadTime;
 
     [SerializeField] private Transform shootPos;
 
@@ -35,6 +38,8 @@ public class playerController : MonoBehaviour, IDamage
     int jumpCount;
 
     bool isShooting;
+    private bool isReloading;
+    private bool hasGun;
     public int HPOrig;
     public bool canOpenShop;
 
@@ -58,9 +63,13 @@ public class playerController : MonoBehaviour, IDamage
             }
 
             // Add if statement to make sure there is a gun in gun list once added
-            if (Input.GetButton("Shoot") && !isShooting)
+            if (Input.GetButton("Shoot") && !isShooting && !isReloading && hasGun && ammoCurr > 0)
             {
                 StartCoroutine(Shoot());
+            }
+            else if (Input.GetButton("Shoot") && ammoCurr <= 0 && !isReloading && !isShooting && hasGun)
+            {
+                StartCoroutine(reload());
             }
         } 
     }
@@ -102,7 +111,6 @@ public class playerController : MonoBehaviour, IDamage
     IEnumerator Shoot()
     {
         isShooting = true;
-
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
         {
@@ -112,11 +120,26 @@ public class playerController : MonoBehaviour, IDamage
             {
                 // Multi's dmg by multiplier
                 float playerDmg = (float)shootDamage * dmgMult;
-                dmg.TakeDamage((int) playerDmg);
+                dmg.TakeDamage((int)playerDmg);
             }
         }
+
+        gunList[selectedGun].ammoCur--;
+        ammoCurr = gunList[selectedGun].ammoCur;
+        gameManager.instance.updateBulletCount();
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+    }
+
+    IEnumerator reload()
+    {
+        Debug.Log("Reloading");
+        isReloading = true;
+
+        yield return new WaitForSeconds(reloadTime);
+        gunList[selectedGun].ammoCur += gunList[selectedGun].ammoMax;
+        gameManager.instance.updateBulletCount();
+        isReloading = false;
     }
 
     public void TakeDamage(int amount)
@@ -132,7 +155,6 @@ public class playerController : MonoBehaviour, IDamage
             gameManager.instance.youLose();
         }
     }
-
     public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
@@ -161,15 +183,20 @@ public class playerController : MonoBehaviour, IDamage
     public void getGunstats(gunStats gun)
     {
         gunList.Add(gun);
+        hasGun = true;
 
         shootDamage = gun.shootDamage;
         shootDistance = gun.shootDist;
         shootRate = gun.shootRate;
+        ammoMax = gun.ammoMax;
+        ammoCurr = gun.ammoCur;
+        reloadTime = gun.reloadTime;
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gun.model.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.model.GetComponent<MeshRenderer>().sharedMaterial;
 
         selectedGun = gunList.Count - 1;
+        gameManager.instance.updateBulletCount();
     }  
     
     void selectGun()
