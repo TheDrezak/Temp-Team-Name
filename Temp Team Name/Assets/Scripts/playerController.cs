@@ -136,9 +136,10 @@ public class playerController : MonoBehaviour, IDamage
         Debug.Log("Reloading");
         isReloading = true;
 
-        gunList[selectedGun].ammoCur += gunList[selectedGun].ammoMax;
-        gameManager.instance.updateBulletCount();
+        gunList[selectedGun].ammoCur = gunList[selectedGun].ammoMax;
+        ammoCurr = gunList[selectedGun].ammoCur;
         yield return new WaitForSeconds(reloadTime);
+        gameManager.instance.updateBulletCount();
         isReloading = false;
     }
 
