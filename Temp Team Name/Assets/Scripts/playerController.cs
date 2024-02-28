@@ -96,6 +96,11 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
             {
                 StartCoroutine(reload());
             }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                StartCoroutine(reload());
+            }
         } 
     }
     void Movement()
@@ -243,7 +248,6 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
     {
         gunList.Add(gun);
         hasGun = true;
-
         shootDamage = gun.shootDamage;
         shootDistance = gun.shootDist;
         shootRate = gun.shootRate;

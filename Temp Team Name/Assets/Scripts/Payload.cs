@@ -63,26 +63,6 @@ public class Payload : MonoBehaviour, IDamage
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.isTrigger) return;
-
-        if (other.CompareTag("Player"))
-        {
-            gameManager.instance.playerScript.canOpenShop = true;
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.isTrigger) return;
-
-        if (other.CompareTag("Player"))
-        {
-            gameManager.instance.playerScript.canOpenShop = false;
-        }
-    }
-
     IEnumerator StopAtWaypoint()
     {
         isMoving = false;

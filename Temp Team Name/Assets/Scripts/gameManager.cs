@@ -102,7 +102,7 @@ public class gameManager : MonoBehaviour
             menuActive.SetActive(isPaused);
         }
 
-        if (Input.GetKeyDown(KeyCode.J) && playerScript.canOpenShop == true)
+        if (Input.GetKeyDown(KeyCode.J))
         {
             statePaused();
             menuActive = menuShop;
