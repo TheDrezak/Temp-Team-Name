@@ -13,6 +13,7 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
+    [SerializeField] AudioSource aud;
 
     [Header("----- Enemy Stats -----")]
     [SerializeField] int HP;
@@ -34,12 +35,23 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     [Header("----- UI-----")]
     [SerializeField] Image HPBar;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip[] soundsSteps;
+    [Range(0, 1)][SerializeField] float soundStepVol;
+    [SerializeField] AudioClip soundsShoot;
+    [Range(0, 1)][SerializeField] float soundShootVol;
+    [SerializeField] AudioClip hurtSound;
+    [Range(0, 1)][SerializeField] float hurtVol;
+    [SerializeField] AudioClip deathSound;
+    [Range(0, 1)][SerializeField] float deathVol;
+
     // Picks target
     [SerializeField] bool targetsPayload;
     string targetChoice;
 
     bool isShooting;
     bool targetInRange;
+    bool isPlayingSteps;
 
     // Player dest info
     float angleToPlayer;
@@ -117,6 +129,8 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
 
     IEnumerator roam()
     {
+        if (!isPlayingSteps && agent.remainingDistance > 0.01f)
+            StartCoroutine(playFootSteps());
         // Make sure reamining distance is very small, or on point, & destChosen is false
         if (agent.remainingDistance < 0.05f && !destChosen)
         {
@@ -240,6 +254,8 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
         // Play damage animation
         anim.SetTrigger("Damage");
 
+        //Plays damage audio
+        aud.PlayOneShot(hurtSound, hurtVol);
         // Move to player if enemy takes damage
         agent.SetDestination(gameManager.instance.player.transform.position);
 
@@ -252,6 +268,8 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
         {
             // Give points
             gameManager.instance.increaseMoney(pointsGiven);
+            //Plays death sound
+            aud.PlayOneShot(deathSound, deathVol);
             Destroy(gameObject);
         }
         // Lower HP on HP bar
@@ -270,8 +288,8 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
         isShooting = true;
 
         // Triggers shoot animation
-       anim.SetTrigger("Shoot");
-
+        anim.SetTrigger("Shoot");
+        aud.PlayOneShot(soundsShoot, soundShootVol);
         // Check if shotgun
         if (bullet.GetComponent<bulletClass>().shotgun)
         {
@@ -303,5 +321,12 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     {
         // Updates HP bar
         HPBar.fillAmount = (float)HP / HPOrig;
+    }
+    IEnumerator playFootSteps() 
+    {
+        isPlayingSteps = true;
+        aud.PlayOneShot(soundsSteps[0], soundStepVol);
+        yield return new WaitForSeconds(.5f);
+        isPlayingSteps = false;
     }
 }

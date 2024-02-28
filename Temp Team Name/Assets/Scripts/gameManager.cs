@@ -25,6 +25,10 @@ public class gameManager : MonoBehaviour
     [SerializeField] private TMP_Text ammoCountTotal;
     [SerializeField] public GameObject itemUI;
     [SerializeField] public int money;
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip purchaseSound;
+    [SerializeField] AudioSource backgroundAud;
+    [Range(0f, 1f)][SerializeField] float purchaseVol;
 
     // For multiplying score when player doesn't take damage
     [SerializeField] int scoremultiplierMin;
@@ -196,6 +200,7 @@ public class gameManager : MonoBehaviour
     public void decreasMoney(int amount)
     {
         money -= amount;
+        aud.PlayOneShot(purchaseSound, purchaseVol);
         updateUI();
     }
 
