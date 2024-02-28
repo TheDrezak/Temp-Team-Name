@@ -9,6 +9,7 @@ public class bulletClass : MonoBehaviour
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
     public bool shotgun;
+    public bool shootingPayload;
 
     void Start()
     {
@@ -20,7 +21,7 @@ public class bulletClass : MonoBehaviour
 
     private void Update()
     {
-        if (shotgun)
+        if (shotgun || shootingPayload)
         {
             // Shoots bullets forward to spread (or hit payload)
             rb.velocity = transform.forward * speed;
