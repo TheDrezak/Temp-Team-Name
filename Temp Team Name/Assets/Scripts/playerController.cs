@@ -147,7 +147,7 @@ public class playerController : MonoBehaviour, IDamage
             yield return new WaitForSecondsRealtime(1);
             temp--;
 
-            gameManager.instance.reloadcirc.fillAmount = temp / reloadTime;
+            gameManager.instance.reloadcirc.fillAmount =  Mathf.Lerp(0, temp / reloadTime, Time.deltaTime * temp);
             
         }
         
