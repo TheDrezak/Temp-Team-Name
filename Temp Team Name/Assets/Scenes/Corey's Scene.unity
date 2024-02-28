@@ -428,6 +428,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4824196228853132118, guid: 5e769c1a9defcb049acc4c579dc27f69, type: 3}
+      propertyPath: spawn
+      value: 
+      objectReference: {fileID: 1932494213}
+    - target: {fileID: 4824196228853132118, guid: 5e769c1a9defcb049acc4c579dc27f69, type: 3}
       propertyPath: waypoints.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1340,6 +1344,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdb2b6e2516e70444b27f5697bc3a8fb, type: 3}
+--- !u!4 &1932494213 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7153270113081412203, guid: 10c04b4f5bc468044b6280011d2ede11, type: 3}
+  m_PrefabInstance: {fileID: 1536344021}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1957084783
 PrefabInstance:
   m_ObjectHideFlags: 0

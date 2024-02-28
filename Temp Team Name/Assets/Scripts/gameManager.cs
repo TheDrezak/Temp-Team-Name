@@ -47,6 +47,10 @@ public class gameManager : MonoBehaviour
     public GameObject player;
     public playerController playerScript;
 
+
+    public GameObject payload;
+    public Payload payloadScript;
+
     // Checkpoint Variables
     public float checkpointTimer = 0.0f;
     public float checkpointCountdown;
@@ -64,8 +68,10 @@ public class gameManager : MonoBehaviour
         
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
-
         playerSpawnPos = GameObject.FindWithTag("PlayerRespawnPoint");
+
+        payload = GameObject.FindWithTag("Payload");
+        payloadScript = payload.GetComponent<Payload>();
 
         currentScoremultiplier = scoremultiplierMin;
         multiplier.text = currentScoremultiplier.ToString("F0");
