@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 
 
-public class enemyAI : MonoBehaviour, IDamage
+public class enemyAI : MonoBehaviour, IDamage, IPhysics
 {
     [Header("----- Componenets -----")]
     [SerializeField] Animator anim;
@@ -23,6 +23,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int roamPauseTime;
     [SerializeField] int roamDis;
     [SerializeField] int pointsGiven;
+    [SerializeField] int physicsResolve;
 
     [Header("----- Guns -----")]
     [SerializeField] GameObject bullet;
@@ -109,6 +110,7 @@ public class enemyAI : MonoBehaviour, IDamage
         }
     }
 
+    public void ph
     IEnumerator roam()
     {
         // Make sure reamining distance is very small, or on point, & destChosen is false
