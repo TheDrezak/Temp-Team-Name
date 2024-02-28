@@ -59,6 +59,8 @@ public class Payload : MonoBehaviour, IDamage
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.isTrigger) return;
+
         if (other.CompareTag("Player"))
         {
             gameManager.instance.playerScript.canOpenShop = true;
@@ -67,6 +69,8 @@ public class Payload : MonoBehaviour, IDamage
 
     void OnTriggerExit(Collider other)
     {
+        if (other.isTrigger) return;
+
         if (other.CompareTag("Player"))
         {
             gameManager.instance.playerScript.canOpenShop = false;

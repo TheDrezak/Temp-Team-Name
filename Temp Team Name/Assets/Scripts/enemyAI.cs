@@ -33,23 +33,20 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("----- UI-----")]
     [SerializeField] Image HPBar;
 
-    // Testing
+    // Picks target
     [SerializeField] bool targetsPayload;
-    public string targetChoice;
+    string targetChoice;
 
     bool isShooting;
-
-    // Targeting
-    public bool targetInRange;
+    bool targetInRange;
 
     // Player dest info
     float angleToPlayer;
     Vector3 playerDir;
 
     // Payload dest info
-    public float angleToPayload;
-    public Vector3 payloadDir;
-
+    float angleToPayload;
+    Vector3 payloadDir;
 
     int HPOrig;
     Color color;

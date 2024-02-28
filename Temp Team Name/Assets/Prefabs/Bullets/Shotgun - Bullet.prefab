@@ -51,7 +51,8 @@ MonoBehaviour:
   damageAmount: 1
   speed: 40
   destroyTime: 10
-  shotgun: 0
+  shotgun: 1
+  shootingPayload: 1
 --- !u!135 &2617490067916572901
 SphereCollider:
   m_ObjectHideFlags: 0

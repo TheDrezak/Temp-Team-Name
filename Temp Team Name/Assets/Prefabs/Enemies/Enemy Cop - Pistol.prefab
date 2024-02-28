@@ -85,9 +85,12 @@ MonoBehaviour:
   roamPauseTime: 3
   roamDis: 15
   pointsGiven: 1
-  bullet: {fileID: 569889183044730468, guid: a5da5ca517d8b21428cf6cc52cf01278, type: 3}
+  bullet: {fileID: 4046047504513046871, guid: 3587cc9afcfc0094cb1961c4107f649c, type: 3}
   shootRate: 0.5
+  pelletAmount: 0
+  spread: 0
   HPBar: {fileID: 4657543683581695653}
+  targetsPayload: 0
 --- !u!195 &1380487687528976511
 NavMeshAgent:
   m_ObjectHideFlags: 0

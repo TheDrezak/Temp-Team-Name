@@ -149,7 +149,10 @@ MonoBehaviour:
   pointsGiven: 1
   bullet: {fileID: 569889183044730468, guid: a5da5ca517d8b21428cf6cc52cf01278, type: 3}
   shootRate: 0.5
+  pelletAmount: 0
+  spread: 0
   HPBar: {fileID: 6187266591561673195}
+  targetsPayload: 1
 --- !u!195 &5686319965242295618
 NavMeshAgent:
   m_ObjectHideFlags: 0
