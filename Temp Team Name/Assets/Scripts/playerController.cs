@@ -34,7 +34,10 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
 
     [SerializeField] private Transform shootPos;
 
-    //Grenades
+    [Header("----- Grenades -----")]
+    [SerializeField] int grenadeCooldown;
+    int grenadeAmmount;
+
 
     Vector3 move;
     Vector3 playerVelocity;

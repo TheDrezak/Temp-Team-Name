@@ -270,7 +270,7 @@ MonoBehaviour:
   speed: 15
   yVel: 0.2
   destroyTime: 3
-  explosion: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3, type: 3}
+  explosion: {fileID: 1938194647757730785, guid: 19beb92b04ba49c4199c9a9f5ae71035, type: 3}
 --- !u!135 &2045278043983939702
 SphereCollider:
   m_ObjectHideFlags: 0
