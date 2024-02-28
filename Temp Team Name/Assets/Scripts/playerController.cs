@@ -18,7 +18,6 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] float sprintMod;
     [SerializeField] private int score;
     [SerializeField] private float dmgMult;
-    bool isSprinting;
     int selectedGun;
 
     [Header("----- Guns -----")]
@@ -35,7 +34,6 @@ public class playerController : MonoBehaviour, IDamage
     int jumpCount;
 
     bool isShooting;
-    private bool isGrappling;
     public int HPOrig;
 
     void Start()
@@ -91,14 +89,11 @@ public class playerController : MonoBehaviour, IDamage
         if (Input.GetButtonDown("Sprint"))
         {
             playerSpeed *= sprintMod;
-            // Allows for stamina system to be created
-            isSprinting = true;
         }
         // Divie to normal speed if not sprinting
         else if (Input.GetButtonUp("Sprint"))
         {
             playerSpeed /= sprintMod;
-            isSprinting = false;
         }
     }
 
@@ -207,27 +202,6 @@ public class playerController : MonoBehaviour, IDamage
         transform.position = pos.position;
         controller.enabled = true;
     }
-
-    //void pickitemUp()
-    //{
-    //    RaycastHit hit;
-
-    //    if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, grabDist))
-    //    {
-    //        Debug.Log(hit.collider.name);
-
-    //        IInteract interact = hit.collider.GetComponent<IInteract>();
-
-    //        if (hit.transform != transform && interact != null)
-    //        {
-    //            GameObject clonedItem = Instantiate(hit.collider.gameObject);
-    //            clonedItem.SetActive(false);
-    //            gameManager.instance.keysCollected += 1;
-    //            gameManager.instance.updateGameGoal(0);
-    //            Destroy(hit.collider.gameObject);
-    //        }
-    //    }
-    //}
 
     public int getHP() { return HP; }
 
