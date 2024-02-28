@@ -110,7 +110,11 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
         }
     }
 
-    public void ph
+    public void physicsDir(Vector3 dir)
+    {
+        agent.velocity += dir;
+    }
+
     IEnumerator roam()
     {
         // Make sure reamining distance is very small, or on point, & destChosen is false

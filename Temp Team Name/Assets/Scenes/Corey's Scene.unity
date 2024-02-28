@@ -789,6 +789,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ice Cream Car
       objectReference: {fileID: 0}
+    - target: {fileID: 1052669064326860252, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2180581540632302946, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
       propertyPath: spawn
       value: 
@@ -801,6 +805,14 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 753575925}
+    - target: {fileID: 3420222889574997290, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985622737351796208, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5310222883047240413, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
       propertyPath: m_LocalPosition.x
       value: -51.141537
@@ -839,6 +851,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5310222883047240413, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175514552579182770, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6392987453740416049, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422580750928685223, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422580750928685223, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715781037507302066, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
