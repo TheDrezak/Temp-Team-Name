@@ -13,7 +13,7 @@ public class Payload : MonoBehaviour, IDamage
     [SerializeField] public float waypointStartDuration;
     [SerializeField] public float waypointStopDuration;
     [SerializeField] int rotationSpeed;
-    [SerializeField] private Color color;
+    private Color color;
     [SerializeField] Renderer model;
 
 
