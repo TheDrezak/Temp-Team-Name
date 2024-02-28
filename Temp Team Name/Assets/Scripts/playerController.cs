@@ -140,14 +140,13 @@ public class playerController : MonoBehaviour, IDamage
         ammoCurr = gunList[selectedGun].ammoCur;
         gameManager.instance.reloadUI.SetActive(true);
 
-        int temp = (int)reloadTime;
+        int temp = ((int)reloadTime * 100);
 
-        for (int i = 0; i < reloadTime; i++)
+        for (int i = 0; i < (reloadTime*100); i++)
         {
-            yield return new WaitForSecondsRealtime(1);
+            yield return new WaitForSecondsRealtime(0.01f);
             temp--;
-
-            gameManager.instance.reloadcirc.fillAmount =  Mathf.Lerp(0, temp / reloadTime, Time.deltaTime * temp);
+            gameManager.instance.reloadcirc.fillAmount = temp / (reloadTime * 100) ;
             
         }
         
