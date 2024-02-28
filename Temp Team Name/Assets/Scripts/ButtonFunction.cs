@@ -30,59 +30,48 @@ public class buttonFunctions : MonoBehaviour
 
     public void buyHealth()
     {
-        if (gameManager.instance.playerScript.getScore() >= gameManager.instance.healthPrice)
+        if (gameManager.instance.money > gameManager.instance.healthPrice)
         {
             gameManager.instance.playerScript.setHP(gameManager.instance.playerScript.HPOrig);
+            gameManager.instance.decreasMoney(gameManager.instance.healthPrice);
             gameManager.instance.playerScript.updatePlayerUI();
-            gameManager.instance.playerScript.setScore(gameManager.instance.playerScript.getScore() - gameManager.instance.healthPrice);
-
-            gameManager.instance.updateUI();
         }
     }
 
     public void buySpeed()
     {
-        if (gameManager.instance.playerScript.getScore() >= gameManager.instance.speedPrice)
+        if (gameManager.instance.money > gameManager.instance.speedPrice)
         {
-            gameManager.instance.playerScript.setSpeed(gameManager.instance.playerScript.getSpeed() * 1.15f);
-            gameManager.instance.playerScript.setScore(gameManager.instance.playerScript.getScore() - gameManager.instance.speedPrice);
-
-            gameManager.instance.updateUI();
+            gameManager.instance.playerScript.setSpeed(gameManager.instance.playerScript.getSpeed() * 1.1f);
+            gameManager.instance.decreasMoney(gameManager.instance.speedPrice);
         }
 
     }
 
     public void buyJumpMax()
     {
-        if (gameManager.instance.playerScript.getScore() >= gameManager.instance.jumpMaxPrice)
+        if (gameManager.instance.money > gameManager.instance.jumpMaxPrice)
         {
             gameManager.instance.playerScript.setJumpMax(gameManager.instance.playerScript.getJumps() + 1);
-            gameManager.instance.playerScript.setScore(gameManager.instance.playerScript.getScore() - gameManager.instance.jumpMaxPrice);
-
-            gameManager.instance.updateUI();
+            gameManager.instance.decreasMoney(gameManager.instance.jumpMaxPrice);
         }
     }
 
     public void buyJumpForce()
-    { 
-        if (gameManager.instance.playerScript.getScore() >= gameManager.instance.jumpForcePrice)
+    {
+        if (gameManager.instance.money > gameManager.instance.jumpForcePrice)
         {
             gameManager.instance.playerScript.setjumpForce(gameManager.instance.playerScript.getJumpForce() * 1.25f);
-            gameManager.instance.playerScript.setScore(gameManager.instance.playerScript.getScore() - gameManager.instance.jumpForcePrice);
-
-            gameManager.instance.updateUI();
+            gameManager.instance.decreasMoney(gameManager.instance.jumpForcePrice);
         }
-
     }
 
     public void buyDmg()
     {
-        if (gameManager.instance.playerScript.getScore() >= gameManager.instance.dmgPrice)
+        if (gameManager.instance.money > gameManager.instance.dmgPrice)
         {
             gameManager.instance.playerScript.setDmgMult(gameManager.instance.playerScript.getDmgMult() + .25f);
-            gameManager.instance.playerScript.setScore(gameManager.instance.playerScript.getScore() - gameManager.instance.dmgPrice);
-
-            gameManager.instance.updateUI();
+            gameManager.instance.decreasMoney(gameManager.instance.dmgPrice);
         }
     }
 }

@@ -22,7 +22,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] private TMP_Text multiplier;
     [SerializeField] private TMP_Text keyCountText;
     [SerializeField] public GameObject itemUI;
-    [SerializeField] int money;
+    [SerializeField] public int money;
 
     // For multiplying score when player doesn't take damage
     [SerializeField] int scoremultiplierMin;
@@ -170,11 +170,8 @@ public class gameManager : MonoBehaviour
     // For cash spending
     public void decreasMoney(int amount)
     {
-        if ((money - amount) > 0)
-        {
-            money -= amount;
-            updateUI();
-        } 
+        money -= amount;
+        updateUI();
     }
 
     public void updateUI()
