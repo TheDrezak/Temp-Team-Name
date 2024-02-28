@@ -25,6 +25,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] private TMP_Text ammoCountTotal;
     [SerializeField] public GameObject itemUI;
     [SerializeField] public int money;
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioSource backgroundAud;
 
     // For multiplying score when player doesn't take damage
     [SerializeField] int scoremultiplierMin;

@@ -13,6 +13,7 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
+    [SerializeField] AudioSource aud;
 
     [Header("----- Enemy Stats -----")]
     [SerializeField] int HP;
@@ -34,12 +35,19 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     [Header("----- UI-----")]
     [SerializeField] Image HPBar;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip[] soundsSteps;
+    [Range(0, 1)][SerializeField] float soundStepVol;
+    [SerializeField] AudioClip soundsShoot;
+    [Range(0, 1)][SerializeField] float soundShootVol;
+
     // Picks target
     [SerializeField] bool targetsPayload;
     string targetChoice;
 
     bool isShooting;
     bool targetInRange;
+    bool isPlayingSteps;
 
     // Player dest info
     float angleToPlayer;
@@ -117,6 +125,8 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
 
     IEnumerator roam()
     {
+        if (!isPlayingSteps && agent.remainingDistance > 0.01f)
+            StartCoroutine(playFootSteps());
         // Make sure reamining distance is very small, or on point, & destChosen is false
         if (agent.remainingDistance < 0.05f && !destChosen)
         {
@@ -270,8 +280,8 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
         isShooting = true;
 
         // Triggers shoot animation
-       anim.SetTrigger("Shoot");
-
+        anim.SetTrigger("Shoot");
+        aud.PlayOneShot(soundsShoot, soundShootVol);
         // Check if shotgun
         if (bullet.GetComponent<bulletClass>().shotgun)
         {
@@ -303,5 +313,12 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     {
         // Updates HP bar
         HPBar.fillAmount = (float)HP / HPOrig;
+    }
+    IEnumerator playFootSteps() 
+    {
+        isPlayingSteps = true;
+        aud.PlayOneShot(soundsSteps[0], soundStepVol);
+        yield return new WaitForSeconds(.5f);
+        isPlayingSteps = false;
     }
 }
