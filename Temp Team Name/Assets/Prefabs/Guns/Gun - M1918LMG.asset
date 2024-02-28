@@ -15,9 +15,9 @@ MonoBehaviour:
   shootDamage: 4
   shootDist: 45
   shootRate: 0.1
-  ammoCur: 18
+  ammoCur: 8
   ammoMax: 18
-  reloadTime: 180
+  reloadTime: 3
   model: {fileID: 6370723580708644957, guid: c7ca15f633c2b754f83666ac0c18b3e6, type: 3}
   hitEffect: {fileID: 0}
   shootSound: {fileID: 0}
