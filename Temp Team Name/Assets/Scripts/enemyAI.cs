@@ -42,6 +42,7 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 startingPos;
     bool destChosen;
     float stoppingDistanceOrig;
+    string targetChoice;
 
 
     void Start()
@@ -72,6 +73,20 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             // Roam because player isn't in range
             StartCoroutine(roam());
+        }
+    }
+
+    // Chooses to shoot player or payload
+    void chooseTarger()
+    {
+        int rNum = Random.Range(1, 2);
+        if (rNum == 1)
+        {
+            targetChoice = "Player";
+        }
+        else
+        {
+            targetChoice = "Payload";
         }
     }
 
