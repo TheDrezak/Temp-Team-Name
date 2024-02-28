@@ -20,5 +20,5 @@ MonoBehaviour:
   reloadTime: 0
   model: {fileID: 1427582580113894245, guid: 3b9ae05a712995e47891fdc4e8599c88, type: 3}
   hitEffect: {fileID: 0}
-  shootSound: {fileID: 0}
-  shootSoundVol: 0.5
+  shootSound: {fileID: 8300000, guid: 93560fa0f0ddec041bfd2ce8046e6d4a, type: 3}
+  shootSoundVol: 0.3

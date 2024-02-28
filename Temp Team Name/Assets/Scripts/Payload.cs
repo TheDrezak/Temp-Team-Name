@@ -15,8 +15,9 @@ public class Payload : MonoBehaviour, IDamage
     [SerializeField] int rotationSpeed;
     private Color color;
     [SerializeField] Renderer model;
-
-
+    [SerializeField] AudioClip music;
+    [Range(0f, 1f)][SerializeField] float vol;
+    [SerializeField] AudioSource aud;
 
     public List<GameObject> waypoints;
     int index = 0;
@@ -39,6 +40,9 @@ public class Payload : MonoBehaviour, IDamage
         {
             Vector3 destination = waypoints[index].transform.position;
             Vector3 direction = (destination - transform.position).normalized;
+            //should start music if music is not playing
+            if(!aud.isPlaying)
+                aud.PlayOneShot(music, vol);
 
             if (direction != Vector3.zero)
             {
@@ -53,6 +57,8 @@ public class Payload : MonoBehaviour, IDamage
             if (distance <= 0.05)
             {
                 StartCoroutine(StopAtWaypoint());
+                //should stop music
+                aud.Stop();
             }
         }
     }

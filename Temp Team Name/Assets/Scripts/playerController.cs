@@ -52,6 +52,8 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
     [Range(0f, 1f)][SerializeField] float reloadVol;
     [SerializeField] AudioClip switchSound;
     [Range(0f, 1f)][SerializeField] float switchVol;
+    [SerializeField] AudioClip deathSound;
+    [Range(0f, 1f)][SerializeField] float deathVol;
 
     Vector3 move;
     Vector3 playerVelocity;
@@ -207,6 +209,7 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
 
         if (HP <= 0)
         {
+            aud.PlayOneShot(deathSound, deathVol);
             gameManager.instance.youLose();
         }
     }

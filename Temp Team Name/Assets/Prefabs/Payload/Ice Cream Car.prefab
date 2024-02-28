@@ -60,6 +60,9 @@ MonoBehaviour:
   waypointStopDuration: 10
   rotationSpeed: 15
   model: {fileID: 8242899933502550987}
+  music: {fileID: 8300000, guid: 3f3af9bbe6c119a479c0676c8639b1b9, type: 3}
+  vol: 0.5
+  aud: {fileID: 2578372787854763320}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -144,11 +147,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3f3af9bbe6c119a479c0676c8639b1b9, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -190,7 +193,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
