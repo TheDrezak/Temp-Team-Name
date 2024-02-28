@@ -35,7 +35,8 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
 
     [SerializeField] private Transform shootPos;
 
-    [Header("----- Grenades -----")]
+    [Header("----- Grenades -----")] 
+    [SerializeField] private GameObject grenade;
     [SerializeField] int grenadeCooldown;
     int grenadeAmmount;
 
@@ -248,6 +249,9 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
     {
         gunList.Add(gun);
         hasGun = true;
+
+        gun.ammoCur = gun.ammoCur;
+
         shootDamage = gun.shootDamage;
         shootDistance = gun.shootDist;
         shootRate = gun.shootRate;
