@@ -432,6 +432,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1932494213}
     - target: {fileID: 4824196228853132118, guid: 5e769c1a9defcb049acc4c579dc27f69, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824196228853132118, guid: 5e769c1a9defcb049acc4c579dc27f69, type: 3}
       propertyPath: waypoints.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1077,7 +1081,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153270113081412203, guid: 10c04b4f5bc468044b6280011d2ede11, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 65.886696
+      value: -43.93
       objectReference: {fileID: 0}
     - target: {fileID: 7153270113081412203, guid: 10c04b4f5bc468044b6280011d2ede11, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1085,7 +1089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153270113081412203, guid: 10c04b4f5bc468044b6280011d2ede11, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -30.24041
+      value: -3.47
       objectReference: {fileID: 0}
     - target: {fileID: 7153270113081412203, guid: 10c04b4f5bc468044b6280011d2ede11, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4981,6 +4985,7 @@ MonoBehaviour:
   pelletAmount: 0
   spread: 0
   HPBar: {fileID: 2626694507343791139}
+  rNum: 0
 --- !u!114 &3379214853061099336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5146,6 +5151,7 @@ MonoBehaviour:
   pelletAmount: 1
   spread: 0.05
   HPBar: {fileID: 4956353091049963354}
+  rNum: 0
 --- !u!1 &3704960681253488687
 GameObject:
   m_ObjectHideFlags: 0
@@ -7612,6 +7618,7 @@ MonoBehaviour:
   pelletAmount: 0
   spread: 0
   HPBar: {fileID: 6522317639731660354}
+  rNum: 0
 --- !u!223 &6609723673648842326
 Canvas:
   m_ObjectHideFlags: 0
@@ -8967,6 +8974,7 @@ MonoBehaviour:
   pelletAmount: 8
   spread: 0.1
   HPBar: {fileID: 4333820192119067970}
+  rNum: 0
 --- !u!4 &8008614180399676303
 Transform:
   m_ObjectHideFlags: 0

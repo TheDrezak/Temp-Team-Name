@@ -33,10 +33,22 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("----- UI-----")]
     [SerializeField] Image HPBar;
 
+    public int rNum;
+
     bool isShooting;
-    bool playerInRange;
+
+    // Targeting
+    bool targetInRange;
+
+    // Player dest info
     float angleToPlayer;
     Vector3 playerDir;
+
+    // Payload dest info
+    float angleToPayload;
+    Vector3 payloadDir;
+
+
     int HPOrig;
     Color color;
     Vector3 startingPos;
@@ -53,6 +65,9 @@ public class enemyAI : MonoBehaviour, IDamage
         updateUI();
         color = model.material.color;
         stoppingDistanceOrig = agent.stoppingDistance;
+
+        // Find target
+        chooseTargert();
     }
 
     void Update()
@@ -64,12 +79,23 @@ public class enemyAI : MonoBehaviour, IDamage
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
 
         // Checks if player is in range
-        if (playerInRange && !canSeePlayer())
+        if (targetChoice == "Player")
         {
-            // Roam if player is in range but can't see player
-            StartCoroutine(roam());
+            if (targetInRange && !canSeePlayer())
+            {
+                // Roam if player is in range but can't see player
+                StartCoroutine(roam());
+            }
         }
-        else if (!playerInRange)
+        else
+        {
+            if (targetInRange && !canSeePayload())
+            {
+                // Roam if player is in range but can't see player
+                StartCoroutine(roam());
+            }
+        }
+        if (!targetInRange)
         {
             // Roam because player isn't in range
             StartCoroutine(roam());
@@ -77,9 +103,9 @@ public class enemyAI : MonoBehaviour, IDamage
     }
 
     // Chooses to shoot player or payload
-    void chooseTarger()
+    void chooseTargert()
     {
-        int rNum = Random.Range(1, 2);
+        rNum = Random.Range(1, 2);
         if (rNum == 1)
         {
             targetChoice = "Player";
@@ -87,6 +113,7 @@ public class enemyAI : MonoBehaviour, IDamage
         else
         {
             targetChoice = "Payload";
+            bullet.GetComponent<bulletClass>().shotgun = true;
         }
     }
 
@@ -126,7 +153,7 @@ public class enemyAI : MonoBehaviour, IDamage
         if (Physics.Raycast(headPos.position, playerDir, out hit))
         {
             // Did we hit both the player & the player is in the cone
-            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
+            if (hit.collider.CompareTag(targetChoice))
             {
                 // Moves to player
                 agent.SetDestination(gameManager.instance.player.transform.position);
@@ -147,27 +174,72 @@ public class enemyAI : MonoBehaviour, IDamage
         return false;
     }
 
+    bool canSeePayload()
+    {
+        // Finds where payload is
+        payloadDir = gameManager.instance.payload.transform.position - headPos.position;
+        angleToPayload = Vector3.Angle(new Vector3(payloadDir.x, 0, payloadDir.z), transform.forward);
+
+        // Check if Raycast hits the payload or something else
+        RaycastHit hit;
+        if (Physics.Raycast(headPos.position, playerDir, out hit))
+        {
+            // Did we hit both the player & the player is in the cone
+            if (hit.collider.CompareTag(targetChoice))
+            {
+                // Moves to player
+                agent.SetDestination(gameManager.instance.payload.transform.position);
+                // Starts shooting if not already shooting & in cone of gun
+                if (!isShooting && angleToPayload <= shootCone)
+                {
+                    StartCoroutine(shoot());
+                }
+
+                if (agent.remainingDistance < agent.stoppingDistance) { faceTarget(); }
+
+                // Reset stopping distance to original number
+                agent.stoppingDistance = stoppingDistanceOrig;
+
+                return true;
+            }
+        }
+        return false;
+
+    }
+
     void faceTarget()
     {
         // Rotates to player if they're within stopping range
         // Makes rot ignore player's Y pos
-        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, transform.position.y, playerDir.z));
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * targetFaceSpeed);
+
+        if (targetChoice == "Player")
+        {
+            // For Player
+            Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, transform.position.y, playerDir.z));
+            transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * targetFaceSpeed);
+        }
+        else
+        {
+            // For Payload
+            Quaternion rot = Quaternion.LookRotation(new Vector3(payloadDir.x, transform.position.y, playerDir.z));
+            transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * targetFaceSpeed);
+        }
+        
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(targetChoice))
         {
-            playerInRange = true;
+            targetInRange = true;
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(targetChoice))
         {
-            playerInRange = false;
+            targetInRange = false;
             agent.stoppingDistance = 0;
         }
     }

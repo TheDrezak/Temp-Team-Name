@@ -22,7 +22,7 @@ public class bulletClass : MonoBehaviour
     {
         if (shotgun)
         {
-            // Shoots bullets forward to spread
+            // Shoots bullets forward to spread (or hit payload)
             rb.velocity = transform.forward * speed;
         }
     }
