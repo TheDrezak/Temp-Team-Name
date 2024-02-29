@@ -3685,6 +3685,10 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+      propertyPath: money
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 1163416266501621139, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
       propertyPath: m_Pivot.x
       value: 0
