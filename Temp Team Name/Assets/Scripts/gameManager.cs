@@ -25,10 +25,15 @@ public class gameManager : MonoBehaviour
     [SerializeField] private TMP_Text ammoCountTotal;
     [SerializeField] public GameObject itemUI;
     [SerializeField] public int money;
+    
+    [Header("Audio")]
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip purchaseSound;
     [SerializeField] AudioSource backgroundAud;
     [Range(0f, 1f)][SerializeField] float purchaseVol;
+    [SerializeField] AudioClip backgroundTune;
+    [SerializeField] AudioClip victory;
+    [SerializeField] AudioClip defeat;
 
     // For multiplying score when player doesn't take damage
     [SerializeField] int scoremultiplierMin;
@@ -95,6 +100,7 @@ public class gameManager : MonoBehaviour
         updateUI();
         checkpointReached = false;
         StartCoroutine(timeLoop());
+        backgroundAud.Play();
     }
 
     // Update is called once per frame
@@ -222,8 +228,9 @@ public class gameManager : MonoBehaviour
 
     public void youLose()
     {
+        
         statePaused();
-
+        aud.PlayOneShot(defeat, purchaseVol);
         menuActive = menuLose;
         menuActive.SetActive(true);
     }
@@ -233,5 +240,6 @@ public class gameManager : MonoBehaviour
         menuActive = menuWin;
         menuActive.SetActive(true);
         statePaused();
+        aud.PlayOneShot(victory, purchaseVol);
     }
 }
