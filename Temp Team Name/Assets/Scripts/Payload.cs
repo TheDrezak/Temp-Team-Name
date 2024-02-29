@@ -22,10 +22,11 @@ public class Payload : MonoBehaviour, IDamage
     [SerializeField] NavMeshAgent agent;
 
     public List<GameObject> waypoints;
-    int index = 0;
+    public int index = 0;
     public int checkPointsHit;
     private int HPOrig;
     bool isMoving = true;
+    int nextPoint;
     
 
     void Start()
@@ -34,6 +35,8 @@ public class Payload : MonoBehaviour, IDamage
         spawnCart();
         MoveToNextWaypoint();
         HPOrig = HP;
+        nextPoint = 0;
+        aud.Play();
     }
 
     void Update()
@@ -42,12 +45,12 @@ public class Payload : MonoBehaviour, IDamage
         {
             //    Vector3 destination = waypoints[index].transform.position;
             //    Vector3 direction = (destination - transform.position).normalized;
-            agent.SetDestination(waypoints[0].transform.position);
+            agent.SetDestination(waypoints[index].transform.position);
             //should start music if music is not playing
-            if(!aud.isPlaying)
-                aud.PlayOneShot(music, vol);
-
-        //    if (direction != Vector3.zero)
+            if(!aud.isPlaying && agent.remainingDistance > 0.01f)
+                aud.Play();
+            
+            //    if (direction != Vector3.zero)
             {
         //        Quaternion targetRotation = Quaternion.LookRotation(direction);
                 //targetRotation.y = 0f;
