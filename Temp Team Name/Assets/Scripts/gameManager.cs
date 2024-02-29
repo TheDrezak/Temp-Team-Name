@@ -60,10 +60,13 @@ public class gameManager : MonoBehaviour
     public TMP_Text jumpStacks;
     public TMP_Text jumpForceStacks;
     public TMP_Text dmgStacks;
+    public TMP_Text grenadeStacks;
     public Image playerHPBar;
     public Image CartHPbar;
     public Image progressBar;
     public Image reloadcirc;
+    public Image grenadeBarImage;
+    public GameObject grenadeCoolDown;
     public GameObject reloadUI;
     public GameObject playerDmgFlash;
     public GameObject playerSpawnPos;
@@ -154,7 +157,7 @@ public class gameManager : MonoBehaviour
         // Timer for payload
         if (checkpointReached)
         {
-        //    checkpointTimer += 1;
+
         } 
     }
 
@@ -226,6 +229,7 @@ public class gameManager : MonoBehaviour
         speedStacks.text = playerScript.speedStacks.ToString();
         dmgStacks.text = playerScript.dmgStacks.ToString();
         jumpStacks.text = playerScript.jumpMax.ToString();
+        grenadeStacks.text = playerScript.grenadeAmmount.ToString();
     }
 
     public void youLose()

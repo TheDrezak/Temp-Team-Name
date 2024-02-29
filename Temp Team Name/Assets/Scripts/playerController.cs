@@ -38,7 +38,7 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
     [Header("----- Grenades -----")] 
     [SerializeField] private GameObject grenade;
     [SerializeField] int grenadeCooldown;
-    [SerializeField] int grenadeAmmount;
+    [SerializeField] public int grenadeAmmount;
 
     [Header("Audio")]
     [SerializeField] AudioClip[] hurtSounds;
@@ -70,6 +70,7 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
     bool isPlayingSteps;
     //bool isJumping;
     private bool isReloading;
+    private bool grenadeReloading;
     private bool hasGun;
     public int HPOrig;
     public bool canOpenShop;
@@ -118,7 +119,18 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
         canThrow = false;
         Instantiate(grenade, shootPos.position, transform.rotation);
         grenadeAmmount--;
-        yield return new WaitForSeconds(grenadeCooldown);
+        gameManager.instance.grenadeCoolDown.SetActive(true);
+
+        int temp = ((int)grenadeCooldown * 100);
+
+        for (int i = 0; i < (grenadeCooldown * 100); i++)
+        {
+            yield return new WaitForSecondsRealtime(0.01f);
+            temp--;
+            gameManager.instance.grenadeBarImage.fillAmount = temp / (grenadeCooldown * 100);
+        }
+        gameManager.instance.grenadeCoolDown.SetActive(false);
+        gameManager.instance.updateUI();
         canThrow = true;
     }
     void Movement()
@@ -218,6 +230,25 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
         gameManager.instance.reloadUI.SetActive(false);
 
         gameManager.instance.updateBulletCount();
+        isReloading = false;
+    }
+
+    IEnumerator grenadeReload()
+    {
+        Debug.Log("ReloadingGrenade");
+        grenadeReloading = true;
+        aud.PlayOneShot(reloadSound, reloadVol);
+        gameManager.instance.grenadeCoolDown.SetActive(true);
+
+        int temp = ((int)grenadeCooldown * 100);
+
+        for (int i = 0; i < (grenadeCooldown * 100); i++)
+        {
+            yield return new WaitForSecondsRealtime(0.01f);
+            temp--;
+            gameManager.instance.grenadeBarImage.fillAmount = temp / (grenadeCooldown * 100);
+        }
+        gameManager.instance.grenadeCoolDown.SetActive(false);
         isReloading = false;
     }
 

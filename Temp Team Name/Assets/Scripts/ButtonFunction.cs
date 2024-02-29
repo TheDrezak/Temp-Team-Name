@@ -83,7 +83,8 @@ public class buttonFunctions : MonoBehaviour
     {
         if (gameManager.instance.money > gameManager.instance.grenadePrice)
         {
-
+            gameManager.instance.playerScript.grenadeAmmount++;
+            gameManager.instance.decreasMoney(gameManager.instance.grenadePrice);
         }
     }
 
