@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class enemySpawner : MonoBehaviour
+public class infiniteSpawner : MonoBehaviour
 {
     public enum SpawnState { Spawning, Waiting, Counting};
 
@@ -60,10 +60,6 @@ public class enemySpawner : MonoBehaviour
         // Reset waveCountdown
         state = SpawnState.Counting;
         waveCountdown = timeBetweenWaves;
-
-        // Give feedback to player they completed wave **ADD IN**
-
-       
 
         // Checks if all waves are done
         if (currentWave +1 > waves.Count - 1)
