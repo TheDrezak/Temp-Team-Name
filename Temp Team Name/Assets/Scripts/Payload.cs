@@ -26,7 +26,6 @@ public class Payload : MonoBehaviour, IDamage
     public int checkPointsHit;
     public int HPOrig;
     public bool isMoving = true;
-    int nextPoint;
     
 
     void Start()
@@ -35,7 +34,6 @@ public class Payload : MonoBehaviour, IDamage
         spawnCart();
         MoveToNextWaypoint();
         HPOrig = HP;
-        nextPoint = 0;
         aud.Play();
     }
 
