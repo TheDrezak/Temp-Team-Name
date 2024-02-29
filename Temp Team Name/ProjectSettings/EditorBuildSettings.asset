@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Clayton's Old Scene.unity
-    guid: f4a72d33effec464ab1416bdeac4df44
+    path: Assets/Scenes/City Scene.unity
+    guid: 292975c8993c9cf479541bd053af454c
   m_configObjects: {}

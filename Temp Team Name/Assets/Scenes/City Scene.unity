@@ -28462,6 +28462,10 @@ PrefabInstance:
       propertyPath: reloadVol
       value: 0.083
       objectReference: {fileID: 0}
+    - target: {fileID: 3398547860362322763, guid: 0cc1a633911e3d84c9d3b4d111157343, type: 3}
+      propertyPath: pushBackResolve
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6594987301009399161, guid: 0cc1a633911e3d84c9d3b4d111157343, type: 3}
       propertyPath: m_Volume
       value: 0.107
