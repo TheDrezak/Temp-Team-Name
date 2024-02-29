@@ -551,7 +551,7 @@ MonoBehaviour:
   ammoCountCurr: {fileID: 7320422158671533026}
   ammoCountTotal: {fileID: 6310524438307234408}
   itemUI: {fileID: 0}
-  money: 5000
+  money: 300
   aud: {fileID: -1469660897997694674}
   purchaseSound: {fileID: 8300000, guid: 35310030407cd34438233f2de4c3e21f, type: 3}
   backgroundAud: {fileID: 7282340683523005724}
