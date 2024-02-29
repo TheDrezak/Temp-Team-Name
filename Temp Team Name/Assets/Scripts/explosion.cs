@@ -30,7 +30,7 @@ public class explosion : MonoBehaviour
         }
         if (push != null)
         {
-            push.physicsDir((other.transform.position - transform.position).normalized * damageAmount);
+            push.physicsDir((other.transform.position - transform.position).normalized * damageAmount * 0.5f);
         }
     }
 }
