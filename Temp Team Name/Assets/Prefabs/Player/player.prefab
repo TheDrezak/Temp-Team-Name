@@ -263,8 +263,9 @@ MonoBehaviour:
   ammoMax: 0
   reloadTime: 0
   shootPos: {fileID: 6705509304188945494}
-  grenade: {fileID: 0}
+  grenade: {fileID: 7445829833492149042, guid: 4dbfa4bf3646fea4baf29d94def3ccd9, type: 3}
   grenadeCooldown: 0
+  grenadeAmmount: 3
   hurtSounds:
   - {fileID: 8300000, guid: f976308ebd0a1bf46b6a6df350a24ef8, type: 3}
   - {fileID: 8300000, guid: 91674e572e86f674fb73073c32f4bd2f, type: 3}
@@ -288,6 +289,7 @@ MonoBehaviour:
   dmgStacks: 0
   HPOrig: 0
   canOpenShop: 0
+  canThrow: 0
 --- !u!82 &6594987301009399161
 AudioSource:
   m_ObjectHideFlags: 0

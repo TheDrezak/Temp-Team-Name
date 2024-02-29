@@ -38,7 +38,7 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
     [Header("----- Grenades -----")] 
     [SerializeField] private GameObject grenade;
     [SerializeField] int grenadeCooldown;
-    int grenadeAmmount;
+    [SerializeField] int grenadeAmmount;
 
     [Header("Audio")]
     [SerializeField] AudioClip[] hurtSounds;
@@ -102,8 +102,9 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
             {
                 StartCoroutine(reload());
             }
-            if(Input.GetButton("Fire2") && grenadeAmmount > 0)
+            if(Input.GetButtonDown("Fire3") && grenadeAmmount > 0)
             {
+                Debug.Log("grenade out!");
                 StartCoroutine(throwG());
             }
             if (Input.GetKeyDown(KeyCode.R) && !isReloading)
@@ -115,6 +116,8 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
     IEnumerator throwG()
     {
         canThrow = false;
+        Instantiate(grenade, shootPos.position, transform.rotation);
+        grenadeAmmount--;
         yield return new WaitForSeconds(grenadeCooldown);
         canThrow = true;
     }
