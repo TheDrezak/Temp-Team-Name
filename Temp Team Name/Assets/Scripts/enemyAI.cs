@@ -279,7 +279,7 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     }
     IEnumerator dying()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(.5f);
         Destroy(gameObject);
     }
     IEnumerator flashMat()

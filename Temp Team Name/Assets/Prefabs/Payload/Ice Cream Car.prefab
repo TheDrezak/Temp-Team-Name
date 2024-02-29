@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 100
-  spawn: {fileID: 0}
+  spawn: {fileID: 7153270113081412203, guid: 10c04b4f5bc468044b6280011d2ede11, type: 3}
   speed: 1
   waypointStartDuration: 0
   waypointStopDuration: 10
@@ -67,6 +67,7 @@ MonoBehaviour:
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
+  index: 0
   checkPointsHit: 0
 --- !u!65 &7043778800441993472
 BoxCollider:

@@ -49,7 +49,7 @@ public class Payload : MonoBehaviour, IDamage
             //should start music if music is not playing
             if(!aud.isPlaying && agent.remainingDistance > 0.01f)
                 aud.Play();
-            
+            Debug.Log(agent.remainingDistance);
             //    if (direction != Vector3.zero)
             {
         //        Quaternion targetRotation = Quaternion.LookRotation(direction);

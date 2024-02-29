@@ -233,6 +233,7 @@ public class gameManager : MonoBehaviour
         aud.PlayOneShot(defeat, purchaseVol);
         menuActive = menuLose;
         menuActive.SetActive(true);
+        backgroundAud.Stop();
     }
 
     public void youWin()
@@ -241,5 +242,6 @@ public class gameManager : MonoBehaviour
         menuActive.SetActive(true);
         statePaused();
         aud.PlayOneShot(victory, purchaseVol);
+        backgroundAud.Stop();
     }
 }

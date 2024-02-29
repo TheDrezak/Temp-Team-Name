@@ -263,6 +263,7 @@ MonoBehaviour:
   ammoMax: 0
   reloadTime: 0
   shootPos: {fileID: 6705509304188945494}
+  grenade: {fileID: 0}
   grenadeCooldown: 0
   hurtSounds:
   - {fileID: 8300000, guid: f976308ebd0a1bf46b6a6df350a24ef8, type: 3}
@@ -281,7 +282,10 @@ MonoBehaviour:
   switchSound: {fileID: 8300000, guid: 9158afb6966d445db9caf1dccf7acbcc, type: 3}
   switchVol: 0.5
   deathSound: {fileID: 8300000, guid: fd1605cb27b44f740b29b31618b99305, type: 3}
-  deathVol: 0
+  deathVol: 0.5
+  speedStacks: 0
+  jumpForceStacks: 0
+  dmgStacks: 0
   HPOrig: 0
   canOpenShop: 0
 --- !u!82 &6594987301009399161
