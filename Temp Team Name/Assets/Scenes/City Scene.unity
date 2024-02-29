@@ -3225,7 +3225,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5939705809722688942, guid: ffd4a13a40b80774b80f6932a2fbd0f0, type: 3}
       propertyPath: m_Speed
-      value: 25
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763342508781032438, guid: ffd4a13a40b80774b80f6932a2fbd0f0, type: 3}
+      propertyPath: HP
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 6763342508781032438, guid: ffd4a13a40b80774b80f6932a2fbd0f0, type: 3}
       propertyPath: spawn
@@ -28340,6 +28344,10 @@ PrefabInstance:
     - target: {fileID: 156417772112560040, guid: 0cc1a633911e3d84c9d3b4d111157343, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398547860362322763, guid: 0cc1a633911e3d84c9d3b4d111157343, type: 3}
+      propertyPath: HP
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8334595424140235847, guid: 0cc1a633911e3d84c9d3b4d111157343, type: 3}
       propertyPath: m_Name
