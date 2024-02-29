@@ -1249,15 +1249,15 @@ MonoBehaviour:
   shootPos: {fileID: 8610381820589752200}
   headPos: {fileID: 2576651259293601700}
   aud: {fileID: -2896312293980673655}
-  HP: 15
+  HP: 10
   viewCone: 45
   shootCone: 4
   targetFaceSpeed: 5
   animSpeedTrans: 5
   roamPauseTime: 3
   roamDis: 15
-  pointsGiven: 1
-  physicsResolve: 0
+  pointsGiven: 10
+  physicsResolve: 1
   bullet: {fileID: 569889183044730468, guid: 8ec074b9877545d4cb2996df94b56ee8, type: 3}
   shootRate: 1.4
   pelletAmount: 8
@@ -1283,7 +1283,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
