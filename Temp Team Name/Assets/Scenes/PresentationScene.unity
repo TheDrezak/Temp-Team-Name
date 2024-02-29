@@ -137,11 +137,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7724588542006635181, guid: fc8b0b77c82d17546809b3961e6a2cf0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 44.5
+      value: 45.87
       objectReference: {fileID: 0}
     - target: {fileID: 7724588542006635181, guid: fc8b0b77c82d17546809b3961e6a2cf0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.33
+      value: 21.53
       objectReference: {fileID: 0}
     - target: {fileID: 7724588542006635181, guid: fc8b0b77c82d17546809b3961e6a2cf0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1273,11 +1273,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc8b0b77c82d17546809b3961e6a2cf0, type: 3}
---- !u!1 &174663463 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8571485451635036504, guid: fc8b0b77c82d17546809b3961e6a2cf0, type: 3}
-  m_PrefabInstance: {fileID: 174663462}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &203588890
 GameObject:
   m_ObjectHideFlags: 0
@@ -2387,6 +2382,10 @@ PrefabInstance:
     - target: {fileID: 156417772112560040, guid: 0cc1a633911e3d84c9d3b4d111157343, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398547860362322763, guid: 0cc1a633911e3d84c9d3b4d111157343, type: 3}
+      propertyPath: deathVol
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8334595424140235847, guid: 0cc1a633911e3d84c9d3b4d111157343, type: 3}
       propertyPath: m_Name
@@ -5229,6 +5228,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+--- !u!1 &1266708547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8571485451635036504, guid: fc8b0b77c82d17546809b3961e6a2cf0, type: 3}
+  m_PrefabInstance: {fileID: 37751497}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1295867658
 GameObject:
   m_ObjectHideFlags: 0
@@ -5977,14 +5981,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ice Cream Car
       objectReference: {fileID: 0}
+    - target: {fileID: 1052669064326860252, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2180581540632302946, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
       propertyPath: waypoints.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2180581540632302946, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
-      objectReference: {fileID: 174663463}
+      objectReference: {fileID: 1266708547}
     - target: {fileID: 2180581540632302946, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
       propertyPath: waypoints.Array.data[1]
       value: 
@@ -6575,6 +6583,10 @@ PrefabInstance:
     - target: {fileID: 5422555600822309995, guid: a1911b8d0d5c4b54f90fa783498b2874, type: 3}
       propertyPath: m_Name
       value: Enemy B Shirt - Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5422555600822309995, guid: a1911b8d0d5c4b54f90fa783498b2874, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7765,6 +7777,10 @@ PrefabInstance:
     - target: {fileID: 2433112251282620404, guid: fd324a43aaa55604195f35e59bdf2e55, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345927791140761069, guid: fd324a43aaa55604195f35e59bdf2e55, type: 3}
+      propertyPath: deathVol
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

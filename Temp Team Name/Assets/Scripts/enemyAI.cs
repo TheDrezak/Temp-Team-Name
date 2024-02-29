@@ -269,13 +269,19 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
             // Give points
             gameManager.instance.increaseMoney(pointsGiven);
             //Plays death sound
+             
             aud.PlayOneShot(deathSound, deathVol);
-            Destroy(gameObject);
+            StartCoroutine(dying());
+            
         }
         // Lower HP on HP bar
         updateUI();
     }
-
+    IEnumerator dying()
+    {
+        yield return new WaitForSeconds(1.0f);
+        Destroy(gameObject);
+    }
     IEnumerator flashMat()
     {
         model.material.color = Color.red;
