@@ -45,7 +45,10 @@ public class buttonFunctions : MonoBehaviour
             gameManager.instance.playerScript.setSpeed(gameManager.instance.playerScript.getSpeed() * 1.1f);
             gameManager.instance.playerScript.speedStacks++;
             gameManager.instance.decreasMoney(gameManager.instance.speedPrice);
-
+        }
+        else if (gameManager.instance.playerScript.jumpForceStacks == 6)
+        {
+            gameManager.instance.maxStacksUIPrompt();
         }
 
     }
@@ -57,6 +60,10 @@ public class buttonFunctions : MonoBehaviour
             gameManager.instance.playerScript.setJumpMax(gameManager.instance.playerScript.getJumps() + 1);
             gameManager.instance.decreasMoney(gameManager.instance.jumpMaxPrice);
         }
+        else if (gameManager.instance.playerScript.jumpMax == 4)
+        {
+            gameManager.instance.maxStacksUIPrompt();
+        }
     }
 
     public void buyJumpForce()
@@ -66,6 +73,10 @@ public class buttonFunctions : MonoBehaviour
             gameManager.instance.playerScript.setjumpForce(gameManager.instance.playerScript.getJumpForce() * 1.25f);
             gameManager.instance.playerScript.jumpForceStacks++;
             gameManager.instance.decreasMoney(gameManager.instance.jumpForcePrice);
+        }
+        else if (gameManager.instance.playerScript.jumpForceStacks == 4)
+        {
+            gameManager.instance.maxStacksUIPrompt();
         }
     }
 
