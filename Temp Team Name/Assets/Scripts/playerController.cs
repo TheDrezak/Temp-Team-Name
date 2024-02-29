@@ -73,7 +73,7 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
     private bool hasGun;
     public int HPOrig;
     public bool canOpenShop;
-
+    public bool canThrow;
     void Start()
     {
         HPOrig = HP;
@@ -102,12 +102,21 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
             {
                 StartCoroutine(reload());
             }
-
+            if(Input.GetButton("Fire2") && grenadeAmmount > 0)
+            {
+                StartCoroutine(throwG());
+            }
             if (Input.GetKeyDown(KeyCode.R) && !isReloading)
             {
                 StartCoroutine(reload());
             }
         } 
+    }
+    IEnumerator throwG()
+    {
+        canThrow = false;
+        yield return new WaitForSeconds(grenadeCooldown);
+        canThrow = true;
     }
     void Movement()
     {

@@ -154,7 +154,7 @@ public class gameManager : MonoBehaviour
         // Timer for payload
         if (checkpointReached)
         {
-            checkpointTimer += 1;
+        //    checkpointTimer += 1;
         } 
     }
 
