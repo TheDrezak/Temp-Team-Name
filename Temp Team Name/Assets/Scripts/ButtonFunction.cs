@@ -40,7 +40,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void buySpeed()
     {
-        if (gameManager.instance.money > gameManager.instance.speedPrice)
+        if (gameManager.instance.money > gameManager.instance.speedPrice && gameManager.instance.playerScript.speedStacks < 6)
         {
             gameManager.instance.playerScript.setSpeed(gameManager.instance.playerScript.getSpeed() * 1.1f);
             gameManager.instance.decreasMoney(gameManager.instance.speedPrice);
@@ -50,7 +50,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void buyJumpMax()
     {
-        if (gameManager.instance.money > gameManager.instance.jumpMaxPrice)
+        if (gameManager.instance.money > gameManager.instance.jumpMaxPrice && gameManager.instance.playerScript.jumpMax < 4)
         {
             gameManager.instance.playerScript.setJumpMax(gameManager.instance.playerScript.getJumps() + 1);
             gameManager.instance.decreasMoney(gameManager.instance.jumpMaxPrice);
@@ -59,7 +59,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void buyJumpForce()
     {
-        if (gameManager.instance.money > gameManager.instance.jumpForcePrice)
+        if (gameManager.instance.money > gameManager.instance.jumpForcePrice && gameManager.instance.playerScript.jumpForceStacks < 4)
         {
             gameManager.instance.playerScript.setjumpForce(gameManager.instance.playerScript.getJumpForce() * 1.25f);
             gameManager.instance.decreasMoney(gameManager.instance.jumpForcePrice);
