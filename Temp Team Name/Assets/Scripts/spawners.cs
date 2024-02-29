@@ -8,6 +8,7 @@ public class spawners : MonoBehaviour
     [SerializeField] int numToSpawn;
     [SerializeField] int spawnTimer;
     [SerializeField] Transform[] spawnPos;
+    [SerializeField] bool infiniteSpawner;
 
     int spawnCount;
     bool isSpawning;
@@ -22,7 +23,11 @@ public class spawners : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startSpawning && !isSpawning && spawnCount < numToSpawn )
+        if (infiniteSpawner && startSpawning)
+        {
+
+        }
+        else if (startSpawning && !isSpawning && spawnCount < numToSpawn )
         {
             StartCoroutine(spawn());
         }
