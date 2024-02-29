@@ -14,7 +14,7 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
     [Header("----- Player Stats -----")]
     [SerializeField] private int HP;
     [SerializeField] float playerSpeed;
-    [SerializeField] int jumpMax;
+    [SerializeField] public int jumpMax;
     [SerializeField] float jumpForce;
     [SerializeField] float gravity;
     [SerializeField] float sprintMod;
@@ -55,6 +55,10 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
     [Range(0f, 1f)][SerializeField] float switchVol;
     [SerializeField] AudioClip deathSound;
     [Range(0f, 1f)][SerializeField] float deathVol;
+
+    public int speedStacks;
+    public int jumpForceStacks;
+    
 
     Vector3 move;
     Vector3 playerVelocity;
@@ -250,7 +254,7 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
         gunList.Add(gun);
         hasGun = true;
 
-        gun.ammoCur = gun.ammoCur;
+        gun.ammoCur = gun.ammoMax;
 
         shootDamage = gun.shootDamage;
         shootDistance = gun.shootDist;
