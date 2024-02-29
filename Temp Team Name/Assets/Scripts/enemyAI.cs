@@ -254,11 +254,6 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
         // Play damage animation
         anim.SetTrigger("Damage");
 
-        //Plays damage audio
-        aud.PlayOneShot(hurtSound, hurtVol);
-        // Move to player if enemy takes damage
-        agent.SetDestination(gameManager.instance.player.transform.position);
-
         // Take damage
         HP -= amount;
 
@@ -273,6 +268,14 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
         }
         // Lower HP on HP bar
         updateUI();
+
+        if (HP > 0)
+        {
+            //Plays damage audio
+            aud.PlayOneShot(hurtSound, hurtVol);
+            // Move to player if enemy takes damage
+            agent.SetDestination(gameManager.instance.player.transform.position);
+        }
     }
     
     IEnumerator flashMat()
