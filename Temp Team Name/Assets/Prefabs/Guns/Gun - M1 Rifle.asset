@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14f7fda6fa5a674d9511ffcbd4be827, type: 3}
   m_Name: Gun - M1 Rifle
   m_EditorClassIdentifier: 
-  shootDamage: 5
+  shootDamage: 25
   shootDist: 60
   shootRate: 2.5
   ammoCur: 12
@@ -21,4 +21,4 @@ MonoBehaviour:
   model: {fileID: 6635512608965262351, guid: 6116afec5a3d7a0478646bb30aed0e50, type: 3}
   hitEffect: {fileID: 0}
   shootSound: {fileID: 8300000, guid: 58c36dffcaccdc24e87b0165cc958d7a, type: 3}
-  shootSoundVol: 0.5
+  shootSoundVol: 0.184

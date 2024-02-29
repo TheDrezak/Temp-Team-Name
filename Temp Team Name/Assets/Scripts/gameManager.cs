@@ -50,6 +50,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] public int jumpMaxPrice;
     [SerializeField] public int jumpForcePrice;
     [SerializeField] public int dmgPrice;
+    [SerializeField] public int grenadePrice;
+    [SerializeField] public int cartHealthPrice;
 
     [Header("-----UI-----")] 
     public Image MaxStacksMessage;
