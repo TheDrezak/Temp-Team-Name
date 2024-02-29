@@ -6,16 +6,11 @@ public class waveSpawner : MonoBehaviour
 {
     [SerializeField] float spawnRate = 1f;
     [SerializeField] GameObject[] enemies;
-    [SerializeField] bool canSpawn = true;
+    [SerializeField] bool canSpawn;
 
     void Start()
     {
-        StartCoroutine(spawner());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        canSpawn = false;
         
     }
 
@@ -35,5 +30,23 @@ public class waveSpawner : MonoBehaviour
         GameObject enemyToSpawn = enemies[rand];
 
         Instantiate(enemyToSpawn, transform.position, transform.rotation);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Payload") || other.CompareTag("Player"))
+        {
+            canSpawn = true;
+            StartCoroutine(spawner());
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Payload") || other.CompareTag("Player"))
+        {
+            canSpawn = false;
+            StopCoroutine(spawner());
+        }
     }
 }
