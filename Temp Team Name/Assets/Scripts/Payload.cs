@@ -1,8 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
-using Unity.VisualScripting;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -41,25 +38,9 @@ public class Payload : MonoBehaviour, IDamage
     {
         if (isMoving)
         {
-            //    Vector3 destination = waypoints[index].transform.position;
-            //    Vector3 direction = (destination - transform.position).normalized;
-            
-            //should start music if music is not playing
             if(!aud.isPlaying && agent.remainingDistance > 0.01f)
                 aud.Play();
-            //Debug.Log(agent.remainingDistance);
-            //    if (direction != Vector3.zero)
-            {
-        //        Quaternion targetRotation = Quaternion.LookRotation(direction);
-                //targetRotation.y = 0f;
-        //        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-            }
 
-        //    Vector3 newPos = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
-            //newPos.y = 0;
-        //    transform.position = newPos;
-
-        //    float distance = Vector3.Distance(transform.position, destination);
             if (agent.remainingDistance <= 0.05)
             {
                 StartCoroutine(StopAtWaypoint());

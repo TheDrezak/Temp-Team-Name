@@ -311,6 +311,7 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
         shootVol = gunList[selectedGun].shootSoundVol;
         ammoCurr = gunList[selectedGun].ammoCur;
         ammoMax = gunList[selectedGun].ammoMax;
+        reloadTime = gunList[selectedGun].reloadTime;
         aud.PlayOneShot(switchSound, switchVol);
 
         gameManager.instance.updateBulletCount();
