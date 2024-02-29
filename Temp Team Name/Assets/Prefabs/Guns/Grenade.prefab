@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1566571899657861617}
-  speed: 15
+  speed: 10
   yVel: 0.2
   destroyTime: 3
   explosion: {fileID: 1938194647757730785, guid: 19beb92b04ba49c4199c9a9f5ae71035, type: 3}
