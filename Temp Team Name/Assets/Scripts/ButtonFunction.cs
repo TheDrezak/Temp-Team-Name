@@ -44,6 +44,8 @@ public class buttonFunctions : MonoBehaviour
         {
             gameManager.instance.playerScript.setSpeed(gameManager.instance.playerScript.getSpeed() * 1.1f);
             gameManager.instance.decreasMoney(gameManager.instance.speedPrice);
+            gameManager.instance.playerScript.speedStacks++;
+
         }
 
     }
@@ -63,6 +65,7 @@ public class buttonFunctions : MonoBehaviour
         {
             gameManager.instance.playerScript.setjumpForce(gameManager.instance.playerScript.getJumpForce() * 1.25f);
             gameManager.instance.decreasMoney(gameManager.instance.jumpForcePrice);
+            gameManager.instance.playerScript.jumpForceStacks++;
         }
     }
 
@@ -72,6 +75,7 @@ public class buttonFunctions : MonoBehaviour
         {
             gameManager.instance.playerScript.setDmgMult(gameManager.instance.playerScript.getDmgMult() + .25f);
             gameManager.instance.decreasMoney(gameManager.instance.dmgPrice);
+            gameManager.instance.playerScript.dmgStacks++;
         }
     }
 
