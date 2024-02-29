@@ -268,9 +268,6 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
         {
             // Give points
             gameManager.instance.increaseMoney(pointsGiven);
-            //Plays death sound
-             
-            aud.PlayOneShot(deathSound, deathVol);
             
             Destroy(gameObject);
         }
