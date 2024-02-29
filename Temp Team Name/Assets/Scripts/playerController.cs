@@ -293,11 +293,13 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
         {
             selectedGun++;
             changeGun();
+
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGun > 0)
         {
             selectedGun--;
             changeGun();
+
         }
     }
 
@@ -307,7 +309,10 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
         shootDistance = gunList[selectedGun].shootDist;
         shootRate = gunList[selectedGun].shootRate;
         shootVol = gunList[selectedGun].shootSoundVol;
+        ammoCurr = gunList[selectedGun].ammoCur;
+        ammoMax = gunList[selectedGun].ammoMax;
         aud.PlayOneShot(switchSound, switchVol);
+
         gameManager.instance.updateBulletCount();
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectedGun].model.GetComponent<MeshFilter>().sharedMesh;
