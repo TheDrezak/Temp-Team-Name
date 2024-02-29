@@ -715,8 +715,7 @@ MonoBehaviour:
   CartHPbar: {fileID: 5079567524064088321}
   progressBar: {fileID: 2793027125007242731}
   reloadcirc: {fileID: 6301758519962796359}
-  grenadeBarImage: {fileID: 2844664710231853381}
-  grenadeCoolDown: {fileID: 6735352544922853821}
+  MaxStacksUI: {fileID: 0}
   reloadUI: {fileID: 7108226783334944091}
   playerDmgFlash: {fileID: 9174069475793853689}
   playerSpawnPos: {fileID: 0}
@@ -5390,7 +5389,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0

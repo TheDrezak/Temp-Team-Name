@@ -65,8 +65,7 @@ public class gameManager : MonoBehaviour
     public Image CartHPbar;
     public Image progressBar;
     public Image reloadcirc;
-    public Image grenadeBarImage;
-    public GameObject grenadeCoolDown;
+    public GameObject MaxStacksUI;
     public GameObject reloadUI;
     public GameObject playerDmgFlash;
     public GameObject playerSpawnPos;
@@ -120,12 +119,20 @@ public class gameManager : MonoBehaviour
             menuActive.SetActive(isPaused);
         }
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             statePaused();
             menuActive = menuShop;
             menuShop.SetActive(isPaused);
         }
+    }
+
+    public IEnumerator maxStacksUIPrompt()
+    {
+
+        MaxStacksUI.SetActive(true);
+        yield return new WaitForSeconds(1);
+        MaxStacksUI.SetActive(false);
     }
 
     public void updateBulletCount()

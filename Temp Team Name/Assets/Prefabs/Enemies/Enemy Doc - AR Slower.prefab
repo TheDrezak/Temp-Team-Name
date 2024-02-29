@@ -1545,7 +1545,7 @@ MonoBehaviour:
   shootPos: {fileID: 3986043461538980955}
   headPos: {fileID: 8140956086046536213}
   aud: {fileID: 6320598501309018419}
-  HP: 10
+  HP: 5
   viewCone: 45
   shootCone: 4
   targetFaceSpeed: 5
@@ -1579,7 +1579,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

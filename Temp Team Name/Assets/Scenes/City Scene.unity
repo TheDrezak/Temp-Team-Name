@@ -3229,7 +3229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6763342508781032438, guid: ffd4a13a40b80774b80f6932a2fbd0f0, type: 3}
       propertyPath: HP
-      value: 1000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 6763342508781032438, guid: ffd4a13a40b80774b80f6932a2fbd0f0, type: 3}
       propertyPath: spawn
@@ -3684,6 +3684,10 @@ PrefabInstance:
     - target: {fileID: -1469660897997694674, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
       propertyPath: m_Volume
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+      propertyPath: money
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1163416266501621139, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
       propertyPath: m_Pivot.x
@@ -28347,7 +28351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3398547860362322763, guid: 0cc1a633911e3d84c9d3b4d111157343, type: 3}
       propertyPath: HP
-      value: 50
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 3398547860362322763, guid: 0cc1a633911e3d84c9d3b4d111157343, type: 3}
       propertyPath: hurtVol

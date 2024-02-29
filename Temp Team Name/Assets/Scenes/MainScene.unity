@@ -636,6 +636,10 @@ PrefabInstance:
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2180581540632302946, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
+      propertyPath: vol
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2180581540632302946, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
       propertyPath: spawn
       value: 
       objectReference: {fileID: 459158776}
@@ -677,7 +681,7 @@ PrefabInstance:
       objectReference: {fileID: 27005772}
     - target: {fileID: 2578372787854763320, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
       propertyPath: m_Volume
-      value: 0.146
+      value: 0.057
       objectReference: {fileID: 0}
     - target: {fileID: 5310222883047240413, guid: 6656596cfaf6d704cbc88b42a9ba3f30, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1036,6 +1040,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3b38a6894a98fd4e8424e4da83154ac, type: 3}
+--- !u!1 &280130056 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6259009403923083850, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+  m_PrefabInstance: {fileID: 1346001757}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &282910967 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 607766405362939047, guid: cdb2b6e2516e70444b27f5697bc3a8fb, type: 3}
@@ -3697,6 +3706,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+      propertyPath: MaxStacksUI
+      value: 
+      objectReference: {fileID: 280130056}
+    - target: {fileID: 703186391133771883, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+      propertyPath: purchaseVol
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 1163416266501621139, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3781,8 +3798,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6735352544922853821, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+      propertyPath: m_Name
+      value: GrenadeReloadUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282340683523005724, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+      propertyPath: m_Pitch
+      value: -0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282340683523005724, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+      propertyPath: m_Volume
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5026014512406829980, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
+    - {fileID: 6735352544922853821, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c259376c0fc0b04c8fde05cb7e58028, type: 3}
@@ -5933,7 +5964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3398547860362322763, guid: 0cc1a633911e3d84c9d3b4d111157343, type: 3}
       propertyPath: stepVol
-      value: 0.088
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3398547860362322763, guid: 0cc1a633911e3d84c9d3b4d111157343, type: 3}
       propertyPath: shootVol
