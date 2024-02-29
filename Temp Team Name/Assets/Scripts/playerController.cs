@@ -202,7 +202,6 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
 
     IEnumerator reload()
     {
-        Debug.Log("Reloading");
         isReloading = true;
         aud.PlayOneShot(reloadSound, reloadVol);
         gunList[selectedGun].ammoCur = gunList[selectedGun].ammoMax;
