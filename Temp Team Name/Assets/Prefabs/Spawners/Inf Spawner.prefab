@@ -174,10 +174,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3255bdf4a543e7044b5bd434d9586528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 1
+  spawnRate: 5
   enemies:
   - {fileID: 5422555600822309995, guid: a1911b8d0d5c4b54f90fa783498b2874, type: 3}
   - {fileID: 1381367960192960883, guid: fd324a43aaa55604195f35e59bdf2e55, type: 3}
   - {fileID: 7539820626486186840, guid: ea8d3cff1a0574f449d65d31888947c6, type: 3}
   - {fileID: 356006669193936088, guid: f4f12576481a8e1429ed76f397c5a9cd, type: 3}
-  canSpawn: 1
+  canSpawn: 0
+  payloadMoving: 0
