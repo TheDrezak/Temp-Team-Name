@@ -19,7 +19,7 @@ public class waveSpawner : MonoBehaviour
         // Once Payload moves stop spawning & don't allow it
         if (payloadMoving)
         {
-            canSpawn = false;
+            //canSpawn = false;
             StopCoroutine(spawner());
         }
     }
@@ -54,6 +54,13 @@ public class waveSpawner : MonoBehaviour
         {
             canSpawn = true;
             StartCoroutine(spawner());
+        }
+    }
+    private void OnTriggerExit(Collider other) 
+    { 
+        if (other.CompareTag("Payload"))
+        {
+            canSpawn = false;
         }
     }
 }
