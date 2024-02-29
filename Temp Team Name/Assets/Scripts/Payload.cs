@@ -25,7 +25,7 @@ public class Payload : MonoBehaviour, IDamage
     public int index = 0;
     public int checkPointsHit;
     private int HPOrig;
-    bool isMoving = true;
+    public bool isMoving = true;
     int nextPoint;
     
 
