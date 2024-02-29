@@ -6,7 +6,7 @@ public class waveSpawner : MonoBehaviour
 {
     [SerializeField] float spawnRate = 1f;
     [SerializeField] GameObject[] enemies;
-    [SerializeField] bool canSpawn = true;
+    [SerializeField] bool canSpawn = false;
     public bool payloadMoving;
 
     void Start()
@@ -29,10 +29,13 @@ public class waveSpawner : MonoBehaviour
         // Set time between enemy spawns
         WaitForSeconds wait = new WaitForSeconds(spawnRate);
         // Check if it can spawn and that payload stoped
-        while (canSpawn && !payloadMoving)
+        while (canSpawn)
         {
             yield return wait;
-            spawn();
+            if (!payloadMoving)
+            {
+                spawn();
+            }
         }
     }
 
@@ -50,6 +53,7 @@ public class waveSpawner : MonoBehaviour
         if (other.CompareTag("Payload") || other.CompareTag("Player"))
         {
             canSpawn = true;
+            StartCoroutine(spawner());
         }
     }
 }
