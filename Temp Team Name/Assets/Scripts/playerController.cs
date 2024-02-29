@@ -58,6 +58,7 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
 
     public int speedStacks;
     public int jumpForceStacks;
+    public int dmgStacks;
     
 
     Vector3 move;
@@ -102,7 +103,7 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
                 StartCoroutine(reload());
             }
 
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R) && !isReloading)
             {
                 StartCoroutine(reload());
             }
@@ -201,12 +202,11 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
             yield return new WaitForSecondsRealtime(0.01f);
             temp--;
             gameManager.instance.reloadcirc.fillAmount = temp / (reloadTime * 100) ;
-            
         }
-        
+        gameManager.instance.reloadUI.SetActive(false);
+
         gameManager.instance.updateBulletCount();
         isReloading = false;
-        gameManager.instance.reloadUI.SetActive(false);
     }
 
     public void TakeDamage(int amount)

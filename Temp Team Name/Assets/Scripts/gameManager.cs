@@ -46,6 +46,13 @@ public class gameManager : MonoBehaviour
     [SerializeField] public int jumpForcePrice;
     [SerializeField] public int dmgPrice;
 
+    [Header("-----UI-----")] 
+    public Image MaxStacksMessage;
+
+    public TMP_Text speedStacks;
+    public TMP_Text jumpStacks;
+    public TMP_Text jumpForceStacks;
+    public TMP_Text dmgStacks;
     public Image playerHPBar;
     public Image CartHPbar;
     public Image progressBar;
@@ -207,6 +214,10 @@ public class gameManager : MonoBehaviour
     public void updateUI()
     {
         ScoreText.text = money.ToString("F0");
+        jumpForceStacks.text = playerScript.jumpForceStacks.ToString();
+        speedStacks.text = playerScript.speedStacks.ToString();
+        dmgStacks.text = playerScript.dmgStacks.ToString();
+        jumpStacks.text = playerScript.jumpMax.ToString();
     }
 
     public void youLose()
