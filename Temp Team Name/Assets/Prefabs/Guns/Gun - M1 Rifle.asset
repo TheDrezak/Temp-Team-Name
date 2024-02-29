@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14f7fda6fa5a674d9511ffcbd4be827, type: 3}
   m_Name: Gun - M1 Rifle
   m_EditorClassIdentifier: 
-  shootDamage: 5
+  shootDamage: 10
   shootDist: 60
   shootRate: 2.5
   ammoCur: 12

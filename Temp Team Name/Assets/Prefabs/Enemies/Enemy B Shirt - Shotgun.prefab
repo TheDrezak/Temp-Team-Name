@@ -1249,7 +1249,7 @@ MonoBehaviour:
   shootPos: {fileID: 8610381820589752200}
   headPos: {fileID: 2576651259293601700}
   aud: {fileID: -2896312293980673655}
-  HP: 10
+  HP: 15
   viewCone: 45
   shootCone: 4
   targetFaceSpeed: 5
@@ -1337,7 +1337,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 15
+  m_Radius: 25
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &-2896312293980673655
 AudioSource:

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootDamage: 4
   shootDist: 45
-  shootRate: 0.1
-  ammoCur: 18
-  ammoMax: 18
+  shootRate: 0.4
+  ammoCur: 75
+  ammoMax: 75
   reloadTime: 1.5
   model: {fileID: 6370723580708644957, guid: c7ca15f633c2b754f83666ac0c18b3e6, type: 3}
   hitEffect: {fileID: 0}
