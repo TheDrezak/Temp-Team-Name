@@ -81,7 +81,20 @@ public class buttonFunctions : MonoBehaviour
 
     public void buyGrenade()
     {
+        if (gameManager.instance.money > gameManager.instance.grenadePrice)
+        {
 
+        }
+    }
+
+    public void buyCartHealth()
+    {
+        if (gameManager.instance.money > gameManager.instance.cartHealthPrice)
+        {
+            gameManager.instance.payloadScript.HP = gameManager.instance.payloadScript.HPOrig;
+            gameManager.instance.decreasMoney(gameManager.instance.cartHealthPrice);
+            gameManager.instance.payloadScript.updateUI();
+        }
     }
 
     IEnumerator maxStacksMessage()

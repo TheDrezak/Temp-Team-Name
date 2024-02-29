@@ -8,7 +8,7 @@ using UnityEngine.AI;
 
 public class Payload : MonoBehaviour, IDamage
 {
-    [SerializeField] int HP;
+    [SerializeField] public int HP;
     [SerializeField] private Transform spawn;
     [SerializeField] float speed;
     [SerializeField] public float waypointStartDuration;
@@ -24,9 +24,8 @@ public class Payload : MonoBehaviour, IDamage
     public List<GameObject> waypoints;
     public int index = 0;
     public int checkPointsHit;
-    private int HPOrig;
+    public int HPOrig;
     public bool isMoving = true;
-    int nextPoint;
     
 
     void Start()
@@ -35,7 +34,6 @@ public class Payload : MonoBehaviour, IDamage
         spawnCart();
         MoveToNextWaypoint();
         HPOrig = HP;
-        nextPoint = 0;
         aud.Play();
     }
 
@@ -114,7 +112,7 @@ public class Payload : MonoBehaviour, IDamage
         updateUI();
     }
 
-    void updateUI()
+    public void updateUI()
     {
         gameManager.instance.CartHPbar.fillAmount = (float)HP / HPOrig;
     }
