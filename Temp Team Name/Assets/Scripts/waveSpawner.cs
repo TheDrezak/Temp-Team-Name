@@ -56,4 +56,11 @@ public class waveSpawner : MonoBehaviour
             StartCoroutine(spawner());
         }
     }
+    private void OnTriggerExit(Collider other) 
+    { 
+        if (other.CompareTag("Payload"))
+        {
+            canSpawn = false;
+        }
+    }
 }
