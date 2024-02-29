@@ -19,7 +19,7 @@ public class waveSpawner : MonoBehaviour
         // Once Payload moves stop spawning & don't allow it
         if (payloadMoving)
         {
-            //canSpawn = false;
+            canSpawn = false;
             StopCoroutine(spawner());
         }
     }
