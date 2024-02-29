@@ -308,6 +308,7 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
         shootRate = gunList[selectedGun].shootRate;
         shootVol = gunList[selectedGun].shootSoundVol;
         aud.PlayOneShot(switchSound, switchVol);
+        gameManager.instance.updateBulletCount();
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[selectedGun].model.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[selectedGun].model.GetComponent<MeshRenderer>().sharedMaterial;
