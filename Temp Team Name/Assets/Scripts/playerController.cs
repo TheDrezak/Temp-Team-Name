@@ -103,7 +103,7 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
             {
                 StartCoroutine(reload());
             }
-            if(Input.GetButtonDown("Fire3") && grenadeAmmount > 0)
+            if(Input.GetButtonDown("Fire2") && grenadeAmmount > 0)
             {
                 Debug.Log("grenade out!");
                 StartCoroutine(throwG());
@@ -119,18 +119,8 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
         canThrow = false;
         Instantiate(grenade, shootPos.position, transform.rotation);
         grenadeAmmount--;
-        gameManager.instance.grenadeCoolDown.SetActive(true);
-
-        int temp = ((int)grenadeCooldown * 100);
-
-        for (int i = 0; i < (grenadeCooldown * 100); i++)
-        {
-            yield return new WaitForSecondsRealtime(0.01f);
-            temp--;
-            gameManager.instance.grenadeBarImage.fillAmount = temp / (grenadeCooldown * 100);
-        }
-        gameManager.instance.grenadeCoolDown.SetActive(false);
-        gameManager.instance.updateUI();
+        gameManager.instance.updateUI();   
+        yield return new WaitForSeconds(grenadeCooldown);
         canThrow = true;
     }
     void Movement()
@@ -233,24 +223,6 @@ public class playerController : MonoBehaviour, IDamage, IPhysics
         isReloading = false;
     }
 
-    IEnumerator grenadeReload()
-    {
-        Debug.Log("ReloadingGrenade");
-        grenadeReloading = true;
-        aud.PlayOneShot(reloadSound, reloadVol);
-        gameManager.instance.grenadeCoolDown.SetActive(true);
-
-        int temp = ((int)grenadeCooldown * 100);
-
-        for (int i = 0; i < (grenadeCooldown * 100); i++)
-        {
-            yield return new WaitForSecondsRealtime(0.01f);
-            temp--;
-            gameManager.instance.grenadeBarImage.fillAmount = temp / (grenadeCooldown * 100);
-        }
-        gameManager.instance.grenadeCoolDown.SetActive(false);
-        isReloading = false;
-    }
 
     public void TakeDamage(int amount)
     {
