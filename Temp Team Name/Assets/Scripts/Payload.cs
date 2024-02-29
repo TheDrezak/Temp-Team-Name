@@ -4,6 +4,7 @@ using Microsoft.Unity.VisualStudio.Editor;
 using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Payload : MonoBehaviour, IDamage
 {
@@ -18,6 +19,7 @@ public class Payload : MonoBehaviour, IDamage
     [SerializeField] AudioClip music;
     [Range(0f, 1f)][SerializeField] float vol;
     [SerializeField] AudioSource aud;
+    [SerializeField] NavMeshAgent agent;
 
     public List<GameObject> waypoints;
     int index = 0;
@@ -38,23 +40,26 @@ public class Payload : MonoBehaviour, IDamage
     {
         if (isMoving)
         {
-            Vector3 destination = waypoints[index].transform.position;
-            Vector3 direction = (destination - transform.position).normalized;
+            //    Vector3 destination = waypoints[index].transform.position;
+            //    Vector3 direction = (destination - transform.position).normalized;
+            agent.SetDestination(waypoints[0].transform.position);
             //should start music if music is not playing
             if(!aud.isPlaying)
                 aud.PlayOneShot(music, vol);
 
-            if (direction != Vector3.zero)
+        //    if (direction != Vector3.zero)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        //        Quaternion targetRotation = Quaternion.LookRotation(direction);
+                //targetRotation.y = 0f;
+        //        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
             }
 
-            Vector3 newPos = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
-            transform.position = newPos;
+        //    Vector3 newPos = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
+            //newPos.y = 0;
+        //    transform.position = newPos;
 
-            float distance = Vector3.Distance(transform.position, destination);
-            if (distance <= 0.05)
+        //    float distance = Vector3.Distance(transform.position, destination);
+            if (agent.remainingDistance <= 0.05)
             {
                 StartCoroutine(StopAtWaypoint());
                 //should stop music

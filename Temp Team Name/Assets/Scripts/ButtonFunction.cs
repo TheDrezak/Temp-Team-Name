@@ -43,8 +43,8 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.money > gameManager.instance.speedPrice && gameManager.instance.playerScript.speedStacks < 6)
         {
             gameManager.instance.playerScript.setSpeed(gameManager.instance.playerScript.getSpeed() * 1.1f);
-            gameManager.instance.decreasMoney(gameManager.instance.speedPrice);
             gameManager.instance.playerScript.speedStacks++;
+            gameManager.instance.decreasMoney(gameManager.instance.speedPrice);
 
         }
 
@@ -64,8 +64,8 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.money > gameManager.instance.jumpForcePrice && gameManager.instance.playerScript.jumpForceStacks < 4)
         {
             gameManager.instance.playerScript.setjumpForce(gameManager.instance.playerScript.getJumpForce() * 1.25f);
-            gameManager.instance.decreasMoney(gameManager.instance.jumpForcePrice);
             gameManager.instance.playerScript.jumpForceStacks++;
+            gameManager.instance.decreasMoney(gameManager.instance.jumpForcePrice);
         }
     }
 
@@ -74,13 +74,19 @@ public class buttonFunctions : MonoBehaviour
         if (gameManager.instance.money > gameManager.instance.dmgPrice)
         {
             gameManager.instance.playerScript.setDmgMult(gameManager.instance.playerScript.getDmgMult() + .25f);
-            gameManager.instance.decreasMoney(gameManager.instance.dmgPrice);
             gameManager.instance.playerScript.dmgStacks++;
+            gameManager.instance.decreasMoney(gameManager.instance.dmgPrice);
         }
     }
 
     public void buyGrenade()
     {
 
+    }
+
+    IEnumerator maxStacksMessage()
+    {
+
+        yield return new WaitForSeconds(2);
     }
 }

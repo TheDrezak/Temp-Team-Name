@@ -63,6 +63,7 @@ MonoBehaviour:
   music: {fileID: 8300000, guid: 3f3af9bbe6c119a479c0676c8639b1b9, type: 3}
   vol: 0.5
   aud: {fileID: 2578372787854763320}
+  agent: {fileID: 6184579049130493117}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
