@@ -1552,8 +1552,8 @@ MonoBehaviour:
   animSpeedTrans: 5
   roamPauseTime: 3
   roamDis: 15
-  pointsGiven: 1
-  physicsResolve: 0
+  pointsGiven: 5
+  physicsResolve: 1
   bullet: {fileID: 489768849161651853, guid: b51ee60c8cd8a0c40ac9a8e8536f37fa, type: 3}
   shootRate: 0.5
   pelletAmount: 1
