@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootDamage: 3
   shootDist: 50
-  shootRate: 0.2
-  ammoCur: 25
+  shootRate: 0.1
+  ammoCur: 9
   ammoMax: 25
   reloadTime: 1
   model: {fileID: 3282180921815554058, guid: 4c27a6a86c41dae4ea57156e4d4da47f, type: 3}
   hitEffect: {fileID: 0}
   shootSound: {fileID: 8300000, guid: 8c62cfd1df814cf4a91b9b38fba747b0, type: 3}
-  shootSoundVol: 0.5
+  shootSoundVol: 0.065
