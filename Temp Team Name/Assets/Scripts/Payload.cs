@@ -45,7 +45,7 @@ public class Payload : MonoBehaviour, IDamage
         {
             //    Vector3 destination = waypoints[index].transform.position;
             //    Vector3 direction = (destination - transform.position).normalized;
-            agent.SetDestination(waypoints[index].transform.position);
+            
             //should start music if music is not playing
             if(!aud.isPlaying && agent.remainingDistance > 0.01f)
                 aud.Play();
@@ -86,6 +86,7 @@ public class Payload : MonoBehaviour, IDamage
 
     void MoveToNextWaypoint()
     {
+        agent.SetDestination(waypoints[index].transform.position);
         index++;
         if (index >= waypoints.Count)
         {
